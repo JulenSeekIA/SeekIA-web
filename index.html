@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SeekIA — Tu negocio, siempre disponible</title>
-  <meta name="description" content="Agente de IA para WhatsApp que atiende clientes, gestiona citas y responde preguntas 24/7. Para centros de estética, peluquerías y clínicas.">
+  <title>SeekIA — IA que llena tu agenda</title>
+  <meta name="description" content="Asistente IA para WhatsApp, reactivación de pacientes dormidos y asistente de voz. Para centros de estética, peluquerías y clínicas dentales.">
 
-  <!-- Montserrat via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -25,9 +22,7 @@
             teal: '#32D9A0',
             muted: '#A0A0A0',
           },
-          fontFamily: {
-            sans: ['Montserrat', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] },
         }
       }
     }
@@ -38,19 +33,13 @@
     html { scroll-behavior: smooth; }
     body { background: #0A0A0A; color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
-    /* ── Gradient text ── */
     .gradient-text {
       background: linear-gradient(135deg, #A8E04A, #32D9A0);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    /* ── Animated gradient border ── */
-    .gradient-border {
-      position: relative;
-      border-radius: 16px;
-    }
+    .gradient-border { position: relative; border-radius: 16px; }
     .gradient-border::before {
       content: '';
       position: absolute;
@@ -66,384 +55,230 @@
       50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    /* ── Grid background ── */
     .grid-bg {
       background-image:
         linear-gradient(rgba(168,224,74,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(168,224,74,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
     }
-
-    /* ── Floating particles ── */
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      animation: float linear infinite;
-      pointer-events: none;
-    }
+    .particle { position: absolute; border-radius: 50%; animation: float linear infinite; pointer-events: none; }
     @keyframes float {
       0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
       10%  { opacity: 1; }
       90%  { opacity: 1; }
       100% { transform: translateY(-100vh) translateX(40px) scale(0.5); opacity: 0; }
     }
-
-    /* ── Chat bubbles ── */
-    .chat-bubble {
-      border-radius: 18px;
-      padding: 10px 14px;
-      font-size: 13px;
-      line-height: 1.5;
-      max-width: 240px;
-      animation: bubbleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-    .chat-bubble.incoming {
-      background: #2a2a2a;
-      border-bottom-left-radius: 4px;
-      align-self: flex-start;
-    }
-    .chat-bubble.outgoing {
-      background: linear-gradient(135deg, #A8E04A, #32D9A0);
-      color: #0A0A0A;
-      border-bottom-right-radius: 4px;
-      align-self: flex-end;
-    }
-    @keyframes bubbleIn {
-      from { opacity: 0; transform: scale(0.8) translateY(10px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    /* ── Typing indicator ── */
-    .typing-dots span {
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #A0A0A0;
-      animation: typing 1.2s ease infinite;
-    }
+    .chat-bubble { border-radius: 18px; padding: 10px 14px; font-size: 13px; line-height: 1.5; max-width: 240px; animation: bubbleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+    .chat-bubble.incoming { background: #2a2a2a; border-bottom-left-radius: 4px; align-self: flex-start; }
+    .chat-bubble.outgoing { background: linear-gradient(135deg, #A8E04A, #32D9A0); color: #0A0A0A; border-bottom-right-radius: 4px; align-self: flex-end; }
+    @keyframes bubbleIn { from { opacity: 0; transform: scale(0.8) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .typing-dots span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #A0A0A0; animation: typing 1.2s ease infinite; }
     .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
     .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typing {
-      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-      30%            { transform: translateY(-5px); opacity: 1; }
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* ── Stagger delay ── */
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-5px); opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
     .delay-100 { transition-delay: 0.1s; }
     .delay-200 { transition-delay: 0.2s; }
     .delay-300 { transition-delay: 0.3s; }
     .delay-400 { transition-delay: 0.4s; }
     .delay-500 { transition-delay: 0.5s; }
-
-    /* ── Feature cards ── */
-    .feature-card {
-      background: #1A1A1A;
-      border: 1px solid rgba(168,224,74,0.1);
-      border-radius: 16px;
-      padding: 28px;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      cursor: default;
-      overflow: hidden;
-    }
-    .feature-card:hover {
-      border-color: rgba(168,224,74,0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(168,224,74,0.08);
-    }
-
-    /* ── Pain cards ── */
-    .pain-card {
-      background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(255,107,107,0.03));
-      border: 1px solid rgba(255,107,107,0.15);
-      border-radius: 16px;
-      padding: 24px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .pain-card:hover {
-      border-color: rgba(255,107,107,0.35);
-      transform: translateY(-3px);
-    }
-
-    /* ── CTA Button ── */
-    .cta-btn {
-      background: linear-gradient(135deg, #A8E04A, #32D9A0);
-      color: #0A0A0A;
-      font-weight: 700;
-      border-radius: 12px;
-      padding: 14px 32px;
-      font-size: 15px;
-      letter-spacing: 0.01em;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(168,224,74,0.35);
-    }
+    .feature-card { background: #1A1A1A; border: 1px solid rgba(168,224,74,0.1); border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; cursor: default; overflow: hidden; }
+    .feature-card:hover { border-color: rgba(168,224,74,0.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(168,224,74,0.08); }
+    .pain-card { background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(255,107,107,0.03)); border: 1px solid rgba(255,107,107,0.15); border-radius: 16px; padding: 24px; transition: border-color 0.3s, transform 0.3s; }
+    .pain-card:hover { border-color: rgba(255,107,107,0.35); transform: translateY(-3px); }
+    .cta-btn { background: linear-gradient(135deg, #A8E04A, #32D9A0); color: #0A0A0A; font-weight: 700; border-radius: 12px; padding: 14px 32px; font-size: 15px; letter-spacing: 0.01em; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(168,224,74,0.35); }
     .cta-btn:active { transform: translateY(0); }
-
-    /* ── Ghost Button ── */
-    .ghost-btn {
-      border: 1px solid rgba(168,224,74,0.35);
-      color: #A8E04A;
-      background: transparent;
-      font-weight: 600;
-      border-radius: 12px;
-      padding: 13px 30px;
-      font-size: 15px;
-      transition: border-color 0.2s, background 0.2s;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .ghost-btn:hover {
-      border-color: #A8E04A;
-      background: rgba(168,224,74,0.06);
-    }
-
-    /* ── Separator ── */
-    .sep-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #A8E04A, #32D9A0, transparent);
-    }
-
-    /* ── Stat counter ── */
-    .stat-number {
-      font-size: 48px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    /* ── Mobile nav ── */
+    .ghost-btn { border: 1px solid rgba(168,224,74,0.35); color: #A8E04A; background: transparent; font-weight: 600; border-radius: 12px; padding: 13px 30px; font-size: 15px; transition: border-color 0.2s, background 0.2s; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .ghost-btn:hover { border-color: #A8E04A; background: rgba(168,224,74,0.06); }
+    .sep-line { height: 1px; background: linear-gradient(90deg, transparent, #A8E04A, #32D9A0, transparent); }
+    .stat-number { font-size: 48px; font-weight: 900; line-height: 1; }
     #mobile-menu { display: none; }
     #mobile-menu.open { display: flex; }
-
-    /* ── Pricing card ── */
-    .pricing-card {
-      background: #1A1A1A;
-      border: 1px solid rgba(168,224,74,0.15);
-      border-radius: 20px;
-      padding: 36px;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
-    .pricing-card.featured {
-      border-color: rgba(168,224,74,0.5);
-      background: linear-gradient(135deg, #1A1A1A, #1f2a14);
-    }
-    .pricing-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 48px rgba(168,224,74,0.1);
-      border-color: rgba(168,224,74,0.45);
-    }
-
-    /* ── FAQ ── */
+    .pricing-card { background: #1A1A1A; border: 1px solid rgba(168,224,74,0.15); border-radius: 20px; padding: 36px; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; }
+    .pricing-card.featured { border-color: rgba(168,224,74,0.5); background: linear-gradient(135deg, #1A1A1A, #1f2a14); }
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(168,224,74,0.1); border-color: rgba(168,224,74,0.45); }
     .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
     .faq-answer { display: none; }
     .faq-answer.open { display: block; }
     .faq-icon { transition: transform 0.3s; }
     .faq-icon.open { transform: rotate(45deg); }
+    .noise::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.04; }
+    .glow-blob { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; animation: blobDrift 12s ease-in-out infinite alternate; }
+    @keyframes blobDrift { from { transform: translate(0, 0) scale(1); } to { transform: translate(40px, -30px) scale(1.1); } }
+    .card-inner { display: flex; flex-direction: column; gap: 20px; }
+    .card-inner > div:first-child { flex: 1; min-width: 0; }
+    @media (min-width: 1024px) { .card-inner { flex-direction: row; align-items: center; gap: 24px; } .card-inner.card-start { align-items: flex-start; } }
+    .card-panel { display: none; }
+    @media (min-width: 1024px) { .card-panel { display: block; flex-shrink: 0; } }
+    .chat-phone-wrapper { width: 100%; max-width: 320px; }
+    @media (max-width: 639px) { #chat-window { height: 260px !important; } }
+    @media (max-width: 480px) { .cta-btn, .ghost-btn { width: 100%; justify-content: center; } }
+    @media (max-width: 639px) { .sector-card { padding: 16px !important; } .sector-card p:last-child { display: none; } }
+    @media (max-width: 639px) { .pricing-card { padding: 24px; } .stat-number { font-size: 36px; } }
 
-    /* ── Noise overlay ── */
-    .noise::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.04;
-    }
-
-    /* ── Glow blob ── */
-    .glow-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
-      animation: blobDrift 12s ease-in-out infinite alternate;
-    }
-    @keyframes blobDrift {
-      from { transform: translate(0, 0) scale(1); }
-      to   { transform: translate(40px, -30px) scale(1.1); }
-    }
-
-    /* ── WhatsApp icon ── */
-    .wa-icon { display: inline-flex; align-items: center; }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, .particle, .glow-blob, .chat-bubble { animation: none !important; transition: none !important; }
-      .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; }
-    }
-
-    /* ── Responsive inner layout for big feature cards ── */
-    .card-inner {
+    /* Product cards (Cohere-style) */
+    .product-card {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
       gap: 20px;
-    }
-    .card-inner > div:first-child { flex: 1; min-width: 0; }
-    @media (min-width: 1024px) {
-      .card-inner { flex-direction: row; align-items: center; gap: 24px; }
-      .card-inner.card-start { align-items: flex-start; }
-    }
-    /* Panel lateral: oculto en móvil/tablet, visible en desktop */
-    .card-panel { display: none; }
-    @media (min-width: 1024px) {
-      .card-panel { display: block; flex-shrink: 0; }
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
-    /* ── Hero chat ── */
-    .chat-phone-wrapper { width: 100%; max-width: 320px; }
-    @media (max-width: 639px) {
-      #chat-window { height: 260px !important; }
+    /* Spotlight que sigue el cursor */
+    .product-card::after, .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(450px circle at var(--mx, 50%) var(--my, 50%), rgba(168,224,74,0.10), transparent 42%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 0;
     }
+    .product-card:hover::after, .feature-card:hover::after { opacity: 1; }
+    .product-card > *, .feature-card > * { position: relative; z-index: 1; }
 
-    /* ── CTA buttons full-width en móvil pequeño ── */
-    @media (max-width: 480px) {
-      .cta-btn, .ghost-btn { width: 100%; justify-content: center; }
+    /* Aurora del hero */
+    .aurora {
+      position: absolute;
+      inset: -20% -10% auto -10%;
+      height: 70%;
+      background: radial-gradient(60% 60% at 30% 20%, rgba(168,224,74,0.10), transparent 60%),
+                  radial-gradient(50% 50% at 75% 30%, rgba(50,217,160,0.10), transparent 60%);
+      filter: blur(40px);
+      pointer-events: none;
+      animation: auroraDrift 16s ease-in-out infinite alternate;
     }
+    @keyframes auroraDrift {
+      from { transform: translateX(-3%) translateY(0) scale(1); opacity: 0.7; }
+      to   { transform: translateX(4%) translateY(2%) scale(1.08); opacity: 1; }
+    }
+    .product-card:hover {
+      border-color: rgba(168,224,74,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 48px rgba(168,224,74,0.07);
+    }
+    .product-card.featured {
+      border-color: rgba(168,224,74,0.4);
+      background: linear-gradient(160deg, #131a0d, #111);
+    }
+    .product-card.coming {
+      opacity: 0.7;
+    }
+    .product-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #A0A0A0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 5px 12px;
+      width: fit-content;
+    }
+    .product-tag.active { color: #A8E04A; background: rgba(168,224,74,0.08); border-color: rgba(168,224,74,0.2); }
+    .product-tag.soon { color: #32D9A0; background: rgba(50,217,160,0.08); border-color: rgba(50,217,160,0.2); }
+    .product-price {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .product-price span { font-size: 14px; font-weight: 500; color: #A0A0A0; letter-spacing: 0; }
+    .product-check { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #A0A0A0; }
+    .product-check svg { flex-shrink: 0; margin-top: 1px; }
 
-    /* ── Para quién cards: menos padding en móvil ── */
-    @media (max-width: 639px) {
-      .sector-card { padding: 16px !important; }
-      .sector-card p:last-child { display: none; }
-    }
-
-    /* ── Pricing card: menos padding en móvil ── */
-    @media (max-width: 639px) {
-      .pricing-card { padding: 24px; }
-      .stat-number { font-size: 36px; }
-    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    @keyframes scrollPulse { 0%,100%{opacity:0;} 50%{opacity:1;} }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { *, .particle, .glow-blob, .chat-bubble { animation: none !important; transition: none !important; } .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; } }
   </style>
 </head>
 
 <body class="noise">
 
-  <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+  <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 right-0 z-50" style="backdrop-filter: blur(16px); background: rgba(10,10,10,0.85); border-bottom: 1px solid rgba(168,224,74,0.08);">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-2.5" style="cursor:pointer;">
+      <a href="#" class="flex items-center gap-2.5">
         <img src="assets/Logo-trans.png" alt="SeekIA logo" class="h-11 w-auto" />
         <span style="font-weight:800; font-size:18px; letter-spacing:-0.02em;">SeekIA</span>
       </a>
-
-      <!-- Desktop nav -->
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[#A0A0A0]">
-        <a href="#como-funciona" class="hover:text-white transition-colors cursor-pointer">Cómo funciona</a>
-        <a href="#funcionalidades" class="hover:text-white transition-colors cursor-pointer">Funcionalidades</a>
-        <a href="#precios" class="hover:text-white transition-colors cursor-pointer">Precios</a>
-        <a href="#faq" class="hover:text-white transition-colors cursor-pointer">FAQ</a>
+        <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#como-funciona" class="hover:text-white transition-colors">Cómo funciona</a>
+        <a href="#precios" class="hover:text-white transition-colors">Resultados</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
-
-      <!-- CTA -->
       <div class="hidden md:flex items-center gap-3">
-        <a href="#contacto" class="cta-btn" style="padding:10px 22px; font-size:14px;">
-          Pedir demo gratuita
-        </a>
+        <a href="#contacto" class="cta-btn" style="padding:10px 22px; font-size:14px;">Pedir demo gratuita</a>
       </div>
-
-      <!-- Hamburger -->
       <button id="hamburger" class="md:hidden flex flex-col gap-1.5 cursor-pointer p-2" aria-label="Menú">
         <span class="w-5 h-0.5 bg-white transition-all"></span>
         <span class="w-5 h-0.5 bg-white transition-all"></span>
         <span class="w-5 h-0.5 bg-white transition-all"></span>
       </button>
     </div>
-
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="flex-col px-6 pb-4 pt-2 gap-3 text-sm font-medium text-[#A0A0A0] md:hidden" style="border-top: 1px solid rgba(255,255,255,0.06);">
+      <a href="#servicios" class="py-2 hover:text-white transition-colors block" onclick="closeMobileMenu()">Servicios</a>
       <a href="#como-funciona" class="py-2 hover:text-white transition-colors block" onclick="closeMobileMenu()">Cómo funciona</a>
-      <a href="#funcionalidades" class="py-2 hover:text-white transition-colors block" onclick="closeMobileMenu()">Funcionalidades</a>
-      <a href="#precios" class="py-2 hover:text-white transition-colors block" onclick="closeMobileMenu()">Precios</a>
+      <a href="#precios" class="py-2 hover:text-white transition-colors block" onclick="closeMobileMenu()">Resultados</a>
       <a href="#faq" class="py-2 hover:text-white transition-colors block" onclick="closeMobileMenu()">FAQ</a>
       <a href="#contacto" class="cta-btn mt-2 w-full justify-center" onclick="closeMobileMenu()">Pedir demo gratuita</a>
     </div>
   </nav>
 
-  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <!-- HERO -->
   <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden grid-bg">
-
-    <!-- Glow blobs -->
+    <div class="aurora"></div>
     <div class="glow-blob" style="width:500px; height:500px; background:rgba(168,224,74,0.07); top:-100px; left:-150px;"></div>
     <div class="glow-blob" style="width:400px; height:400px; background:rgba(50,217,160,0.06); bottom:0; right:-100px; animation-delay:-6s;"></div>
-
-    <!-- Particles -->
     <div id="particles"></div>
 
     <div class="max-w-6xl mx-auto px-6 py-12 lg:py-20 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10">
-
-      <!-- Left: copy -->
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-8 reveal" style="background:rgba(168,224,74,0.1); border:1px solid rgba(168,224,74,0.25); color:#A8E04A; letter-spacing:0.05em;">
           <span style="width:6px; height:6px; background:#A8E04A; border-radius:50%; display:inline-block; animation: pulse 2s ease infinite;"></span>
-          Agente IA para WhatsApp
+          IA para estética y clínicas
         </div>
 
-        <h1 class="reveal delay-100" style="font-size:clamp(36px,5vw,60px); font-weight:900; line-height:1.1; letter-spacing:-0.03em; margin-bottom:20px;">
-          Tu negocio,<br>
-          <span class="gradient-text">siempre disponible.</span>
+        <h1 class="reveal delay-100" style="font-size:clamp(36px,5vw,62px); font-weight:900; line-height:1.08; letter-spacing:-0.03em; margin-bottom:20px;">
+          La IA que llena<br>
+          <span class="gradient-text">tu agenda.</span>
         </h1>
 
         <p class="reveal delay-200" style="font-size:17px; color:#A0A0A0; line-height:1.7; max-width:460px; margin-bottom:36px;">
-          Un agente de IA que atiende a tus clientes por WhatsApp, gestiona citas y responde preguntas. Las 24 horas, sin que tú estés pendiente.
+          Atiende clientes por WhatsApp las 24 horas, reactiva pacientes que no vuelven y no pierdas una llamada. Sin que tú estés pendiente.
         </p>
 
         <div class="flex flex-wrap gap-3 reveal delay-300">
           <a href="#contacto" class="cta-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.09 1.508 5.81L.057 24l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.003-1.375l-.36-.213-3.737.979 1.003-3.645-.234-.375A9.78 9.78 0 012.182 12C2.182 6.571 6.571 2.182 12 2.182S21.818 6.571 21.818 12 17.429 21.818 12 21.818z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.09 1.508 5.81L.057 24l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.003-1.375l-.36-.213-3.737.979 1.003-3.645-.234-.375A9.78 9.78 0 012.182 12C2.182 6.571 6.571 2.182 12 2.182S21.818 6.571 21.818 12 17.429 21.818 12 21.818z"/></svg>
             Pedir demo gratuita
           </a>
-          <a href="#como-funciona" class="ghost-btn">
-            Ver cómo funciona
-          </a>
+          <a href="#servicios" class="ghost-btn">Ver servicios</a>
         </div>
-
       </div>
 
-      <!-- Right: animated chat -->
       <div class="reveal-right relative flex justify-center">
         <div class="chat-phone-wrapper relative">
-          <!-- Phone frame -->
           <div style="background:#111; border-radius:32px; padding:12px; box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);">
-            <!-- WhatsApp header -->
             <div style="background:#1a1a1a; border-radius:22px 22px 0 0; padding:14px 16px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(255,255,255,0.06);">
               <div style="width:36px; height:36px; background:linear-gradient(135deg,#A8E04A,#32D9A0); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:#0A0A0A;">N</div>
               <div>
@@ -451,14 +286,8 @@
                 <p style="font-size:11px; color:#A8E04A;">● En línea ahora</p>
               </div>
             </div>
-
-            <!-- Chat window -->
-            <div id="chat-window" style="background:#0d0d0d; padding:16px; display:flex; flex-direction:column; gap:10px; height:360px; border-radius:0 0 22px 22px; overflow:hidden;">
-              <!-- bubbles injected by JS -->
-            </div>
+            <div id="chat-window" style="background:#0d0d0d; padding:16px; display:flex; flex-direction:column; gap:10px; height:360px; border-radius:0 0 22px 22px; overflow:hidden;"></div>
           </div>
-
-          <!-- Floating badges -->
           <div class="hidden lg:block absolute -left-14 top-16 reveal-left delay-300" style="background:#1A1A1A; border:1px solid rgba(168,224,74,0.25); border-radius:12px; padding:10px 14px; font-size:12px; font-weight:700; white-space:nowrap; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
             <span class="gradient-text">24/7</span> disponible
           </div>
@@ -469,19 +298,13 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
       <span style="font-size:11px; letter-spacing:0.1em; color:#A0A0A0;">SCROLL</span>
       <div style="width:1px; height:40px; background:linear-gradient(to bottom, #A8E04A, transparent); animation:scrollPulse 2s ease infinite;"></div>
     </div>
   </section>
 
-  <style>
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-    @keyframes scrollPulse { 0%,100%{opacity:0;} 50%{opacity:1;} }
-  </style>
-
-  <!-- ═══════════════════════ STATS ═══════════════════════ -->
+  <!-- STATS -->
   <section class="py-16 relative overflow-hidden">
     <div class="sep-line mb-16"></div>
     <div class="max-w-6xl mx-auto px-6">
@@ -492,11 +315,11 @@
         </div>
         <div class="text-center reveal delay-100">
           <p class="stat-number gradient-text" data-target="5">0</p>
-          <p style="font-size:13px; color:#A0A0A0; margin-top:6px; font-weight:500;">segundos de respuesta media</p>
+          <p style="font-size:13px; color:#A0A0A0; margin-top:6px; font-weight:500;">segundos de respuesta</p>
         </div>
         <div class="text-center reveal delay-200">
-          <p class="stat-number gradient-text" data-target="0">0</p>
-          <p style="font-size:13px; color:#A0A0A0; margin-top:6px; font-weight:500;">mensajes sin contestar</p>
+          <p class="stat-number gradient-text">+12</p>
+          <p style="font-size:13px; color:#A0A0A0; margin-top:6px; font-weight:500;">meses de pacientes dormidos recuperados</p>
         </div>
         <div class="text-center reveal delay-300">
           <p class="stat-number gradient-text" data-target="100">0</p>
@@ -507,15 +330,115 @@
     <div class="sep-line mt-16"></div>
   </section>
 
-  <!-- ═══════════════════════ PAIN POINTS ═══════════════════════ -->
-  <section class="py-24 relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
+  <!-- SERVICIOS (3 productos estilo Cohere) -->
+  <section id="servicios" class="py-24 relative overflow-hidden">
+    <div class="glow-blob" style="width:400px;height:400px;background:rgba(168,224,74,0.05);top:30%;right:-100px;"></div>
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
 
       <div class="text-center mb-16">
-        <p class="reveal" style="font-size:12px; font-weight:700; letter-spacing:0.12em; color:#A0A0A0; text-transform:uppercase; margin-bottom:12px;">El problema</p>
-        <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,44px); font-weight:900; letter-spacing:-0.03em; line-height:1.15;">
-          Cuántas citas pierdes hoy<br>
-          <span style="color:rgba(255,107,107,0.9);">sin darte cuenta.</span>
+        <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">Lo que hacemos</p>
+        <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-0.03em;line-height:1.1;">
+          Un motor de crecimiento.<br>
+          <span class="gradient-text">Tres productos.</span>
+        </h2>
+        <p class="reveal delay-200" style="font-size:16px;color:#A0A0A0;margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;">Cada negocio tiene un punto de fuga diferente. Nosotros lo identificamos y lo tapamos.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- Producto 1: Asistente WhatsApp -->
+        <div class="product-card reveal">
+          <div>
+            <span class="product-tag active">
+              <span style="width:6px;height:6px;background:#A8E04A;border-radius:50%;display:inline-block;animation:pulse 2s ease infinite;"></span>
+              Disponible ahora
+            </span>
+          </div>
+          <div>
+            <div style="width:48px;height:48px;background:rgba(168,224,74,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color:#A8E04A;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.09 1.508 5.81L.057 24l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.003-1.375l-.36-.213-3.737.979 1.003-3.645-.234-.375A9.78 9.78 0 012.182 12C2.182 6.571 6.571 2.182 12 2.182S21.818 6.571 21.818 12 17.429 21.818 12 21.818z"/></svg>
+            </div>
+            <h3 style="font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:-0.02em;">Asistente de Atención</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Tu WhatsApp atendido 24/7. Responde dudas, gestiona citas y manda recordatorios. Tú no tocas nada hasta que la clienta lo necesita de verdad.</p>
+          </div>
+          <div>
+            <div class="product-price" style="font-size:20px;">Presupuesto a medida</div>
+            <div style="font-size:13px;color:#A0A0A0;margin-top:4px;">Según tu volumen e integraciones</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Integración con Google Calendar, Koibox y más</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Recordatorios automáticos, 0 no-shows</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Entiende texto y notas de voz</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Para estética, peluquería y servicios</div>
+          </div>
+          <a href="#contacto" class="ghost-btn" style="justify-content:center;">Ver demo en directo</a>
+        </div>
+
+        <!-- Producto 2: Reactivación (featured) -->
+        <div class="product-card featured reveal delay-100">
+          <div>
+            <span class="product-tag active" style="color:#32D9A0;background:rgba(50,217,160,0.08);border-color:rgba(50,217,160,0.25);">
+              <span style="width:6px;height:6px;background:#32D9A0;border-radius:50%;display:inline-block;animation:pulse 2s ease infinite;"></span>
+              Disponible ahora
+            </span>
+          </div>
+          <div>
+            <div style="width:48px;height:48px;background:rgba(50,217,160,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:-0.02em;">Reactivación de Pacientes</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Contactamos a tus pacientes dormidos en tu nombre. Los ponemos a agendar limpiezas, revisiones y tratamientos a medias. Prueba de 14 días. Solo pagas si funciona.</p>
+          </div>
+          <div>
+            <div class="product-price gradient-text" style="font-size:22px;">Solo pagas por resultados</div>
+            <div style="font-size:13px;color:#32D9A0;margin-top:6px;font-weight:600;">Prueba 14 días · 0€ si no hay citas</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Prueba de 14 días, 0€ si no hay resultados</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dashboard en vivo con € recuperados</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Para clínicas dentales y medicina estética</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Solo necesitas exportar tu lista de contactos</div>
+          </div>
+          <a href="#precios" class="cta-btn" style="justify-content:center;">Calcular mi ROI gratis</a>
+        </div>
+
+        <!-- Producto 3: Voz (coming soon) -->
+        <div class="product-card coming reveal delay-200">
+          <div>
+            <span class="product-tag soon">Próximamente</span>
+          </div>
+          <div>
+            <div style="width:48px;height:48px;background:rgba(50,217,160,0.07);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3 style="font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:-0.02em;">Asistente de Voz</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Nunca pierdas una llamada. La IA atiende en voz natural en español, califica al paciente y agenda la cita directamente en tu sistema, aunque sea medianoche.</p>
+          </div>
+          <div>
+            <div class="product-price" style="color:#A0A0A0;">Lista de espera</div>
+            <div style="font-size:13px;color:#A0A0A0;margin-top:6px;">Apúntate y te avisamos cuando abra</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Voz española natural, sin robótico</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Agenda citas en tu sistema directamente</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Para clínicas dentales y médicas</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Combo con reactivación (máximo impacto)</div>
+          </div>
+          <a href="#contacto" class="ghost-btn" style="justify-content:center;opacity:0.7;pointer-events:auto;">Apuntarme a la lista</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="py-24 relative overflow-hidden" style="background:linear-gradient(180deg, #0A0A0A 0%, #0d0d0d 80px, #0d0d0d calc(100% - 80px), #0A0A0A 100%);">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A0A0A0;text-transform:uppercase;margin-bottom:12px;">El problema</p>
+        <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-0.03em;line-height:1.15;">
+          Cuánto dinero se escapa hoy<br>
+          <span style="color:rgba(255,107,107,0.9);">sin que lo veas.</span>
         </h2>
       </div>
 
@@ -525,8 +448,8 @@
           <div style="width:40px;height:40px;background:rgba(255,107,107,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
           </div>
-          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Estás en cabina</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Cuando trabajas con una clienta no puedes coger el WhatsApp. Esas conversaciones quedan en visto, y esa persona escribe a otro centro.</p>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Estás en cabina o en consulta</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">No puedes coger el WhatsApp ni el teléfono. Esa conversación queda en visto y esa persona escribe al centro de al lado.</p>
         </div>
 
         <div class="pain-card reveal delay-100">
@@ -534,49 +457,48 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Fuera de horario</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">La mayoría de los mensajes llegan a partir de las 20:00. Cuando abres al día siguiente, ya reservaron en otro sitio.</p>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">La mayoría de mensajes llegan después de las 20:00. Cuando abres al día siguiente, ya reservaron en otro sitio.</p>
         </div>
 
         <div class="pain-card reveal delay-200">
           <div style="width:40px;height:40px;background:rgba(255,107,107,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">No-shows sin avisar</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Sin recordatorios automáticos, los no-shows pueden llegar al 15-20%. Tiempo y dinero que pierdes sin darte cuenta.</p>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Pacientes dormidos</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Tienes cientos de pacientes que vinieron una vez y no han vuelto. Nadie les ha dicho nada. Ingresos esperando en tu base de datos.</p>
         </div>
 
         <div class="pain-card reveal delay-100">
           <div style="width:40px;height:40px;background:rgba(255,107,107,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Preguntas repetitivas</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">"¿Cuánto cuesta la manicura?" lo contestas diez veces al día. Con el agente, ninguna.</p>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">No-shows sin avisar</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Sin recordatorios automáticos, los no-shows en clínicas llegan al 15-22%. Tiempo y dinero que pierdes sin darte cuenta.</p>
         </div>
 
         <div class="pain-card reveal delay-200">
           <div style="width:40px;height:40px;background:rgba(255,107,107,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
-          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Clientas dormidas</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Tienes 500+ contactos en tu base de datos que llevan meses sin venir. Nadie les ha dicho nada. Ingresos esperando.</p>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Preguntas repetitivas</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">"¿Cuánto cuesta?" lo contestas diez veces al día. El asistente lo resuelve sin que tú estés pendiente.</p>
         </div>
 
         <div class="pain-card reveal delay-300">
           <div style="width:40px;height:40px;background:rgba(255,107,107,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Saturación de canales</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Teléfono, WhatsApp, Instagram, mostrador — todo a la vez. Imposible atender todo bien sin perder la cabeza.</p>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Tratamientos a medias</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.6;">Pacientes que empezaron un tratamiento y lo dejaron. Nadie les ha recordado que falta la parte más importante. Y más cara.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ CÓMO FUNCIONA ═══════════════════════ -->
+  <!-- CÓMO FUNCIONA -->
   <section id="como-funciona" class="py-24 relative overflow-hidden" style="background:linear-gradient(180deg, #0A0A0A 0%, #0f1a0a 50%, #0A0A0A 100%);">
     <div class="glow-blob" style="width:300px;height:300px;background:rgba(168,224,74,0.05);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-
     <div class="max-w-6xl mx-auto px-6 relative z-10">
       <div class="text-center mb-20">
         <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">Proceso</p>
@@ -587,76 +509,58 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-
         <div class="relative reveal">
           <div class="gradient-border" style="background:#1A1A1A;padding:32px;">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#A8E04A,#32D9A0);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:18px;font-weight:900;color:#0A0A0A;">1</div>
-            <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Te configuramos el agente</h3>
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Nos pasas la información de tu negocio: servicios, precios, horarios, cómo quieres que hable. Nosotros montamos todo. Tú no tocas nada.</p>
+            <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Hablamos 30 minutos</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Entendemos tu negocio: qué servicios tienes, qué software usas y dónde se te escapan clientes. Con eso te decimos qué producto te encaja y cuánto vale.</p>
           </div>
           <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5" style="background:linear-gradient(90deg,#A8E04A,transparent);"></div>
         </div>
-
         <div class="relative reveal delay-200">
           <div style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.15);border-radius:16px;padding:32px;">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#32D9A0,#A8E04A);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:18px;font-weight:900;color:#0A0A0A;">2</div>
-            <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Lo conectamos a tu WhatsApp</h3>
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El agente se conecta a tu número actual. Tus clientas siguen escribiéndote igual — pero ahora siempre hay alguien respondiendo.</p>
+            <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Lo montamos nosotros</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Configuramos el asistente con tu información, lo conectamos a tu WhatsApp o a tu base de datos, y lo probamos a fondo. Tú no tocas nada técnico.</p>
           </div>
           <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5" style="background:linear-gradient(90deg,#32D9A0,transparent);"></div>
         </div>
-
         <div class="reveal delay-400">
           <div style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.15);border-radius:16px;padding:32px;">
             <div style="width:48px;height:48px;background:linear-gradient(135deg,#A8E04A,#32D9A0);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:18px;font-weight:900;color:#0A0A0A;">3</div>
-            <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Atiende, reserva y recuerda</h3>
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Responde preguntas, gestiona citas con tu agenda y manda recordatorios automáticos. Tú solo intervines cuando la clienta lo necesita.</p>
+            <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Tú ves los resultados</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El asistente trabaja solo. Tú ves llegar citas, recordatorios mandados y — en reactivación — un dashboard con los euros recuperados ese mes.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ FEATURES ═══════════════════════ -->
-  <section id="funcionalidades" class="py-24">
+  <!-- FEATURES (bento) -->
+  <section class="py-24">
     <div class="max-w-6xl mx-auto px-6">
-
       <div class="text-center mb-16">
         <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">Funcionalidades</p>
-        <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-0.03em;line-height:1.15;">
-          Todo lo que hace tu agente.
-        </h2>
+        <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-0.03em;line-height:1.15;">Todo lo que hace tu sistema.</h2>
       </div>
 
-      <!-- Bento grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-        <!-- Row 1: 24/7 (col-2) + Reservas (col-1) -->
         <div class="feature-card lg:col-span-2 reveal">
           <div class="card-inner">
             <div>
-              <div style="width:44px;height:44px;background:rgba(168,224,74,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0;">
+              <div style="width:44px;height:44px;background:rgba(168,224,74,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
               <h3 style="font-size:20px;font-weight:800;margin-bottom:10px;">Disponible 24/7, incluso en festivos</h3>
-              <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Tu agente no duerme, no come y no se pone malo. Responde a cualquier hora con el mismo nivel de atención que si fueras tú.</p>
+              <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Tu asistente no duerme, no come y no se pone malo. Responde a cualquier hora con el mismo nivel de atención que si fueras tú.</p>
             </div>
             <div class="card-panel">
               <div style="background:#111;border-radius:16px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
                 <div style="display:flex;flex-direction:column;gap:8px;width:190px;">
-                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A0A0A0;">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#A8E04A;flex-shrink:0;animation:pulse 2s ease infinite;"></div>
-                    Lunes 08:00 — respondiendo
-                  </div>
-                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A0A0A0;">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#A8E04A;flex-shrink:0;animation:pulse 2s ease infinite 0.5s;"></div>
-                    Sábado 14:30 — respondiendo
-                  </div>
-                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A0A0A0;">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#A8E04A;flex-shrink:0;animation:pulse 2s ease infinite 1s;"></div>
-                    Domingo 23:07 — respondiendo
-                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A0A0A0;"><div style="width:8px;height:8px;border-radius:50%;background:#A8E04A;flex-shrink:0;animation:pulse 2s ease infinite;"></div>Lunes 08:00 — respondiendo</div>
+                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A0A0A0;"><div style="width:8px;height:8px;border-radius:50%;background:#A8E04A;flex-shrink:0;animation:pulse 2s ease infinite 0.5s;"></div>Sábado 14:30 — respondiendo</div>
+                  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A0A0A0;"><div style="width:8px;height:8px;border-radius:50%;background:#A8E04A;flex-shrink:0;animation:pulse 2s ease infinite 1s;"></div>Domingo 23:07 — respondiendo</div>
                   <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:8px;font-size:11px;color:#32D9A0;font-weight:600;">100% uptime garantizado</div>
                 </div>
               </div>
@@ -669,29 +573,23 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
           <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Reservas automáticas</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Se integra con Google Calendar, Koibox y otros sistemas de gestión. La clienta elige fecha, el agente confirma. Sin intermediarios.</p>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Se integra con Google Calendar, Koibox y otros sistemas. La clienta elige fecha, el asistente confirma. Sin intermediarios.</p>
         </div>
 
-        <!-- Row 2: Recordatorios (col-2) + Audio (col-1) -->
         <div class="feature-card lg:col-span-2 reveal delay-100">
           <div class="card-inner card-start">
-            <div style="min-width:0;">
+            <div>
               <div style="width:44px;height:44px;background:rgba(50,217,160,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
               </div>
               <h3 style="font-size:20px;font-weight:800;margin-bottom:10px;">Recordatorios automáticos y personalizados</h3>
-              <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Manda recordatorios por WhatsApp con el nombre de la clienta, el servicio y la hora exacta. Configuras cuándo quieres que lleguen: 24h antes, 48h antes, o ambos. Menos no-shows. Más horas facturadas.</p>
+              <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Manda recordatorios por WhatsApp con el nombre del cliente, el servicio y la hora exacta. Configuras cuándo llegan. Menos no-shows. Más horas facturadas.</p>
             </div>
             <div class="card-panel">
               <div style="background:#111;border-radius:16px;padding:14px;border:1px solid rgba(255,255,255,0.06);width:210px;">
                 <div style="font-size:10px;color:#A0A0A0;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Ejemplo de recordatorio</div>
-                <div style="background:#1a1a1a;border-radius:10px;padding:10px 12px;font-size:12px;color:#e0e0e0;line-height:1.5;border-left:2px solid #32D9A0;margin-bottom:8px;">
-                  "Hola Carmen! Mañana a las 11:00 tienes tu tratamiento facial. Te esperamos"
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#32D9A0;font-weight:600;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Sin tocar nada — automático
-                </div>
+                <div style="background:#1a1a1a;border-radius:10px;padding:10px 12px;font-size:12px;color:#e0e0e0;line-height:1.5;border-left:2px solid #32D9A0;margin-bottom:8px;">"Hola Carmen! Mañana a las 11:00 tienes tu revisión dental. Te esperamos"</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#32D9A0;font-weight:600;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sin tocar nada — automático</div>
               </div>
             </div>
           </div>
@@ -702,18 +600,17 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
           </div>
           <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Entiende notas de voz</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Las clientas mandan audios de 30 segundos. El agente los escucha, entiende y responde. Igual que un texto.</p>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Los clientes mandan audios de 30 segundos. El asistente los escucha, entiende y responde. Igual que un texto.</p>
         </div>
 
-        <!-- Row 3: Escalado (col-2) + Memoria (col-1) -->
         <div class="feature-card lg:col-span-2 reveal delay-200">
           <div class="card-inner">
-            <div style="min-width:0;">
+            <div>
               <div style="width:44px;height:44px;background:rgba(168,224,74,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
               <h3 style="font-size:20px;font-weight:800;margin-bottom:10px;">Sabe cuándo pasarte la conversación</h3>
-              <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Si hay una queja, una consulta delicada o la clienta pide hablar contigo, el agente lo detecta y te avisa. Tú eres el humano cuando tiene que serlo.</p>
+              <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Si hay una queja, una consulta delicada o el cliente pide hablar contigo, el asistente lo detecta y te avisa. Tú eres el humano cuando tiene que serlo.</p>
             </div>
             <div class="card-panel">
               <div style="background:#111;border-radius:16px;padding:14px;border:1px solid rgba(255,255,255,0.06);width:200px;">
@@ -729,56 +626,60 @@
 
         <div class="feature-card reveal delay-300">
           <div style="width:44px;height:44px;background:rgba(168,224,74,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Recuerda a cada clienta</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sabe el nombre de cada clienta, sus servicios favoritos y cuándo fue la última vez que vino.</p>
+          <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Dashboard de resultados</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Ve en tiempo real cuántos clientes contactados, citas conseguidas y euros recuperados. Los números que justifican cada euro que pagas.</p>
         </div>
 
-        <!-- Row 4: 3 columnas iguales -->
         <div class="feature-card reveal delay-100">
           <div style="width:44px;height:44px;background:rgba(50,217,160,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
           </div>
           <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Tu voz, tu estilo</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El agente tiene el nombre y la personalidad que tú elijas. Habla como tú querrías hablar. Nunca robótico.</p>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El asistente tiene el nombre y la personalidad que tú elijas. Habla como tú querrías hablar. Nunca robótico.</p>
         </div>
 
         <div class="feature-card reveal delay-200">
           <div style="width:44px;height:44px;background:rgba(168,224,74,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
           </div>
-          <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Reactiva clientas dormidas</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">¿Tienes contactos que no vienen desde hace meses? El agente puede lanzar mensajes personalizados para traerlos de vuelta.</p>
+          <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Conversaciones simultáneas</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Da igual si escriben 1 o 50 clientes a la vez. El asistente atiende a todos sin esperas y sin perder el hilo.</p>
         </div>
 
         <div class="feature-card reveal delay-300">
           <div style="width:44px;height:44px;background:rgba(50,217,160,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Conversaciones simultáneas</h3>
-          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Da igual si te escriben 1 o 50 clientas a la vez. El agente atiende a todas sin esperas y sin perder el hilo.</p>
+          <h3 style="font-size:17px;font-weight:800;margin-bottom:10px;">Datos protegidos (RGPD)</h3>
+          <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Tus datos siguen siendo tuyos. Firmamos acuerdo de tratamiento, contactamos solo a quien tiene consentimiento y cada mensaje lleva opción de baja.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════ STATS ═══════════════════════ -->
-  <!-- ═══════════════════════ PARA QUIÉN ═══════════════════════ -->
+  <!-- PARA QUIÉN -->
   <section class="py-20 relative overflow-hidden" style="background:linear-gradient(180deg, #0A0A0A 0%, #0d0d0d 80px, #0d0d0d calc(100% - 80px), #0A0A0A 100%);">
     <div class="max-w-6xl mx-auto px-6">
-
       <div class="text-center mb-14">
         <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">Para quién</p>
         <h2 class="reveal delay-100" style="font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-0.03em;line-height:1.2;">
-          Cualquier negocio que viva<br>del WhatsApp con sus clientes.
+          Cualquier negocio que viva<br>de las citas y los clientes recurrentes.
         </h2>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="reveal sector-card" style="background:#1A1A1A;border:1px solid rgba(50,217,160,0.2);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(50,217,160,0.5)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(50,217,160,0.2)';this.style.transform='translateY(0)'">
+          <div style="width:52px;height:52px;background:rgba(50,217,160,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <p style="font-size:14px;font-weight:700;margin-bottom:6px;">Clínica dental</p>
+          <p style="font-size:12px;color:#A0A0A0;line-height:1.4;">Reactivación + asistente + voz</p>
+        </div>
 
-        <div class="reveal sector-card" style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.1);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(168,224,74,0.35)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(168,224,74,0.1)';this.style.transform='translateY(0)'">
+        <div class="reveal delay-100 sector-card" style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.1);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(168,224,74,0.35)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(168,224,74,0.1)';this.style.transform='translateY(0)'">
           <div style="width:52px;height:52px;background:rgba(168,224,74,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
@@ -786,7 +687,7 @@
           <p style="font-size:12px;color:#A0A0A0;line-height:1.4;">Faciales, uñas, depilación, masajes</p>
         </div>
 
-        <div class="reveal delay-100 sector-card" style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.1);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(168,224,74,0.35)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(168,224,74,0.1)';this.style.transform='translateY(0)'">
+        <div class="reveal delay-200 sector-card" style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.1);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(168,224,74,0.35)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(168,224,74,0.1)';this.style.transform='translateY(0)'">
           <div style="width:52px;height:52px;background:rgba(50,217,160,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
           </div>
@@ -794,114 +695,111 @@
           <p style="font-size:12px;color:#A0A0A0;line-height:1.4;">Cortes, tintes, tratamientos capilares</p>
         </div>
 
-        <div class="reveal delay-200 sector-card" style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.1);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(168,224,74,0.35)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(168,224,74,0.1)';this.style.transform='translateY(0)'">
-          <div style="width:52px;height:52px;background:rgba(168,224,74,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <p style="font-size:14px;font-weight:700;margin-bottom:6px;">Clínica y salud</p>
-          <p style="font-size:12px;color:#A0A0A0;line-height:1.4;">Dental, fisio, quiromasaje, medicina estética</p>
-        </div>
-
         <div class="reveal delay-300 sector-card" style="background:#1A1A1A;border:1px solid rgba(168,224,74,0.1);border-radius:16px;padding:24px;text-align:center;transition:border-color 0.3s,transform 0.3s;cursor:default;" onmouseover="this.style.borderColor='rgba(168,224,74,0.35)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(168,224,74,0.1)';this.style.transform='translateY(0)'">
-          <div style="width:52px;height:52px;background:rgba(50,217,160,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <div style="width:52px;height:52px;background:rgba(168,224,74,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <p style="font-size:14px;font-weight:700;margin-bottom:6px;">Otros servicios</p>
-          <p style="font-size:12px;color:#A0A0A0;line-height:1.4;">Spa, yoga, pilates, tatuadores, nutricionistas</p>
+          <p style="font-size:14px;font-weight:700;margin-bottom:6px;">Medicina estética</p>
+          <p style="font-size:12px;color:#A0A0A0;line-height:1.4;">Spa, fisio, nutrición, quiromasaje</p>
         </div>
-
       </div>
 
-      <!-- Ticker marquee -->
       <div class="mt-12 reveal" style="overflow:hidden;position:relative;">
         <div style="position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,#0d0d0d,transparent);z-index:1;"></div>
         <div style="position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(270deg,#0d0d0d,transparent);z-index:1;"></div>
         <div style="display:flex;gap:24px;animation:marquee 25s linear infinite;width:max-content;">
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Respuesta inmediata 24/7</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Pacientes dormidos recuperados</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin cambiar tu número de WhatsApp</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Integración con tu agenda actual</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Recordatorios personalizados</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">0 no-shows con recordatorios</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Entiende notas de voz</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Solo pagas por citas reales</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin formación ni técnicos</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">0 mensajes sin contestar</span>
-          <!-- duplicate for seamless loop -->
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Respuesta inmediata 24/7</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Pacientes dormidos recuperados</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin cambiar tu número de WhatsApp</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Integración con tu agenda actual</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Recordatorios personalizados</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">0 no-shows con recordatorios</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Entiende notas de voz</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Solo pagas por citas reales</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin formación ni técnicos</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">0 mensajes sin contestar</span>
         </div>
       </div>
     </div>
   </section>
-  <style>@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }</style>
 
-  <!-- ═══════════════════════ PRICING ═══════════════════════ -->
-  <section id="precios" class="py-24">
-    <div class="max-w-4xl mx-auto px-6">
-
-      <div class="text-center mb-16">
-        <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">Inversión</p>
+  <!-- RESULTADOS / CALCULADORA ROI -->
+  <section id="precios" class="py-24 relative overflow-hidden">
+    <div class="glow-blob" style="width:450px;height:450px;background:rgba(50,217,160,0.06);bottom:0;left:-120px;"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-14">
+        <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">Tu retorno</p>
         <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-0.03em;line-height:1.15;">
-          Cada negocio es distinto.<br>
-          <span class="gradient-text">El precio también.</span>
+          ¿Cuánto dinero tienes<br>
+          <span class="gradient-text">dormido en tu base de datos?</span>
         </h2>
-        <p class="reveal delay-200" style="font-size:16px;color:#A0A0A0;margin-top:16px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">Dependiendo de tus integraciones, volumen de mensajes y funcionalidades, te hacemos un presupuesto ajustado. Sin sorpresas.</p>
+        <p class="reveal delay-200" style="font-size:16px;color:#A0A0A0;margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;">Mueve el slider y mira una estimación de lo que podrías recuperar reactivando a tus pacientes inactivos.</p>
       </div>
 
-      <!-- Single centered card -->
-      <div class="max-w-2xl mx-auto reveal delay-100">
-        <div class="pricing-card featured" style="text-align:center;">
-          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(168,224,74,0.1);border:1px solid rgba(168,224,74,0.3);border-radius:8px;padding:6px 16px;font-size:12px;font-weight:700;color:#A8E04A;margin-bottom:28px;">
-            <span style="width:6px;height:6px;background:#A8E04A;border-radius:50%;animation:pulse 2s ease infinite;display:inline-block;"></span>
-            Presupuesto personalizado y gratuito
-          </div>
+      <div class="reveal delay-100" style="background:linear-gradient(160deg,#131a0d,#111);border:1px solid rgba(168,224,74,0.2);border-radius:24px;padding:clamp(24px,4vw,44px);">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10 text-left">
-            <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-              Agente 24/7 configurado para ti
+          <!-- Inputs -->
+          <div>
+            <label style="font-size:13px;font-weight:700;color:#A0A0A0;text-transform:uppercase;letter-spacing:0.06em;">Pacientes en tu base de datos</label>
+            <div style="display:flex;align-items:baseline;gap:8px;margin:10px 0 14px;">
+              <span id="roi-patients" style="font-size:40px;font-weight:900;letter-spacing:-0.02em;" class="gradient-text">1.500</span>
+              <span style="font-size:14px;color:#A0A0A0;">pacientes</span>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-              Integración con tu agenda
+            <input id="roi-slider" type="range" min="300" max="6000" step="100" value="1500" style="width:100%;accent-color:#A8E04A;cursor:pointer;height:6px;">
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:#666;margin-top:6px;">
+              <span>300</span><span>6.000</span>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-              Recordatorios automáticos
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-              Entiende texto y audio
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-              Escalado a humano
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-              Soporte directo por WhatsApp
+
+            <div style="margin-top:28px;">
+              <label style="font-size:13px;font-weight:700;color:#A0A0A0;text-transform:uppercase;letter-spacing:0.06em;">Valor medio de un paciente que vuelve</label>
+              <div style="display:flex;align-items:baseline;gap:8px;margin:10px 0 14px;">
+                <span id="roi-ticket" style="font-size:28px;font-weight:900;letter-spacing:-0.02em;color:#fff;">80€</span>
+              </div>
+              <input id="roi-ticket-slider" type="range" min="40" max="600" step="10" value="80" style="width:100%;accent-color:#32D9A0;cursor:pointer;height:6px;">
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:#666;margin-top:6px;">
+                <span>40€ (limpieza)</span><span>600€+ (tratamiento)</span>
+              </div>
             </div>
           </div>
 
-          <div style="border-top:1px solid rgba(168,224,74,0.12);padding-top:28px;">
-            <p style="font-size:14px;color:#A0A0A0;margin-bottom:20px;">En 30 minutos te enseñamos el agente en directo y te damos un precio exacto.</p>
-            <a href="#contacto" class="cta-btn" style="font-size:15px;padding:14px 36px;">
-              Pedir presupuesto gratuito
-            </a>
+          <!-- Dashboard mock (output) -->
+          <div style="background:#0d0d0d;border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:24px;box-shadow:0 24px 48px rgba(0,0,0,0.4);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#32D9A0;animation:pulse 2s ease infinite;"></div>
+              <span style="font-size:11px;font-weight:700;color:#32D9A0;letter-spacing:0.08em;text-transform:uppercase;">Estimación en vivo</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+              <div style="background:#161616;border-radius:12px;padding:14px;">
+                <div id="roi-inactive" style="font-size:24px;font-weight:900;color:#fff;">300</div>
+                <div style="font-size:11px;color:#A0A0A0;margin-top:2px;">pacientes dormidos</div>
+              </div>
+              <div style="background:#161616;border-radius:12px;padding:14px;">
+                <div id="roi-appts" style="font-size:24px;font-weight:900;color:#A8E04A;">~10</div>
+                <div style="font-size:11px;color:#A0A0A0;margin-top:2px;">citas estimadas</div>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg,rgba(168,224,74,0.12),rgba(50,217,160,0.08));border:1px solid rgba(168,224,74,0.25);border-radius:14px;padding:18px;text-align:center;">
+              <div style="font-size:11px;color:#A0A0A0;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-bottom:6px;">Podrías recuperar este mes</div>
+              <div id="roi-revenue" class="gradient-text" style="font-size:clamp(32px,6vw,44px);font-weight:900;letter-spacing:-0.02em;line-height:1;">800€</div>
+              <div style="font-size:11px;color:#A0A0A0;margin-top:8px;">y los que pasen a tratamiento valen mucho más</div>
+            </div>
+            <a href="#contacto" class="cta-btn" style="width:100%;justify-content:center;margin-top:18px;">Quiero estos resultados</a>
           </div>
+
         </div>
+        <p style="font-size:11px;color:#666;text-align:center;margin-top:20px;line-height:1.6;">Estimación orientativa (20% inactivos · ~3,5% reagenda y asiste). No es una garantía: los resultados reales dependen de la calidad de tu lista. El precio exacto te lo damos en la demo, ajustado a tu caso.</p>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══════════════════════ FAQ ═══════════════════════ -->
+  <!-- FAQ -->
   <section id="faq" class="py-24" style="background:linear-gradient(180deg, #0A0A0A 0%, #0d0d0d 80px, #0d0d0d calc(100% - 80px), #0A0A0A 100%);">
     <div class="max-w-3xl mx-auto px-6">
-
       <div class="text-center mb-16">
         <p class="reveal" style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-bottom:12px;">FAQ</p>
         <h2 class="reveal delay-100" style="font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-0.03em;">Preguntas frecuentes</h2>
@@ -915,7 +813,27 @@
             <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
           </button>
           <div class="faq-answer pb-5">
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">No. El agente se conecta a tu número actual usando la API oficial de WhatsApp Business. Tus clientas siguen escribiéndote igual que siempre.</p>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">No. El asistente se conecta a tu número actual usando la API oficial de WhatsApp Business. Tus clientes siguen escribiéndote igual que siempre.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
+            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Cómo funciona la reactivación? ¿Qué necesito darles?</span>
+            <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
+          </button>
+          <div class="faq-answer pb-5">
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Solo necesitas exportar una lista de tus pacientes inactivos desde tu software (Koibox, cualquier CRM o incluso Excel). Nosotros montamos la campaña, contactamos a tus pacientes en tu nombre y tú ves llegar las citas. La prueba dura 14 días y no pagas nada si no hay citas que se presenten.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
+            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Es legal contactar a mis pacientes así?</span>
+            <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
+          </button>
+          <div class="faq-answer pb-5">
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sí, siempre que los contactamos sean pacientes que ya tienen relación contigo y que hayan dado su consentimiento para recibir comunicaciones. Trabajamos solo con esos contactos. Firmamos un acuerdo de tratamiento de datos conforme al RGPD y cada mensaje incluye opción de baja.</p>
           </div>
         </div>
 
@@ -925,17 +843,17 @@
             <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
           </button>
           <div class="faq-answer pb-5">
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Depende de cada centro. En casos sencillos (sin integración con software de gestión) solemos tenerlo listo en 3-4 días. Si necesitas integración con tu sistema de reservas, puede ser una semana o algo más. Te damos un tiempo real cuando hablamos.</p>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El asistente de atención: 3-7 días según la integración. La reactivación: unos 3-5 días para montarla y validarla contigo antes de lanzar. Te damos siempre un plazo real antes de empezar, sin promesas vacías.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
-            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Qué pasa si el agente no sabe responder algo?</span>
+            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Qué pasa si el asistente no sabe responder algo?</span>
             <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
           </button>
           <div class="faq-answer pb-5">
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El agente sabe cuándo escalarse. Si detecta que no puede ayudar bien, te avisa a ti para que tomes el relevo. Nunca deja a la clienta colgada sin solución.</p>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">El asistente sabe cuándo escalar. Si detecta que no puede ayudar bien, te avisa a ti para que tomes el relevo. Nunca deja al cliente colgado sin solución.</p>
           </div>
         </div>
 
@@ -945,27 +863,17 @@
             <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
           </button>
           <div class="faq-answer pb-5">
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sí. Si no tienes sistema de reservas online, el agente recoge los datos de la clienta (servicio, fecha preferida, nombre) y te manda un resumen para que lo apuntes tú. Elimina el 80% del trabajo de WhatsApp igual.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
-            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Puedo probarlo antes de contratar?</span>
-            <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
-          </button>
-          <div class="faq-answer pb-5">
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sí. Hacemos una demo en directo donde puedes hablar con el agente como si fueras una clienta. Sin compromiso. Si no te convence, no hay nada que pagar.</p>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sí. Si no tienes sistema de reservas online, el asistente recoge los datos del cliente y te manda un resumen para que lo confirmes tú. Elimina el 80% del trabajo de WhatsApp igual.</p>
           </div>
         </div>
 
         <div class="faq-item" style="border-bottom:none;">
           <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
-            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Qué pasa si quiero cancelar?</span>
+            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Puedo cancelar cuando quiera?</span>
             <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
           </button>
           <div class="faq-answer pb-5">
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sin permanencia. Puedes cancelar cuando quieras con un aviso previo. El setup inicial es un pago único. La mensualidad la puedes dejar en cualquier momento.</p>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Sin permanencia. Puedes cancelar cuando quieras con aviso previo. El setup es un pago único. La mensualidad la dejas en cualquier momento.</p>
           </div>
         </div>
 
@@ -973,24 +881,23 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ CTA FINAL ═══════════════════════ -->
+  <!-- CTA FINAL -->
   <section id="contacto" class="py-32 relative overflow-hidden">
     <div class="glow-blob" style="width:600px;height:600px;background:rgba(168,224,74,0.07);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-
       <div class="reveal">
         <div style="display:inline-flex;align-items:center;gap:2px;margin-bottom:24px;">
           <div style="width:8px;height:8px;background:#A8E04A;border-radius:50%;animation:pulse 2s ease infinite;"></div>
           <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#A8E04A;text-transform:uppercase;margin-left:8px;">Demo gratuita</span>
         </div>
 
-        <h2 style="font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-0.03em;line-height:1.1;margin-bottom:20px;">
+        <h2 style="font-size:clamp(32px,5vw,58px);font-weight:900;letter-spacing:-0.03em;line-height:1.08;margin-bottom:20px;">
           Empieza hoy.<br>
-          <span class="gradient-text">Sin citas perdidas mañana.</span>
+          <span class="gradient-text">Tu agenda más llena mañana.</span>
         </h2>
 
-        <p style="font-size:17px;color:#A0A0A0;line-height:1.7;max-width:480px;margin:0 auto 40px;">
-          En 30 minutos te enseñamos cómo funciona con tu negocio. Sin compromiso. Sin tecnicismos.
+        <p style="font-size:17px;color:#A0A0A0;line-height:1.7;max-width:500px;margin:0 auto 40px;">
+          En 30 minutos te enseñamos cómo funciona con tu negocio, te calculamos el ROI real y te decimos qué producto te encaja. Sin compromiso.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -998,25 +905,22 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.09 1.508 5.81L.057 24l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-5.003-1.375l-.36-.213-3.737.979 1.003-3.645-.234-.375A9.78 9.78 0 012.182 12C2.182 6.571 6.571 2.182 12 2.182S21.818 6.571 21.818 12 17.429 21.818 12 21.818z"/></svg>
             Hablar por WhatsApp
           </a>
-          <a href="mailto:julen@seekialabs.com" class="ghost-btn" style="font-size:16px;padding:15px 34px;">
-            Enviar un email
-          </a>
+          <a href="mailto:julen@seekialabs.com" class="ghost-btn" style="font-size:16px;padding:15px 34px;">Enviar un email</a>
         </div>
 
-        <p style="font-size:13px;color:#A0A0A0;margin-top:24px;">Respondo en menos de 24h · Sin compromiso</p>
+        <p style="font-size:13px;color:#A0A0A0;margin-top:24px;">Respondo en menos de 24h · Sin compromiso · Sin permanencia</p>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <!-- FOOTER -->
   <footer style="border-top:1px solid rgba(255,255,255,0.06);">
     <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-2.5">
         <img src="assets/Logo-trans.png" alt="SeekIA" class="h-11 w-auto" />
         <span style="font-weight:800;font-size:16px;letter-spacing:-0.02em;">SeekIA</span>
       </div>
-      <p style="font-size:13px;color:#A0A0A0;text-align:center;">Donosti, 2026 · Automatización inteligente para tu negocio</p>
+      <p style="font-size:13px;color:#A0A0A0;text-align:center;">Donosti, 2026 · IA para estética y clínicas</p>
       <div style="display:flex;gap:16px;align-items:center;">
         <a href="mailto:julen@seekialabs.com" style="font-size:13px;color:#A0A0A0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#A8E04A'" onmouseout="this.style.color='#A0A0A0'">julen@seekialabs.com</a>
         <span style="color:rgba(255,255,255,0.15);">·</span>
@@ -1027,9 +931,8 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════ JS ═══════════════════════ -->
+  <!-- JS -->
   <script>
-    // ── Particles ──
     const particlesContainer = document.getElementById('particles');
     function createParticle() {
       const p = document.createElement('div');
@@ -1046,16 +949,12 @@
     for (let i = 0; i < 20; i++) createParticle();
     setInterval(createParticle, 2000);
 
-    // ── Scroll reveal ──
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     revealEls.forEach(el => observer.observe(el));
 
-    // ── Counter animation ──
     const counters = document.querySelectorAll('[data-target]');
     const counterObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1063,12 +962,7 @@
         const el = e.target;
         const target = parseInt(el.dataset.target);
         const suffix = el.dataset.suffix || '';
-        // Numbers under 10 look bad animating — show instantly
-        if (target < 10) {
-          el.textContent = target + suffix;
-          counterObs.unobserve(el);
-          return;
-        }
+        if (target < 10) { el.textContent = target + suffix; counterObs.unobserve(el); return; }
         let current = 0;
         const steps = 50;
         const step = target / steps;
@@ -1082,7 +976,6 @@
     }, { threshold: 0.5 });
     counters.forEach(c => counterObs.observe(c));
 
-    // ── FAQ toggle ──
     function toggleFaq(btn) {
       const answer = btn.nextElementSibling;
       const icon = btn.querySelector('.faq-icon');
@@ -1094,26 +987,23 @@
       if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
     }
 
-    // ── Mobile menu ──
     const ham = document.getElementById('hamburger');
     const menu = document.getElementById('mobile-menu');
     ham.addEventListener('click', () => menu.classList.toggle('open'));
     function closeMobileMenu() { menu.classList.remove('open'); }
 
-    // ── Animated chat ──
     const chat = document.getElementById('chat-window');
     const messages = [
-      { side: 'incoming', text: 'Hola! ¿Tenéis hueco para una manicura esta semana?', delay: 500 },
+      { side: 'incoming', text: 'Hola! Quiero pedir cita para una limpieza dental, tenéis para esta semana?', delay: 500 },
       { side: 'typing', delay: 1200 },
-      { side: 'outgoing', text: '¡Hola! Soy la asistente del centro. Dame un momento para ver disponibilidad...', delay: 2800 },
-      { side: 'outgoing', text: 'Tenemos hueco el jueves a las 16:30 o el viernes a las 10:00. ¿Cuál te viene mejor?', delay: 4000 },
-      { side: 'incoming', text: 'El jueves perfecto!', delay: 5200 },
+      { side: 'outgoing', text: 'Hola! Soy la asistente de la clínica. Claro, te miro disponibilidad ahora mismo.', delay: 2800 },
+      { side: 'outgoing', text: 'Tenemos el jueves a las 10:30 o el viernes a las 16:00. ¿Cuál te viene mejor?', delay: 4000 },
+      { side: 'incoming', text: 'El viernes perfecto', delay: 5200 },
       { side: 'typing', delay: 5800 },
-      { side: 'outgoing', text: 'Reservado. El miércoles te llega un recordatorio por aquí. Hasta el jueves!', delay: 7200 },
+      { side: 'outgoing', text: 'Listo! El viernes a las 16:00 está reservado. El jueves te mando un recordatorio por aquí. Hasta el viernes!', delay: 7200 },
     ];
 
     let typingEl = null;
-
     function runChat() {
       chat.innerHTML = '';
       typingEl = null;
@@ -1136,19 +1026,80 @@
         }, delay);
       });
     }
-
     runChat();
     setInterval(runChat, 13000);
 
-    // ── Navbar scroll effect ──
     window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');
-      if (window.scrollY > 50) {
-        nav.style.background = 'rgba(10,10,10,0.97)';
-      } else {
-        nav.style.background = 'rgba(10,10,10,0.85)';
-      }
+      nav.style.background = window.scrollY > 50 ? 'rgba(10,10,10,0.97)' : 'rgba(10,10,10,0.85)';
     });
+
+    // ── Spotlight que sigue el cursor en las tarjetas ──
+    document.querySelectorAll('.product-card, .feature-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+
+    // ── Calculadora de ROI ──
+    (function () {
+      const slider = document.getElementById('roi-slider');
+      const ticketSlider = document.getElementById('roi-ticket-slider');
+      if (!slider || !ticketSlider) return;
+
+      const elPatients = document.getElementById('roi-patients');
+      const elTicket = document.getElementById('roi-ticket');
+      const elInactive = document.getElementById('roi-inactive');
+      const elAppts = document.getElementById('roi-appts');
+      const elRevenue = document.getElementById('roi-revenue');
+
+      const fmt = n => Math.round(n).toLocaleString('es-ES');
+
+      function animateTo(el, target, suffix) {
+        const start = parseFloat((el.textContent || '0').replace(/[^\d]/g, '')) || 0;
+        const dur = 450; const t0 = performance.now();
+        function frame(t) {
+          const p = Math.min((t - t0) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = start + (target - start) * ease;
+          el.textContent = fmt(val) + (suffix || '');
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function update(animate) {
+        const patients = parseInt(slider.value);
+        const ticket = parseInt(ticketSlider.value);
+        const inactive = Math.round(patients * 0.20);
+        const appts = Math.round(inactive * 0.035);
+        const revenue = appts * ticket;
+
+        elPatients.textContent = fmt(patients);
+        elTicket.textContent = fmt(ticket) + '€';
+        if (animate) {
+          animateTo(elInactive, inactive, '');
+          elAppts.textContent = '~' + fmt(appts);
+          animateTo(elRevenue, revenue, '€');
+        } else {
+          elInactive.textContent = fmt(inactive);
+          elAppts.textContent = '~' + fmt(appts);
+          elRevenue.textContent = fmt(revenue) + '€';
+        }
+      }
+
+      slider.addEventListener('input', () => update(false));
+      ticketSlider.addEventListener('input', () => update(false));
+
+      // Anima la primera vez que entra en pantalla
+      const roiObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { update(true); roiObs.disconnect(); } });
+      }, { threshold: 0.4 });
+      roiObs.observe(document.getElementById('precios'));
+      update(false);
+    })();
   </script>
 
 </body>
