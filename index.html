@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SeekIA — IA que llena tu agenda</title>
-  <meta name="description" content="Asistente IA para WhatsApp, reactivación de pacientes dormidos y asistente de voz. Para centros de estética, peluquerías y clínicas dentales.">
+  <meta name="description" content="Asistente de IA que atiende WhatsApp y llamadas de voz 24/7, agenda citas y manda recordatorios. También reactivamos pacientes dormidos. Para clínicas dentales, centros de estética y peluquerías.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,6 +75,7 @@
     .typing-dots span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #A0A0A0; animation: typing 1.2s ease infinite; }
     .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
     .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    .chat-bubble.outgoing .typing-dots span { background: #0A0A0A; }
     @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-5px); opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -374,8 +375,37 @@
           <a href="#contacto" class="ghost-btn" style="justify-content:center;">Ver demo en directo</a>
         </div>
 
-        <!-- Producto 2: Reactivación (featured) -->
+        <!-- Producto 2: Voz (featured — promovido de "próximamente" a disponible, 8 ago 2026) -->
         <div class="product-card featured reveal delay-100">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span class="product-tag active">
+              <span style="width:6px;height:6px;background:#A8E04A;border-radius:50%;display:inline-block;animation:pulse 2s ease infinite;"></span>
+              Disponible ahora
+            </span>
+            <span class="product-tag" style="color:#32D9A0;background:rgba(50,217,160,0.08);border-color:rgba(50,217,160,0.25);">Recién lanzado</span>
+          </div>
+          <div>
+            <div style="width:48px;height:48px;background:rgba(168,224,74,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3 style="font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:-0.02em;">Asistente de Voz</h3>
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Nunca pierdas una llamada. La IA contesta el teléfono en voz natural en español, resuelve la duda y agenda la cita directamente en tu sistema, aunque sea medianoche.</p>
+          </div>
+          <div>
+            <div class="product-price gradient-text" style="font-size:22px;">Presupuesto a medida</div>
+            <div style="font-size:13px;color:#A0A0A0;margin-top:6px;">Según tu volumen de llamadas</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Voz española natural, sin robótico</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Agenda citas en tu sistema directamente</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Para clínicas dentales y centros de estética</div>
+            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8E04A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Combo con el asistente de WhatsApp</div>
+          </div>
+          <a href="#contacto" class="cta-btn" style="justify-content:center;">Ver demo en directo</a>
+        </div>
+
+        <!-- Producto 3: Reactivación (disponible, pero ya no featured — 8 ago 2026) -->
+        <div class="product-card reveal delay-200">
           <div>
             <span class="product-tag active" style="color:#32D9A0;background:rgba(50,217,160,0.08);border-color:rgba(50,217,160,0.25);">
               <span style="width:6px;height:6px;background:#32D9A0;border-radius:50%;display:inline-block;animation:pulse 2s ease infinite;"></span>
@@ -390,8 +420,8 @@
             <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Contactamos a tus pacientes dormidos en tu nombre. Los ponemos a agendar limpiezas, revisiones y tratamientos a medias. Prueba de 14 días. Solo pagas si funciona.</p>
           </div>
           <div>
-            <div class="product-price gradient-text" style="font-size:22px;">Solo pagas por resultados</div>
-            <div style="font-size:13px;color:#32D9A0;margin-top:6px;font-weight:600;">Prueba 14 días · 0€ si no hay citas</div>
+            <div class="product-price" style="font-size:20px;color:#32D9A0;">Solo pagas por resultados</div>
+            <div style="font-size:13px;color:#A0A0A0;margin-top:6px;">Prueba 14 días · 0€ si no hay citas</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Prueba de 14 días, 0€ si no hay resultados</div>
@@ -399,32 +429,7 @@
             <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Para clínicas dentales y medicina estética</div>
             <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Solo necesitas exportar tu lista de contactos</div>
           </div>
-          <a href="#precios" class="cta-btn" style="justify-content:center;">Calcular mi ROI gratis</a>
-        </div>
-
-        <!-- Producto 3: Voz (coming soon) -->
-        <div class="product-card coming reveal delay-200">
-          <div>
-            <span class="product-tag soon">Próximamente</span>
-          </div>
-          <div>
-            <div style="width:48px;height:48px;background:rgba(50,217,160,0.07);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#32D9A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-            </div>
-            <h3 style="font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:-0.02em;">Asistente de Voz</h3>
-            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">Nunca pierdas una llamada. La IA atiende en voz natural en español, califica al paciente y agenda la cita directamente en tu sistema, aunque sea medianoche.</p>
-          </div>
-          <div>
-            <div class="product-price" style="color:#A0A0A0;">Lista de espera</div>
-            <div style="font-size:13px;color:#A0A0A0;margin-top:6px;">Apúntate y te avisamos cuando abra</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Voz española natural, sin robótico</div>
-            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Agenda citas en tu sistema directamente</div>
-            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Para clínicas dentales y médicas</div>
-            <div class="product-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Combo con reactivación (máximo impacto)</div>
-          </div>
-          <a href="#contacto" class="ghost-btn" style="justify-content:center;opacity:0.7;pointer-events:auto;">Apuntarme a la lista</a>
+          <a href="#precios" class="ghost-btn" style="justify-content:center;">Calcular mi ROI gratis</a>
         </div>
 
       </div>
@@ -713,14 +718,14 @@
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin cambiar tu número de WhatsApp</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">0 no-shows con recordatorios</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Entiende notas de voz</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Solo pagas por citas reales</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Contesta también por teléfono</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin formación ni técnicos</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Respuesta inmediata 24/7</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Pacientes dormidos recuperados</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin cambiar tu número de WhatsApp</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">0 no-shows con recordatorios</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Entiende notas de voz</span>
-          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Solo pagas por citas reales</span>
+          <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Contesta también por teléfono</span>
           <span style="font-size:13px;color:#A0A0A0;white-space:nowrap;padding:8px 16px;background:#1A1A1A;border-radius:100px;border:1px solid rgba(168,224,74,0.1);">Sin formación ni técnicos</span>
         </div>
       </div>
@@ -814,6 +819,26 @@
           </button>
           <div class="faq-answer pb-5">
             <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">No. El asistente se conecta a tu número actual usando la API oficial de WhatsApp Business. Tus clientes siguen escribiéndote igual que siempre.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
+            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿El asistente de voz suena robótico?</span>
+            <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
+          </button>
+          <div class="faq-answer pb-5">
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">No. Usa una voz natural en español que la mayoría de gente no distingue de una persona en los primeros segundos. Puedes probarla tú mismo antes de decidir nada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full text-left py-5 flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)" style="background:none;border:none;color:#fff;">
+            <span style="font-size:15px;font-weight:700;padding-right:16px;">¿Necesito cambiar mi número de teléfono para la voz?</span>
+            <span class="faq-icon" style="font-size:20px;color:#A8E04A;flex-shrink:0;">+</span>
+          </button>
+          <div class="faq-answer pb-5">
+            <p style="font-size:14px;color:#A0A0A0;line-height:1.7;">No necesariamente. Podemos desviar tu línea actual al asistente o darte un número nuevo dedicado, lo vemos según tu caso en la demo.</p>
           </div>
         </div>
 
@@ -1007,11 +1032,12 @@
     function runChat() {
       chat.innerHTML = '';
       typingEl = null;
-      messages.forEach(({ side, text, delay }) => {
+      messages.forEach(({ side, text, delay }, i) => {
         setTimeout(() => {
           if (side === 'typing') {
+            const nextSide = messages[i + 1] ? messages[i + 1].side : 'incoming';
             typingEl = document.createElement('div');
-            typingEl.className = 'chat-bubble incoming';
+            typingEl.className = `chat-bubble ${nextSide}`;
             typingEl.innerHTML = '<div class="typing-dots" style="display:flex;gap:4px;align-items:center;padding:2px 0;"><span></span><span></span><span></span></div>';
             chat.appendChild(typingEl);
             chat.scrollTop = chat.scrollHeight;
