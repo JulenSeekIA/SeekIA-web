@@ -18,6 +18,16 @@ function nearestSlot(minutes, slots) {
   , slots[0]);
 }
 
+// el bot menciona horas en 3 momentos que NO son una reserva: horario de apertura
+// ("abrimos de 9:30 a 14:00"), la propuesta ("¿te reservo el sábado a las 10?") y
+// pedir el nombre. Solo el mensaje de confirmación real debe encender el hueco —
+// si no, la demo miente sobre lo que "no fabricamos nada" promete.
+const CONFIRMACION_REAL = /\blisto!?\b|\bhecho!?\b|te\s+esperamos\b|te\s+espero\b|\bcita\b[^.!?]{0,45}\b(queda|confirmada|confirmado|reservada|reservado|apuntada|apuntado)\b|\b(queda|confirmada|confirmado|reservada|reservado|apuntada|apuntado)\b[^.!?]{0,45}\bcita\b/i;
+
+function esConfirmacionReal(text) {
+  return CONFIRMACION_REAL.test(text);
+}
+
 function parseSpanishTime(text) {
   const digit = text.match(/\b([01]?\d|2[0-3])[:.h]([0-5]\d)\b/);
   if (digit) return parseInt(digit[1], 10) * 60 + parseInt(digit[2], 10);
@@ -138,7 +148,7 @@ export async function initProbador({
       if (seen.has(bubble)) return;
       seen.add(bubble);
       const text = bubble.textContent || '';
-      const minutes = parseSpanishTime(text);
+      const minutes = esConfirmacionReal(text) ? parseSpanishTime(text) : null;
       if (minutes !== null) {
         occupySlot(agendaList, minutes, slots, 'cita');
         setLiveState(root, 'booked');
