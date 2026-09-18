@@ -1,0 +1,66 @@
+.probador__chat-embed {
+  --chat--color-primary: var(--lime);
+  --chat--color-primary--shade-100: #8FC93A;
+  --chat--color-secondary: var(--teal);
+  --chat--color-white: var(--ink-1);
+  --chat--color-light: var(--ink-2);
+  --chat--color-light-shade-50: var(--ink-3);
+  --chat--color-light-shade-100: var(--ink-3);
+  --chat--color-medium: var(--ink-4);
+  --chat--color-dark: var(--white);
+  --chat--color-disabled: var(--ink-4);
+  --chat--color-typing: var(--ink-5);
+
+  --chat--spacing: 16px;
+  --chat--border-radius: 14px;
+  --chat--transition-duration: 0.2s;
+
+  --chat--font-family: var(--font-body);
+
+  --chat--header-height: 0;
+
+  --chat--body--background: transparent;
+
+  --chat--message--font-size: 14.5px;
+  --chat--message-line-height: 1.5;
+  --chat--message--border-radius: 16px;
+  --chat--message--padding: 12px 16px;
+  --chat--message--margin-bottom: 10px;
+
+  --chat--message--bot--background: var(--ink-2);
+  --chat--message--bot--color: var(--ink-5);
+  --chat--message--bot--border: 1px solid var(--ink-3);
+
+  --chat--message--user--background: var(--lime);
+  --chat--message--user--color: var(--ink-0);
+  --chat--message--user--border: none;
+
+  --chat--input--border: 1px solid var(--ink-3);
+  --chat--input--border-active: 1px solid var(--lime);
+  --chat--input--background: var(--ink-1);
+  --chat--input--text-color: var(--white);
+  --chat--input--border-radius: 14px;
+  --chat--input--placeholder--font-size: 14px;
+  --chat--input--font-size: 14.5px;
+
+  --chat--input--container--background: var(--ink-1);
+  --chat--input--container--border: none;
+  --chat--input--container--border-radius: 0;
+  --chat--input--container--padding: 4px 20px 20px;
+
+  --chat--input--send--button--background: transparent;
+  --chat--input--send--button--color: var(--lime);
+  --chat--input--send--button--color-hover: var(--teal);
+
+  --chat--footer--background: var(--ink-1);
+  --chat--footer--color: var(--ink-4);
+  --chat--footer--padding: 0 20px 14px;
+}
+
+.probador__chat-embed .chat-layout { background: transparent; }
+.probador__chat-embed .chat-header { display: none; }
+.probador__chat-embed .chat-body { min-height: 0; }
+.probador__chat-embed .chat-messages-list { padding: 20px; }
+.probador__chat-embed .chat-message-from-bot .chat-message-markdown a { color: var(--lime); }
+.probador__chat-embed .chat-powered-by { display: none; }
+.probador__chat-embed .chat-footer { flex-shrink: 0; }
