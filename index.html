@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SeekIA — El asistente de IA que llena tu agenda</title>
-<meta name="description" content="Prueba en directo el asistente de IA que atiende WhatsApp y llamadas de voz 24/7, agenda citas y recupera pacientes dormidos. Para centros de estética, peluquerías y clínicas dentales.">
+<title>SeekIA — El asistente de IA que te llena la agenda | Centros de estética</title>
+<meta name="description" content="Pruébalo ahora mismo: el asistente que coge citas por WhatsApp mientras estáis en cabina. Mira huecos reales, ofrece hora y deja la cita puesta. Para centros de estética y belleza.">
 <link rel="canonical" href="https://seekialabs.com/">
 
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -13,8 +13,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SeekIA">
-<meta property="og:title" content="SeekIA — El asistente de IA que llena tu agenda">
-<meta property="og:description" content="Prueba en directo el asistente que atiende WhatsApp y llamadas de voz 24/7, agenda citas y recupera pacientes dormidos.">
+<meta property="og:title" content="SeekIA — El asistente de IA que te llena la agenda">
+<meta property="og:description" content="Pruébalo ahora mismo: coge citas por WhatsApp mientras estáis en cabina. Mira huecos reales, ofrece hora y deja la cita puesta.">
 <meta property="og:image" content="https://seekialabs.com/assets/og.png">
 <meta property="og:url" content="https://seekialabs.com/">
 <meta property="og:locale" content="es_ES">
@@ -27,10 +27,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
 
-<link rel="stylesheet" href="css/tokens.css?v=14">
-<link rel="stylesheet" href="css/base.css?v=14">
-<link rel="stylesheet" href="css/secciones.css?v=14">
-<link rel="stylesheet" href="css/chat-theme.css?v=14">
+<link rel="stylesheet" href="css/tokens.css?v=18">
+<link rel="stylesheet" href="css/base.css?v=17">
+<link rel="stylesheet" href="css/secciones.css?v=17">
+<link rel="stylesheet" href="css/chat-theme.css?v=17">
 <link rel="stylesheet" href="css/voz.css?v=14">
 
 <script type="application/ld+json">
@@ -40,7 +40,7 @@
   "name": "SeekIA",
   "url": "https://seekialabs.com/",
   "image": "https://seekialabs.com/assets/og.png",
-  "description": "Asistente de IA que atiende WhatsApp y llamadas de voz 24/7, agenda citas y recupera pacientes dormidos para centros de estética y clínicas.",
+  "description": "Asistente de IA que coge citas por WhatsApp y por teléfono 24/7 para centros de estética: mira la agenda, ofrece hora y deja la cita puesta.",
   "areaServed": "ES",
   "address": { "@type": "PostalAddress", "addressLocality": "Donostia-San Sebastián", "addressCountry": "ES" },
   "email": "julen@seekialabs.com",
@@ -52,9 +52,9 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "¿Tengo que cambiar mi número de WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "No. El asistente se conecta a tu número actual con la API oficial de WhatsApp Business. Tus clientes te siguen escribiendo igual que siempre." } },
+    { "@type": "Question", "name": "¿Tengo que cambiar mi número de WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "No. El asistente se conecta a tu número actual con la API oficial de WhatsApp Business. Tus clientas te siguen escribiendo igual que siempre." } },
     { "@type": "Question", "name": "¿El asistente de voz suena robótico?", "acceptedAnswer": { "@type": "Answer", "text": "No. Usa una voz natural en español que la mayoría no distingue de una persona en los primeros segundos. Se puede probar en directo antes de decidir nada." } },
-    { "@type": "Question", "name": "¿Es legal contactar a mis pacientes dormidos?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, siempre que ya tengan relación con el centro y consentimiento para comunicaciones. Se firma un acuerdo de tratamiento de datos conforme al RGPD y cada mensaje incluye opción de baja." } },
+    { "@type": "Question", "name": "¿Es legal escribir a mis clientas dormidas?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, siempre que ya tengan relación con el centro y consentimiento para comunicaciones. Se firma un acuerdo de tratamiento de datos conforme al RGPD y cada mensaje incluye opción de baja." } },
     { "@type": "Question", "name": "¿Puedo cancelar cuando quiera?", "acceptedAnswer": { "@type": "Answer", "text": "Sin permanencia. Se cancela con 15 días de aviso, cuando se quiera. El pago de puesta en marcha es único; la mensualidad se deja cuando se decida." } }
   ]
 }
@@ -71,7 +71,7 @@
     </a>
     <nav class="site-nav" aria-label="Principal">
       <div class="site-nav__links">
-        <a href="#probador">Pruébalo</a>
+        <a href="#probador-seccion">Pruébalo</a>
         <a href="#servicios">Servicios</a>
         <a href="#software">Tu software</a>
         <a href="#faq">FAQ</a>
@@ -85,7 +85,7 @@
 </header>
 
 <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-  <a href="#probador">Pruébalo</a>
+  <a href="#probador-seccion">Pruébalo</a>
   <a href="#servicios">Servicios</a>
   <a href="#software">Tu software</a>
   <a href="#faq">FAQ</a>
@@ -97,41 +97,56 @@
   <!-- ============ HERO — tierra seca ============ -->
   <section class="hero" id="inicio">
     <div class="wrap">
-      <span class="eyebrow" data-reveal>IA para estética y clínicas</span>
+      <span class="eyebrow" data-reveal>IA para centros de estética</span>
       <h1 class="hero__title" data-reveal data-reveal-delay="1">
         De la agenda seca<br><span class="text-lime">a la agenda llena.</span>
       </h1>
 
-      <div class="hero__grid">
-        <div class="hero__copy">
-          <p class="hero__lead" data-reveal data-reveal-delay="2">
-            Esto no es una maqueta: es el asistente real. Escríbele o llámale ahí al lado
-            como si fueras un cliente y mira cómo la cita aterriza en la agenda.
-          </p>
-          <div class="hero__ctas" data-reveal data-reveal-delay="3">
-            <button class="btn btn--primary" type="button" data-voice-trigger data-voice-vertical="estetica">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
-              Llámalo y habla con él
-            </button>
-            <a href="#servicios" class="btn btn--ghost">Ver los 3 servicios</a>
-          </div>
-
-          <div class="hero__meta" data-reveal data-reveal-delay="4">
-            <div class="barras" aria-hidden="true">
-              <span style="height:18%"></span><span style="height:12%"></span><span style="height:24%"></span>
-              <span style="height:14%"></span><span style="height:9%"></span><span style="height:20%"></span>
-              <span style="height:11%"></span><span style="height:16%"></span><span style="height:8%"></span>
-              <span style="height:13%"></span><span style="height:10%"></span><span style="height:19%"></span>
-              <span class="on" style="height:46%"></span><span style="height:12%"></span>
-            </div>
-            <p class="hero__proof mono">
-              La agenda de un centro que no contesta fuera de horario.<br>
-              <strong>DO Belleza</strong> · Donosti · en producción real desde sept. 2026
-            </p>
-          </div>
+      <div class="hero__intro">
+        <p class="hero__lead" data-reveal data-reveal-delay="2">
+          Coge citas por WhatsApp mientras estáis en cabina: mira los huecos reales,
+          ofrece hora y deja la cita puesta.
+        </p>
+        <div class="hero__ctas" data-reveal data-reveal-delay="3">
+          <button class="btn btn--primary" type="button" data-voice-trigger data-voice-vertical="estetica">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+            Llámalo y habla con él
+          </button>
+          <a href="#servicios" class="btn btn--ghost">Ver los 3 servicios</a>
         </div>
+      </div>
 
-        <div class="probador" id="probador" data-reveal data-reveal-delay="2" data-probador-status="idle">
+      <div class="hero__meta" data-reveal data-reveal-delay="4">
+        <div class="barras" aria-hidden="true">
+          <span style="height:18%"></span><span style="height:12%"></span><span style="height:24%"></span>
+          <span style="height:14%"></span><span style="height:9%"></span><span style="height:20%"></span>
+          <span style="height:11%"></span><span style="height:16%"></span><span style="height:8%"></span>
+          <span style="height:13%"></span><span style="height:10%"></span><span style="height:19%"></span>
+          <span class="on" style="height:46%"></span><span style="height:12%"></span>
+        </div>
+        <p class="hero__proof mono">
+          La agenda de un centro que no contesta fuera de horario.<br>
+          <strong>DO Belleza</strong> · Donosti · en producción real desde sept. 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EL PROBADOR — la demo se lleva su propia pantalla ============ -->
+  <section class="probador-seccion" id="probador-seccion">
+    <div class="wrap">
+      <div class="probador-seccion__head">
+        <div>
+          <span class="eyebrow" data-reveal>Pruébalo tú</span>
+          <h2 data-reveal data-reveal-delay="1">Esto no es una maqueta.</h2>
+        </div>
+        <p data-reveal data-reveal-delay="2">
+          Es el asistente real, el mismo que atiende a clientas de verdad. Escríbele como si
+          fueras una clienta, pídele cita y mira cómo aterriza en la agenda de la derecha.
+        </p>
+      </div>
+
+      <div class="probador" id="probador" data-reveal data-reveal-delay="2" data-probador-status="idle">
           <div class="probador__chat">
             <div class="probador__chat-head">
               <div class="probador__who">
@@ -162,12 +177,11 @@
               <span class="agenda__legend">● cita de esta conversación</span>
             </div>
             <ul class="agenda__list" id="agenda-list" aria-live="polite"></ul>
-            <div class="probador__voice">
-              <div class="probador__voice-label mono">¿prefieres oírlo?</div>
-              <button class="btn btn--ghost btn--sm" type="button" style="width:100%;" data-voice-trigger data-voice-vertical="estetica">
-                Llamar por voz
-              </button>
-            </div>
+          <div class="probador__voice">
+            <div class="probador__voice-label mono">¿prefieres oírlo?</div>
+            <button class="btn btn--ghost btn--sm" type="button" style="width:100%;" data-voice-trigger data-voice-vertical="estetica">
+              Llamar por voz
+            </button>
           </div>
         </div>
       </div>
@@ -214,8 +228,8 @@
       <div class="sequia__grid">
         <article class="sequia__card" data-reveal>
           <svg class="sequia__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M7 9l3 2-3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Estás en cabina o en consulta</h3>
-          <p>No puedes coger el WhatsApp ni el teléfono. Esa conversación queda en visto y esa persona escribe al centro de al lado.</p>
+          <h3>Estáis en cabina</h3>
+          <p>No podéis coger el WhatsApp ni el teléfono. Esa conversación queda en visto y esa clienta escribe al centro de al lado.</p>
         </article>
         <article class="sequia__card" data-reveal data-reveal-delay="1">
           <svg class="sequia__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -224,13 +238,13 @@
         </article>
         <article class="sequia__card" data-reveal data-reveal-delay="2">
           <svg class="sequia__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3a6 6 0 100 12 6 6 0 01-6-6c0-1 .2-2 .6-2.8A6 6 0 0015 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18 15l1 2M20.5 13.5l1.7 1M20.5 17.5l1.7-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-          <h3>Pacientes dormidos</h3>
-          <p>Cientos de personas que vinieron una vez y no han vuelto. Nadie les ha dicho nada. Ingresos esperando en tu base de datos.</p>
+          <h3>Clientas dormidas</h3>
+          <p>Cientos de clientas que vinieron una vez y no han vuelto. Nadie les ha dicho nada. Ingresos esperando en tu base de datos.</p>
         </article>
         <article class="sequia__card" data-reveal>
           <svg class="sequia__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.5 14.5l5 4M14.5 14.5l-5 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <h3>No-shows sin avisar</h3>
-          <p>Sin recordatorios automáticos, los no-shows en clínicas rondan el 15-22%. Tiempo y dinero que pierdes sin darte cuenta.</p>
+          <h3>Plantones sin avisar</h3>
+          <p>Sin recordatorio automático, los plantones rondan el 15-22%. Una cabina vacía que ya no se puede vender.</p>
         </article>
         <article class="sequia__card" data-reveal data-reveal-delay="1">
           <svg class="sequia__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v10H9l-4 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -240,7 +254,7 @@
         <article class="sequia__card" data-reveal data-reveal-delay="2">
           <svg class="sequia__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3 3"/><path d="M12 3a9 9 0 019 9h-9V3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           <h3>Tratamientos a medias</h3>
-          <p>Pacientes que empezaron algo y lo dejaron. Nadie les ha recordado que falta la parte más importante. Y más cara.</p>
+          <p>Clientas que empezaron un bono o un tratamiento y lo dejaron. Nadie les ha recordado que les faltan sesiones.</p>
         </article>
       </div>
     </div>
@@ -278,11 +292,11 @@
             <svg class="servicio-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="2.5" width="8" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M5 12a7 7 0 0014 0M12 19v3M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
           <h3>Asistente de Voz</h3>
-          <p class="servicio-card__desc">Contesta el teléfono en voz natural, 24/7. Nunca comunica, nunca está de mal humor, y agenda la cita en tu sistema aunque sea medianoche.</p>
+          <p class="servicio-card__desc">Coge el teléfono en voz natural, 24/7. Nunca comunica, nunca está de mal humor, y deja la cita puesta en la agenda aunque sean las doce de la noche.</p>
           <ul class="servicio-card__features">
             <li>Voz natural en español</li>
-            <li>Agenda en tu sistema real</li>
-            <li>Para clínicas y centros con volumen de llamadas</li>
+            <li>Deja la cita en tu agenda real</li>
+            <li>Para centros que reciben más llamadas que mensajes</li>
             <li>Combínalo con el asistente de WhatsApp</li>
           </ul>
           <button class="btn btn--primary btn--sm servicio-card__cta" type="button" data-voice-trigger data-voice-vertical="estetica">Llamar al asistente ahora</button>
@@ -293,26 +307,36 @@
             <span class="servicio-card__badge">Prueba 14 días</span>
             <svg class="servicio-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1014-5.3M18 3v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Reactivación de pacientes</h3>
-          <p class="servicio-card__desc">Contactamos a tus pacientes dormidos en tu nombre y los ponemos a reagendar. No arriesgas nada: solo pagas por cita que se presenta.</p>
+          <h3>Reactivación de clientas</h3>
+          <p class="servicio-card__desc">Escribimos a tus clientas dormidas en tu nombre y las ponemos a reservar otra vez. No arriesgas nada: solo pagas por cita que se presenta.</p>
           <ul class="servicio-card__features">
             <li>0€ si no hay citas que se presenten</li>
-            <li>Dashboard con € recuperado en vivo</li>
+            <li>Panel con € recuperado en vivo</li>
             <li>Acuerdo de tratamiento de datos firmado</li>
             <li>Prueba de 14 días</li>
           </ul>
           <a href="#calculadora" class="btn btn--ghost btn--sm servicio-card__cta">Calcula lo que tienes dormido ↓</a>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CUÁNTO TIENES DORMIDO — idea propia, pantalla propia ============ -->
+  <section class="calculadora-seccion section section--tight" id="calculadora-seccion">
+    <div class="wrap">
+      <div class="head head--split">
+        <span class="eyebrow" data-reveal>Cuánto tienes dormido</span>
+        <h2 data-reveal data-reveal-delay="1">Muévelo y mira tu número.</h2>
+      </div>
 
       <div class="calculadora" id="calculadora" data-reveal>
         <div class="calculadora__inputs">
           <div class="calculadora__field">
             <div class="calculadora__field-head">
-              <span>Pacientes en tu base de datos</span>
+              <span>Clientas en tu base de datos</span>
               <span class="mono calculadora__field-value" id="calc-pacientes-out">1.500</span>
             </div>
-            <input type="range" id="calc-pacientes" min="300" max="6000" step="100" value="1500" aria-label="Número de pacientes">
+            <input type="range" id="calc-pacientes" min="300" max="6000" step="100" value="1500" aria-label="Número de clientas">
           </div>
           <div class="calculadora__field">
             <div class="calculadora__field-head">
@@ -325,7 +349,7 @@
         <div class="calculadora__output">
           <div class="calculadora__stat">
             <span class="mono calculadora__stat-value" id="calc-inactivos">300</span>
-            <span class="calculadora__stat-label">pacientes dormidos (~20%)</span>
+            <span class="calculadora__stat-label">clientas dormidas (~20%)</span>
           </div>
           <div class="calculadora__arrow" aria-hidden="true">→</div>
           <div class="calculadora__stat">
@@ -406,7 +430,7 @@
           </div>
           <div class="honestidad__item" data-reveal data-reveal-delay="1">
             <span class="honestidad__mark">02 · no</span>
-            <p><strong>No llamamos en frío a tus pacientes.</strong> Es ilegal en España sin consentimiento previo (art. 66.1.a LGT). La reactivación siempre parte de tu base de datos y tu autorización.</p>
+            <p><strong>No llamamos en frío a tus clientas.</strong> Es ilegal en España sin consentimiento previo (art. 66.1.a LGT). La reactivación siempre parte de tu base de datos y tu autorización.</p>
           </div>
           <div class="honestidad__item" data-reveal data-reveal-delay="2">
             <span class="honestidad__mark">03 · no</span>
@@ -432,7 +456,7 @@
         <div class="como-va__step" data-reveal>
           <span class="como-va__num mono">01</span>
           <h3>15 minutos de llamada</h3>
-          <p>Vemos tu caso: qué canal, qué software, qué se escapa hoy. Sin compromiso.</p>
+          <p>Vemos vuestro caso: qué canal, qué software y qué se os escapa hoy.</p>
         </div>
         <div class="como-va__step" data-reveal data-reveal-delay="1">
           <span class="como-va__num mono">02</span>
@@ -462,12 +486,12 @@
             <p>No si tú no quieres. Se configura una vez: puede proponer y confirmar solo, o proponer y esperar tu visto bueno. Lo ves en directo más arriba, en "Tú decides, él propone".</p>
           </details>
           <details class="faq-item">
-            <summary>Ya tengo recepcionista / ya contesto yo, ¿para qué lo necesito?</summary>
-            <p>No es para sustituirla. Es para los mensajes que entran justo cuando está con un cliente delante, o cuando ya habéis cerrado — ahí es donde se pierden citas sin que se note.</p>
+            <summary>Ya contesto yo / ya tengo a alguien en recepción, ¿para qué lo necesito?</summary>
+            <p>No es para sustituir a nadie. Es para los mensajes que entran justo cuando estáis con una clienta delante, o cuando ya habéis cerrado — ahí es donde se pierden citas sin que se note.</p>
           </details>
           <details class="faq-item">
             <summary>¿Tengo que cambiar mi número de WhatsApp?</summary>
-            <p>No. El asistente se conecta a tu número actual con la API oficial de WhatsApp Business. Tus clientes te siguen escribiendo igual que siempre.</p>
+            <p>No. El asistente se conecta a tu número actual con la API oficial de WhatsApp Business. Tus clientas te siguen escribiendo igual que siempre.</p>
           </details>
           <details class="faq-item">
             <summary>Mi software de agenda no está en la lista, o me han dicho que no tiene API</summary>
@@ -475,10 +499,10 @@
           </details>
           <details class="faq-item">
             <summary>¿El asistente de voz suena robótico?</summary>
-            <p>No. Usa una voz natural en español que la mayoría no distingue de una persona en los primeros segundos. Pruébala tú mismo ahí arriba, sin compromiso.</p>
+            <p>No. Usa una voz natural en español que la mayoría no distingue de una persona en los primeros segundos. Pruébala ahí arriba y lo compruebas en diez segundos.</p>
           </details>
           <details class="faq-item">
-            <summary>¿Es legal contactar a mis pacientes dormidos?</summary>
+            <summary>¿Es legal escribir a mis clientas dormidas?</summary>
             <p>Sí, siempre que ya tengan relación contigo y consentimiento para comunicaciones. Firmamos un acuerdo de tratamiento de datos conforme al RGPD y cada mensaje lleva opción de baja.</p>
           </details>
           <details class="faq-item">
@@ -513,9 +537,9 @@
   <section class="cierre section section--tall" id="cierre">
     <img class="cierre__cactus" src="assets/logo-cactus.png" alt="" aria-hidden="true">
     <div class="wrap cierre__inner">
-      <span class="eyebrow" data-reveal>Demo gratuita</span>
+      <span class="eyebrow" data-reveal>El siguiente paso</span>
       <h2 data-reveal data-reveal-delay="1">Tu agenda,<br><span class="text-lime">más llena mañana.</span></h2>
-      <p class="cierre__lead" data-reveal data-reveal-delay="2">15 minutos por teléfono. Vemos tu caso, tu software y qué producto te encaja. Sin compromiso.</p>
+      <p class="cierre__lead" data-reveal data-reveal-delay="2">15 minutos por teléfono: qué software usáis, qué se os escapa hoy y si esto os encaja. En esa llamada no hay que decidir nada.</p>
       <div class="cierre__ctas" data-reveal data-reveal-delay="3">
         <a href="https://wa.me/34621071382?text=Hola%2C%20quiero%20pedir%20una%20demo%20de%20SeekIA" class="btn btn--primary">Hablar por WhatsApp</a>
         <a href="mailto:julen@seekialabs.com" class="btn btn--ghost">Enviar un email</a>
@@ -570,16 +594,16 @@
       <button class="btn btn--ghost voz-action voz-action--retry" id="voz-retry" type="button">Volver a llamar</button>
       <button class="btn btn--primary voz-action voz-action--end" id="voz-end" type="button">Colgar</button>
     </div>
-    <p class="voz-dialog__note mono">Llamada simulada de demostración · corte automático a los 2 min</p>
+    <p class="voz-dialog__note mono">Llamada de demostración · se corta sola al minuto</p>
   </div>
 </div>
 
 <script type="module">
   import { initReveal } from './js/reveal.js?v=14';
-  import { initProbador } from './js/probador.js?v=14';
+  import { initProbador } from './js/probador.js?v=18';
   import { initCalculadora, initControlToggle } from './js/interactivos.js?v=14';
   import { initSoftwareChecker } from './js/software.js?v=14';
-  import { initVoz } from './js/voz.js?v=14';
+  import { initVoz } from './js/voz.js?v=15';
 
   initReveal();
   initCalculadora();

@@ -121,22 +121,27 @@
 /* el titular NO lleva degradado: la segunda línea es la promesa, va en lima plano */
 .hero__title .text-lime { color: var(--lime); }
 
-.hero__grid {
+/* la promesa se lleva su pantalla entera; la demo va debajo, a todo el ancho.
+   Antes competían por el mismo ancho y las dos salían perdiendo. */
+.hero__intro {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: var(--space-8);
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-7) var(--space-8);
+  align-items: end;
 }
 
 .hero__lead {
   font-size: var(--text-lead);
   line-height: var(--lh-normal);
   color: var(--ink-5);
-  max-width: 38ch;
-  margin-bottom: var(--space-6);
+  max-width: 34ch;
 }
 
 .hero__ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero__intro { grid-template-columns: 1fr; align-items: start; }
+}
 
 .hero__meta {
   margin-top: var(--space-8);
@@ -158,16 +163,37 @@
 
 /* ============ EL PROBADOR ============ */
 
+/* sección propia: la demo es el argumento de venta más probado, se le da el escenario */
+.probador-seccion {
+  padding-bottom: var(--space-9);
+}
+.probador-seccion__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: end;
+  margin-bottom: var(--space-6);
+}
+.probador-seccion__head h2 { font-size: var(--text-h2); }
+.probador-seccion__head p {
+  font-size: var(--text-body);
+  color: var(--ink-5);
+  max-width: 46ch;
+}
+@media (max-width: 860px) {
+  .probador-seccion__head { grid-template-columns: 1fr; gap: var(--space-4); align-items: start; }
+}
+
 .probador {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
   gap: 1px;
   background: var(--ink-3);
   border: 1px solid var(--ink-3);
   border-radius: var(--r-card);
   overflow: hidden;
-  height: 600px;
+  height: 620px;
 }
 
 .probador__chat {
@@ -187,7 +213,7 @@
   border-bottom: 1px solid var(--ink-3);
 }
 
-.probador__who { display: flex; align-items: center; gap: var(--space-3); }
+.probador__who { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
 .probador__avatar {
   width: 36px; height: 36px;
   border-radius: 50%;
@@ -197,7 +223,7 @@
   flex-shrink: 0;
 }
 .probador__avatar svg { width: 19px; height: 19px; }
-.probador__who-name { font-weight: 700; color: var(--white); font-size: var(--text-cap); line-height: 1.3; white-space: nowrap; }
+.probador__who-name { font-weight: 700; color: var(--white); font-size: var(--text-cap); line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .probador__who-sub { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--ink-4); white-space: nowrap; }
 
 .probador-status {

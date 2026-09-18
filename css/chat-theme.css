@@ -46,7 +46,9 @@
   --chat--input--container--background: var(--ink-1);
   --chat--input--container--border: none;
   --chat--input--container--border-radius: 0;
-  --chat--input--container--padding: 4px 20px 20px;
+  /* el padding horizontal lo pone SOLO este contenedor: el footer va a cero (ver abajo),
+     si no se suman los dos y el campo se queda en 127px, partiendo el placeholder */
+  --chat--input--container--padding: 14px 20px 18px;
 
   --chat--input--send--button--background: transparent;
   --chat--input--send--button--color: var(--lime);
@@ -54,7 +56,7 @@
 
   --chat--footer--background: var(--ink-1);
   --chat--footer--color: var(--ink-4);
-  --chat--footer--padding: 0 20px 14px;
+  --chat--footer--padding: 0;
 }
 
 .probador__chat-embed .chat-layout { background: transparent; }
@@ -64,3 +66,16 @@
 .probador__chat-embed .chat-message-from-bot .chat-message-markdown a { color: var(--lime); }
 .probador__chat-embed .chat-powered-by { display: none; }
 .probador__chat-embed .chat-footer { flex-shrink: 0; }
+
+/* la librería trae rows="2" en el textarea: 89px de alto para escribir una línea,
+   con el texto arriba y hueco muerto debajo. Se fija a una fila y crece si hace falta. */
+.probador__chat-embed textarea[data-test-id="chat-input"] {
+  height: var(--chat--textarea--height);
+  min-height: var(--chat--textarea--height);
+  max-height: 110px;
+}
+
+/* burbujas a ancho de conversación real: a todo el ancho de la columna no se lee
+   como un WhatsApp, se lee como un documento */
+.probador__chat-embed .chat-message { max-width: 78%; }
+.probador__chat-embed .chat-message-from-user { margin-left: auto; }

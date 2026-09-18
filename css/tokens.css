@@ -4,7 +4,9 @@
   --ink-1: #0F0F0F;
   --ink-2: #181818;
   --ink-3: #2B2B2B;
-  --ink-4: #7A7A7A;
+  /* #7A7A7A daba 4.13:1 sobre --ink-2 (por debajo del mínimo AA de 4.5 en texto
+     pequeño). #8A8A8A sube a 5.14:1 sin alterar la jerarquía visual. */
+  --ink-4: #8A8A8A;
   --ink-5: #B4B4B4;
   --white: #FFFFFF;
 

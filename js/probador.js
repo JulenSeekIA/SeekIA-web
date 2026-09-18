@@ -53,6 +53,12 @@ function occupySlot(container, minutes, slots, label) {
   state.textContent = label || 'cita';
   li.classList.add('just-landed');
   window.setTimeout(() => li.classList.remove('just-landed'), 900);
+
+  // la cita puede caer fuera de la parte visible de la agenda (16:00 cuando solo se ven
+  // las mañanas): sin esto, el momento que demuestra el producto pasa desapercibido.
+  // Se mueve SOLO la agenda, nunca la página.
+  const destino = li.offsetTop - (container.clientHeight / 2) + (li.offsetHeight / 2);
+  container.scrollTo({ top: Math.max(0, destino), behavior: 'smooth' });
 }
 
 function setLiveState(root, state) {
@@ -61,8 +67,8 @@ function setLiveState(root, state) {
   dot.dataset.state = state;
   const labels = {
     idle: 'en línea',
-    typing: 'escribiendo…',
-    booked: 'cita registrada',
+    typing: 'escribiendo',
+    booked: 'reservada',
   };
   dot.querySelector('.probador-status__label').textContent = labels[state] || labels.idle;
 }
@@ -104,10 +110,23 @@ export async function initProbador({
         subtitle: '',
         footer: '',
         getStarted: 'Empezar',
-        inputPlaceholder: inputPlaceholder || 'Escríbele como un cliente…',
+        inputPlaceholder: inputPlaceholder || 'Escríbele como una clienta…',
       },
     },
   });
+
+  // @n8n/chat está pensado para ocupar toda la ventana (mode:'fullscreen'); aquí vive
+  // dentro de una tarjeta pequeña, y su scrollIntoView() interno por cada mensaje nuevo
+  // se escapa y arrastra la página entera. Se redirige ese scroll al contenedor interno.
+  const nativeScrollIntoView = Element.prototype.scrollIntoView;
+  Element.prototype.scrollIntoView = function (...args) {
+    if (chatMount.contains(this)) {
+      const body = chatMount.querySelector('.chat-body');
+      if (body) body.scrollTop = body.scrollHeight;
+      return;
+    }
+    return nativeScrollIntoView.apply(this, args);
+  };
 
   const seen = new WeakSet();
   const observer = new MutationObserver(() => {
