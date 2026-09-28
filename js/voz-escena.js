@@ -1,7 +1,7 @@
 // 02 · Voz — la llamada real con VAPI, en línea (sin modal).
 // Mismo asistente, misma clave pública y mismo tope de 60 s que js/voz.js (dental sigue usando ese).
 // Las barras de marca hacen de onda: se mueven con el volumen REAL de la voz del asistente.
-import { esConfirmacionReal, horas, dia, describir } from './agenda.js?v=1';
+import { esConfirmacionReal, horas, dia, describir } from './agenda.js?v=2';
 
 const VAPI_PUBLIC_KEY = '31e8e192-5f11-4511-9ddb-6239922be976';
 const VAPI_ASSISTANT_ID = '03e83fce-6297-4457-8f3c-17f425c0e800';

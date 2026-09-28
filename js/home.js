@@ -20,8 +20,8 @@ initSoftwareChecker();
 
 // ---------- escenarios bajo demanda ----------
 const ESCENARIOS = [
-  ['atencion', () => import('./atencion.js?v=1').then((m) => m.initAtencion())],
-  ['voz', () => import('./voz-escena.js?v=1').then((m) => m.initVozEscena())],
+  ['atencion', () => import('./atencion.js?v=2').then((m) => m.initAtencion())],
+  ['voz', () => import('./voz-escena.js?v=2').then((m) => m.initVozEscena())],
   ['reactivacion', () => import('./reactivacion.js?v=1').then((m) => m.initReactivacion())],
 ];
 ESCENARIOS.forEach(([id, cargar]) => {

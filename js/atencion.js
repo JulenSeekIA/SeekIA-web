@@ -3,7 +3,7 @@
 // replicando su protocolo: POST {action:'sendMessage', sessionId, chatInput} y, si el
 // flujo responde por nodos «Chat» (responseNodes), un WebSocket que va trayendo cada
 // parte del mensaje. Backend intacto; solo cambia lo que se ve.
-import { crearSemana, esConfirmacionReal, horas, dia } from './agenda.js?v=1';
+import { crearSemana, esConfirmacionReal, horas, dia } from './agenda.js?v=2';
 
 const WEBHOOK = 'https://paneln8n.seekialabs.com/webhook/estetica-aura-demo/chat';
 const OFERTA = /\b(tengo|tenemos|hay|quedan?|libres?|disponibles?|huecos?|te\s+va|te\s+viene|te\s+cuadra|prefieres|te\s+reservo|te\s+apunto|puedo\s+darte|te\s+ofrezco|que\s+tal)\b/i;

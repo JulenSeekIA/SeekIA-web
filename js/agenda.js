@@ -23,20 +23,44 @@ const mismoDia = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() =
 // los rangos ("de 10:00 a 20:00", "entre las 9 y las 14") son horarios, no ofertas
 const RANGOS = /\b(?:de|desde)\s+(?:las\s+)?\d{1,2}(?:[:.h]\d{2})?\s*h?\s*(?:a|hasta)\s+(?:las\s+)?\d{1,2}(?:[:.h]\d{2})?\s*h?\b|\bentre\s+las\s+\d{1,2}(?:[:.h]\d{2})?\s+y\s+las\s+\d{1,2}(?:[:.h]\d{2})?/gi;
 
+// en voz el asistente dice las horas en letra: «a las cinco y media de la tarde»
+const NUMEROS = { una: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10, once: 11, doce: 12 };
+const EN_LETRA = /\ba\s+las?\s+(una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)(?:\s+y\s+(media|cuarto)|\s+menos\s+(cuarto))?(?:\s+de\s+la\s+(manana|tarde|noche))?\b/g;
+
+function horasEnLetra(texto) {
+  const t = sinTildes(texto.toLowerCase()).replace(RANGOS, ' ');
+  const out = [];
+  let m;
+  while ((m = EN_LETRA.exec(t))) {
+    let h = NUMEROS[m[1]];
+    if (m[4] === 'tarde' || m[4] === 'noche') { if (h < 12) h += 12; }
+    else if (m[4] !== 'manana' && h >= 1 && h <= 8) h += 12;
+    let min = h * 60 + (m[2] === 'media' ? 30 : m[2] === 'cuarto' ? 15 : 0);
+    if (m[3]) min -= 15;
+    out.push(min);
+  }
+  return out;
+}
+
 /** Todas las horas concretas del texto, en minutos desde las 00:00, sin repetir. */
 export function horas(texto) {
   const limpio = texto.replace(RANGOS, ' ');
   const out = [];
-  const re = /\b([01]?\d|2[0-3])[:.h]([0-5]\d)\b|\ba\s+las?\s+(\d{1,2})(?:\s+y\s+(media|cuarto))?\b(?![:.]\d)/gi;
+  horasEnLetra(texto).forEach((min) => { if (!out.includes(min)) out.push(min); });
+  const re = /\b([01]?\d|2[0-3])[:.h]([0-5]\d)\b|\ba\s+las?\s+(\d{1,2})(?:\s?h)?(?:\s+y\s+(media|cuarto))?\b(?![:.]\d)(?:\s+de\s+la\s+(tarde|noche|mañana|manana))?|\b([01]?\d|2[0-3])\s?h\b/gi;
   let m;
   while ((m = re.exec(limpio))) {
     let min;
     if (m[1] !== undefined) {
       min = parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+    } else if (m[6] !== undefined) {
+      min = parseInt(m[6], 10) * 60; // "18h"
     } else {
       let h = parseInt(m[3], 10);
       if (h > 23) continue;
-      if (h >= 1 && h <= 8) h += 12; // "a las 5" en un centro de estética es por la tarde
+      const parte = (m[5] || '').toLowerCase();
+      if ((parte === 'tarde' || parte === 'noche') && h < 12) h += 12;
+      else if (!parte.startsWith('ma') && h >= 1 && h <= 8) h += 12; // "a las 5" en un centro de estética es por la tarde
       min = h * 60 + (m[4] === 'media' ? 30 : m[4] === 'cuarto' ? 15 : 0);
     }
     if (!out.includes(min)) out.push(min);
@@ -46,7 +70,8 @@ export function horas(texto) {
 
 /** El día que menciona el texto, o null. Fecha explícita > día de la semana > mañana/hoy. */
 export function dia(texto, ahora = new Date()) {
-  const t = sinTildes(texto.toLowerCase());
+  // «de lunes a sábado» es un horario, no un día
+  const t = sinTildes(texto.toLowerCase()).replace(/\bde\s+(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\s+a\s+(lunes|martes|miercoles|jueves|viernes|sabado|domingo)\b/g, ' ');
   const hoy = inicioDia(ahora);
 
   let m = t.match(/\b(\d{1,2})\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)\b/);
