@@ -549,6 +549,29 @@
 .movil__enviar:hover { transform: scale(1.06); }
 .movil__enviar:disabled { opacity: .35; transform: none; }
 
+/* ---------- caso real: DO Belleza ---------- */
+
+.caso {
+  margin-top: var(--space-7);
+  display: grid;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.6fr);
+  gap: var(--space-5) var(--space-8);
+  padding: var(--space-6);
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+}
+.caso__vivo { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-micro); color: var(--teal); text-transform: uppercase; letter-spacing: var(--track-wide); }
+.caso__punto { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px var(--teal-10); animation: latido 1.6s ease-in-out infinite; }
+.caso__nombre { font-size: var(--text-h3); margin-block: var(--space-3) var(--space-2); }
+.caso__donde { font-size: var(--text-micro); color: var(--ink-4); }
+.caso__hechos { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-6); }
+.caso__hechos li { font-size: var(--text-cap); line-height: var(--lh-normal); color: var(--ink-4); padding-left: 18px; position: relative; }
+.caso__hechos li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1.5px; background: var(--lime); }
+.caso__hechos strong { color: var(--white); font-weight: 600; }
+.caso__hechos li:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 70ch; }
+.caso__pie { grid-column: 1 / -1; padding-top: var(--space-4); border-top: 1px solid var(--ink-2); font-size: var(--text-micro); color: var(--ink-4); }
+
 /* ---------- la agenda semanal real ---------- */
 
 .semana {
@@ -971,6 +994,8 @@
   .llamada__trans { min-height: 240px; max-height: 340px; }
 
   .indice { grid-template-columns: 1fr; }
+  .caso { grid-template-columns: 1fr; gap: var(--space-5); padding: var(--space-5); }
+  .caso__hechos { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -991,7 +1016,7 @@
 @media (prefers-reduced-motion: reduce) {
   .burbuja, .escribiendo, .cita-chip, .semana__b--ofrecido, .semana__b--cita, .semana__b--cita::after,
   .ticket, .linea-voz, .conector__linea, .conector__linea i, .ev__escribe i, .cierre__cursor,
-  .dia__cuando.is-cambia, .caso23.is-llega .caso23__hora { animation: none !important; }
+  .dia__cuando.is-cambia, .caso23.is-llega .caso23__hora, .caso__punto { animation: none !important; }
   .tachable path { transition: none; }
   [data-letras] .l { opacity: 1; transform: none; transition: none; }
 }
