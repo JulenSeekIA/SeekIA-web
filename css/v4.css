@@ -1,0 +1,995 @@
+/* ============================================================
+   v4 · la home con escenarios vivos (28 sept 2026)
+   Solo la carga index.html: dental.html sigue con el sistema v3 intacto.
+   Semántica de color, la de siempre y ahora EN MOVIMIENTO:
+     lima  = resultado (la cita que cae)
+     teal  = sistema   (lo que hace el asistente: escribir, ofrecer, llamar)
+     alert = problema  (cerrado, en cabina, clienta dormida)
+   Sin glows, sin degradados de marca, sin emojis. 3 radios + el de capítulo.
+   ============================================================ */
+
+:root {
+  --fila: 19px;           /* media hora en las agendas */
+  --r-movil: 32px;        /* el mismo radio que las tarjetas de capítulo */
+}
+
+#vapi-support-btn { display: none !important; }
+
+/* ---------- movimiento compartido ---------- */
+
+@keyframes caer {
+  0%   { opacity: 0; transform: translateY(-22px) scale(.9); }
+  55%  { opacity: 1; transform: translateY(3px) scale(1.02); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes onda {
+  0%   { opacity: .9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.35, 1.9); }
+}
+@keyframes latido {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .45; }
+}
+@keyframes punto {
+  0%, 80%, 100% { transform: translateY(0); opacity: .45; }
+  40%           { transform: translateY(-4px); opacity: 1; }
+}
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes parpadeo { 50% { opacity: 0; } }
+@keyframes voz-barra {
+  0%, 100% { transform: scaleY(.25); }
+  50%      { transform: scaleY(1); }
+}
+
+/* ---------- titulares letra a letra ---------- */
+
+[data-letras] .l-palabra { display: inline-block; white-space: nowrap; }
+[data-letras] .l {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.5em) rotate(3deg);
+  transition: opacity 500ms ease, transform 900ms var(--ease-out-expo);
+  transition-delay: calc(var(--i) * 26ms + 60ms);
+}
+[data-letras].is-visible .l { opacity: 1; transform: none; }
+
+/* ============================================================
+   HERO · un día en la agenda
+   ============================================================ */
+
+.hero--v4 { padding-bottom: var(--space-8); }
+.hero--v4 .hero__title { margin-bottom: var(--space-6); }
+.hero--v4 .hero__lead { max-width: 46ch; }
+
+.dia {
+  margin-top: var(--space-8);
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+
+.dia__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--ink-3);
+}
+.dia__reloj { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-cap); color: var(--white); }
+.dia__cuando { display: inline-flex; gap: 8px; align-items: baseline; }
+.dia__cuando.is-cambia { animation: aparecer 420ms var(--ease-out-expo); }
+.dia__dia { font-weight: 500; color: var(--ink-4); }
+.dia__hora { font-size: var(--text-h3); font-weight: 600; letter-spacing: -0.02em; }
+.dia__chip {
+  font-size: var(--text-micro);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  color: var(--ink-5);
+  background: var(--ink-2);
+  transition: color var(--dur-fast), background var(--dur-fast);
+}
+.dia__chip[data-tono="alerta"]  { color: var(--alert); background: var(--alert-10); }
+.dia__chip[data-tono="sistema"] { color: var(--teal);  background: var(--teal-10); }
+.dia__chip[data-tono="lima"]    { color: var(--lime);  background: var(--lime-08); }
+.dia__nota { font-size: var(--text-micro); color: var(--ink-4); text-align: right; }
+
+.dia__cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 1px;
+  background: var(--ink-3);
+  height: 452px;
+}
+
+/* feed: altura fija, lo nuevo entra por abajo y empuja lo viejo (sin mover la página) */
+.dia__feed {
+  list-style: none;
+  background: var(--ink-1);
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ev {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: var(--space-3) 14px;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--ink-2);
+  transition: opacity 600ms ease, transform 700ms var(--ease-out-expo);
+}
+.ev:last-child { border-bottom: none; }
+.ev__icono {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--ink-2);
+  color: var(--teal);
+  display: grid;
+  place-items: center;
+}
+.ev__icono svg { width: 17px; height: 17px; }
+.ev__icono--foto { overflow: hidden; }
+.ev__icono--foto img { width: 34px; height: 34px; object-fit: cover; }
+.ev__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: var(--text-micro);
+  color: var(--ink-4);
+}
+.ev__meta time { color: var(--white); font-weight: 600; }
+.ev__ir { margin-left: auto; color: var(--ink-4); transition: color var(--dur-fast); }
+.ev__ir:hover { color: var(--lime); }
+.ev__linea { margin-top: 3px; font-size: var(--text-cap); line-height: var(--lh-normal); color: var(--ink-5); }
+.ev__escribe {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: var(--text-micro);
+  color: var(--teal);
+}
+.ev__escribe i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; animation: punto 1s ease-in-out infinite; }
+.ev__escribe i:nth-child(2) { animation-delay: .15s; }
+.ev__escribe i:nth-child(3) { animation-delay: .3s; margin-right: 6px; }
+.ev__escribe--voz i { width: 3px; height: 14px; border-radius: 2px; animation: voz-barra .7s ease-in-out infinite; }
+.ev__escribe--voz i:nth-child(2) { animation-delay: .1s; }
+.ev__escribe--voz i:nth-child(3) { animation-delay: .25s; margin-right: 0; }
+.ev__escribe--voz i:nth-child(4) { animation-delay: .05s; }
+.ev__escribe--voz i:nth-child(5) { animation-delay: .3s; }
+.ev__escribe--voz i:nth-child(6) { animation-delay: .15s; }
+.ev__escribe--voz i:nth-child(7) { animation-delay: .2s; margin-right: 6px; }
+.ev__res { margin-top: 6px; font-size: var(--text-micro); color: var(--lime); transition: opacity 400ms ease, transform 500ms var(--ease-out-expo); }
+.ev--julen .ev__res { color: var(--ink-5); }
+.ev--julen .ev__icono { background: var(--ink-3); }
+
+/* agenda de la escena */
+.dia__agenda { background: var(--ink-2); padding: var(--space-4) var(--space-5) var(--space-4) var(--space-3); min-width: 0; }
+.dia__cols { display: grid; grid-template-columns: 30px repeat(5, minmax(0, 1fr)); height: 100%; }
+.dia__horas {
+  display: grid;
+  grid-template-rows: repeat(20, var(--fila));
+  margin-top: 26px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-4);
+}
+.dia__horas span { transform: translateY(-7px); }
+.dia__col { min-width: 0; border-left: 1px solid var(--ink-3); }
+.dia__d {
+  height: 26px;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--track-wide);
+  color: var(--ink-4);
+  text-align: center;
+}
+.dia__c {
+  display: grid;
+  grid-template-rows: repeat(20, var(--fila));
+  background-image: repeating-linear-gradient(to bottom, var(--hair-light) 0 1px, transparent 1px calc(var(--fila) * 2));
+}
+.dia__c .b {
+  grid-column: 1;
+  margin: 1px 3px;
+  border-radius: var(--r-chip);
+  background: var(--ink-3);
+  opacity: .8;
+}
+.dia__c .b--cita {
+  position: relative;
+  opacity: 1;
+  background: var(--lime);
+  color: var(--ink-0);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 6px;
+  overflow: visible;
+  z-index: 1;
+}
+.dia__c .b--cita::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--lime);
+  border-radius: var(--r-chip);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dia__pie {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--ink-3);
+}
+.dia__barras { width: 170px; flex-shrink: 0; height: 28px; }
+.dia__total { font-size: var(--text-micro); color: var(--ink-4); }
+.dia__n { color: var(--lime); font-size: var(--text-cap); }
+
+/* --- estados cuando la escena está viva (JS) --- */
+.dia.is-viva .ev { opacity: 0; transform: translateY(16px); }
+.dia.is-viva .ev.is-in { opacity: 1; transform: none; }
+.dia.is-viva .ev.is-atras { opacity: .42; }
+.dia.is-viva .ev .ev__res { opacity: 0; transform: translateY(4px); }
+.dia.is-viva .ev.is-resuelto .ev__res { opacity: 1; transform: none; }
+.dia.is-viva .ev.is-escribiendo .ev__escribe { display: flex; }
+.dia.is-viva .ev.is-oculto { display: none; }
+
+.dia.is-viva .b--cita { opacity: 0; background: transparent; color: var(--teal); }
+.dia.is-viva .b--cita.is-ofrecido {
+  opacity: 1;
+  outline: 1.5px dashed var(--teal);
+  outline-offset: -1.5px;
+  background: var(--teal-10);
+  animation: latido 900ms ease-in-out infinite;
+}
+.dia.is-viva .b--cita.is-puesta {
+  opacity: 1;
+  outline: none;
+  background: var(--lime);
+  color: var(--ink-0);
+  animation: caer 800ms var(--ease-out-expo);
+}
+.dia.is-viva .b--cita.is-puesta::after { animation: onda 900ms ease-out 120ms; }
+.dia.is-viva .dia__barras span { transition-delay: calc(var(--i, 0) * 45ms); }
+.dia.is-sale .dia__cuerpo, .dia.is-sale .dia__pie { opacity: 0; transition: opacity 700ms ease; }
+.dia .dia__cuerpo, .dia .dia__pie { transition: opacity 500ms ease; }
+
+/* ============================================================
+   LA SEQUÍA · el 23:07 que nadie contesta
+   ============================================================ */
+
+.caso23__reloj { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.caso23__hora {
+  font-size: var(--text-micro);
+  color: var(--alert);
+  background: var(--alert-10);
+  padding: 4px 10px;
+  border-radius: var(--r-chip);
+  min-width: 58px;
+  text-align: center;
+}
+.caso23__cerrado { font-size: var(--text-micro); color: var(--ink-4); }
+.caso23__msg { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: var(--space-5); }
+.caso23__burbuja {
+  background: var(--ink-2);
+  color: var(--white);
+  font-size: var(--text-cap);
+  padding: 10px 14px;
+  border-radius: var(--r-card);
+  border-bottom-left-radius: var(--r-chip);
+}
+.caso23__visto { font-size: var(--text-micro); color: var(--ink-4); }
+.caso23.is-js .caso23__msg { opacity: 0; transform: translateY(8px); transition: opacity 500ms ease, transform 600ms var(--ease-out-expo); }
+.caso23.is-js .caso23__visto { opacity: 0; transition: opacity 600ms ease 900ms; }
+.caso23.is-llega .caso23__msg { opacity: 1; transform: none; }
+.caso23.is-llega .caso23__visto { opacity: 1; }
+.caso23.is-llega .caso23__hora { animation: latido 1.2s ease-in-out 3 1.6s; }
+
+/* ============================================================
+   SERVICIOS · índice de los tres escenarios
+   ============================================================ */
+
+.servicios--v4 { padding-bottom: 0; }
+.servicios--v4 .head { margin-bottom: var(--space-7); }
+.indice {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  max-width: 940px;
+  margin-inline: auto;
+}
+.indice__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  font-weight: 700;
+  color: var(--white);
+  transition: border-color var(--dur-fast), transform var(--dur-fast) var(--ease-out-expo);
+}
+.indice__item span { color: var(--ink-4); font-size: var(--text-micro); }
+.indice__item em { margin-left: auto; font-style: normal; font-size: var(--text-micro); color: var(--teal); }
+.indice__item:hover { border-color: var(--lime); transform: translateY(-2px); }
+
+/* ============================================================
+   ESCENARIOS · cabecera común
+   ============================================================ */
+
+.escenario { scroll-margin-top: 90px; }
+.escenario + .escenario { padding-top: calc(var(--pad-section) * 0.5); }
+.escenario__cab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--space-5) var(--space-9);
+  align-items: end;
+  margin-bottom: var(--space-7);
+}
+.escenario__cab--der > div:first-child { order: 2; }
+.escenario__cab--der { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.escenario__marca { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.escenario__num { font-size: var(--text-h3); color: var(--ink-3); font-weight: 600; }
+.insignia {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--ink-4);
+  border: 1px solid var(--ink-3);
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+}
+.insignia--lima { color: var(--lime); border-color: var(--lime-40); }
+.escenario__titulo { font-size: var(--text-h2); max-width: 17ch; }
+.escenario__txt p { color: var(--ink-5); line-height: var(--lh-normal); max-width: 48ch; }
+.escenario__txt strong { color: var(--white); font-weight: 600; }
+.escenario__rasgos { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-4); }
+.escenario__rasgos li {
+  font-size: var(--text-micro);
+  color: var(--ink-4);
+  border: 1px solid var(--ink-2);
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+}
+.escenario__nota { margin-top: var(--space-4); font-size: var(--text-micro); color: var(--ink-4); line-height: var(--lh-normal); max-width: 90ch; }
+
+/* ============================================================
+   01 · ATENCIÓN — móvil + agenda real
+   ============================================================ */
+
+.atencion {
+  display: grid;
+  grid-template-columns: 390px minmax(0, 1fr);
+  gap: var(--space-5);
+  height: 640px;
+}
+
+.movil {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-movil);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  box-shadow: var(--shadow-card);
+}
+.movil__cab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--ink-3);
+}
+.movil__avatar {
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--teal-10);
+  color: var(--teal);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+}
+.movil__quien { min-width: 0; }
+.movil__nombre { font-weight: 700; font-size: var(--text-cap); color: var(--white); line-height: 1.3; }
+.movil__estado { font-size: var(--text-micro); color: var(--teal); display: flex; align-items: center; gap: 6px; }
+.movil__estado::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.movil__estado[data-estado="escribiendo"]::before { animation: latido 800ms ease-in-out infinite; }
+.movil__estado[data-estado="cita"] { color: var(--lime); }
+.movil__estado[data-estado="error"] { color: var(--alert); }
+.movil__demo {
+  margin-left: auto;
+  font-size: var(--text-micro);
+  color: var(--ink-4);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-pill);
+  padding: 4px 9px;
+  white-space: nowrap;
+}
+
+.movil__msgs {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.movil__msgs::-webkit-scrollbar { width: 4px; }
+.movil__msgs::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 2px; }
+
+.burbuja {
+  position: relative;
+  max-width: 86%;
+  padding: 10px 14px 20px;
+  border-radius: var(--r-card);
+  font-size: var(--text-cap);
+  line-height: var(--lh-normal);
+  overflow-wrap: anywhere;
+  animation: aparecer 360ms var(--ease-out-expo);
+}
+.burbuja--bot {
+  align-self: flex-start;
+  background: var(--ink-2);
+  border: 1px solid rgba(50, 217, 160, 0.22);
+  color: var(--white);
+  border-bottom-left-radius: var(--r-chip);
+}
+.burbuja--yo {
+  align-self: flex-end;
+  background: var(--ink-3);
+  color: var(--white);
+  border-bottom-right-radius: var(--r-chip);
+}
+.burbuja--error { border-color: var(--alert); color: var(--ink-5); }
+.burbuja--error a { color: var(--lime); text-decoration: underline; }
+.burbuja strong { font-weight: 700; }
+.burbuja__hora { position: absolute; right: 12px; bottom: 5px; font-size: 10px; color: var(--ink-4); }
+
+.escribiendo {
+  align-self: flex-start;
+  display: inline-flex;
+  gap: 5px;
+  padding: 13px 16px;
+  border-radius: var(--r-card);
+  border-bottom-left-radius: var(--r-chip);
+  background: var(--ink-2);
+  border: 1px solid rgba(50, 217, 160, 0.22);
+  animation: aparecer 300ms var(--ease-out-expo);
+}
+.escribiendo i { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: punto 1s ease-in-out infinite; }
+.escribiendo i:nth-child(2) { animation-delay: .15s; }
+.escribiendo i:nth-child(3) { animation-delay: .3s; }
+
+.cita-chip {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--lime);
+  background: var(--lime-08);
+  border: 1px solid var(--lime-24);
+  border-radius: var(--r-pill);
+  padding: 5px 11px;
+  animation: caer 700ms var(--ease-out-expo);
+}
+.cita-chip svg { width: 13px; height: 13px; }
+
+.movil__chips {
+  display: flex;
+  gap: 6px;
+  padding: var(--space-3) var(--space-4) 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.movil__chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: var(--text-micro);
+  font-weight: 600;
+  padding: 8px 13px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--ink-3);
+  color: var(--ink-5);
+  transition: border-color var(--dur-fast), color var(--dur-fast), opacity var(--dur-fast);
+}
+.chip:hover:not(:disabled) { border-color: var(--teal); color: var(--teal); }
+.chip:disabled { opacity: .3; cursor: default; }
+
+.movil__form { display: flex; align-items: flex-end; gap: var(--space-2); padding: var(--space-3) var(--space-4) var(--space-4); }
+.movil__form textarea {
+  flex: 1;
+  min-width: 0;
+  resize: none;
+  max-height: 104px;
+  padding: 12px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--ink-3);
+  background: var(--ink-2);
+  color: var(--white);
+  font: 500 15px/1.4 var(--font-body);
+  transition: border-color var(--dur-fast);
+}
+.movil__form textarea::placeholder { color: var(--ink-4); }
+.movil__form textarea:focus { outline: none; border-color: var(--teal); }
+.movil__enviar {
+  flex-shrink: 0;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--lime);
+  color: var(--ink-0);
+  transition: transform var(--dur-fast) var(--ease-out-expo), opacity var(--dur-fast);
+}
+.movil__enviar svg { width: 20px; height: 20px; }
+.movil__enviar:hover { transform: scale(1.06); }
+.movil__enviar:disabled { opacity: .35; transform: none; }
+
+/* ---------- la agenda semanal real ---------- */
+
+.semana {
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.semana__cab { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-4); }
+.semana__titulo { font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--ink-4); }
+.semana__ley { display: flex; gap: var(--space-4); font-size: var(--text-micro); color: var(--ink-4); }
+.ley { display: inline-flex; align-items: center; gap: 6px; }
+.ley::before { content: ''; width: 8px; height: 8px; border-radius: 2px; }
+.ley--ofrecido::before { border: 1.5px dashed var(--teal); }
+.ley--cita::before { background: var(--lime); }
+.ley--activa::before { background: var(--ink-4); border-radius: 50%; }
+.ley--dormida::before { border: 1.5px solid var(--alert); border-radius: 50%; }
+.ley--responde::before { background: var(--teal); border-radius: 50%; }
+.ley--vuelve::before { background: var(--lime); border-radius: 50%; }
+
+.semana__vista { display: grid; grid-template-columns: 38px minmax(0, 1fr); flex: 1; min-height: 0; }
+.semana__horas {
+  display: grid;
+  grid-template-rows: 30px repeat(var(--filas), var(--fila));
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-4);
+}
+.semana__horas span { transform: translateY(-7px); }
+.semana__dias {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.semana__dias::-webkit-scrollbar { display: none; }
+.semana__col { scroll-snap-align: start; border-left: 1px solid var(--ink-3); min-width: 0; }
+.semana__dia {
+  height: 30px;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--ink-4);
+  text-align: center;
+  white-space: nowrap;
+}
+.semana__dia b { text-transform: uppercase; letter-spacing: var(--track-wide); font-weight: 600; }
+.semana__col.is-hoy .semana__dia { color: var(--white); }
+.semana__celdas {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(var(--filas), var(--fila));
+  background-image: repeating-linear-gradient(to bottom, var(--hair-light) 0 1px, transparent 1px calc(var(--fila) * 2));
+}
+.semana__pasado { grid-column: 1; background: rgba(255, 255, 255, 0.025); }
+.semana__b {
+  grid-column: 1;
+  position: relative;
+  z-index: 1;
+  margin: 1px 3px;
+  border-radius: var(--r-chip);
+  padding: 3px 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  overflow: visible;
+  white-space: nowrap;
+}
+.semana__b--ofrecido {
+  color: var(--teal);
+  background: var(--teal-10);
+  outline: 1.5px dashed var(--teal);
+  outline-offset: -1.5px;
+  animation: aparecer 400ms var(--ease-out-expo), latido 1.1s ease-in-out 400ms infinite;
+}
+.semana__b--cita { background: var(--lime); color: var(--ink-0); animation: caer 820ms var(--ease-out-expo); }
+.semana__b--cita::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--lime);
+  border-radius: var(--r-chip);
+  opacity: 0;
+  animation: onda 1s ease-out 150ms;
+  pointer-events: none;
+}
+.semana__b--sale { animation: none; opacity: 0; transition: opacity 300ms ease; }
+.semana__fuera { margin-top: var(--space-3); font-size: var(--text-micro); color: var(--lime); }
+
+/* ============================================================
+   02 · VOZ — llamada en línea
+   ============================================================ */
+
+.llamada {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--space-5);
+}
+.llamada__panel {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.llamada__quien { display: flex; align-items: center; gap: var(--space-3); }
+.llamada__onda {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 132px;
+  margin-block: var(--space-3);
+}
+.llamada__onda span {
+  flex: 1;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--ink-3);
+  transform: scaleY(var(--h, .05));
+  transition: background 300ms ease;
+  will-change: transform;
+}
+.llamada[data-estado="activa"] .llamada__onda span { background: var(--teal); }
+.llamada[data-estado="activa"].is-escucha .llamada__onda span { background: var(--ink-4); }
+.llamada[data-estado="conectando"] .llamada__onda span { background: var(--ink-4); animation: voz-barra 900ms ease-in-out infinite; animation-delay: calc(var(--i) * 30ms); }
+.llamada__estado { font-size: var(--text-cap); color: var(--ink-5); }
+.llamada[data-estado="activa"] .llamada__estado { color: var(--teal); }
+.llamada[data-estado="error"] .llamada__estado { color: var(--alert); }
+.llamada__tiempo { font-size: var(--text-h3); color: var(--white); font-weight: 600; }
+.llamada__max { color: var(--ink-4); font-weight: 500; }
+.llamada__boton { width: 100%; }
+.llamada[data-estado="activa"] .llamada__boton,
+.llamada[data-estado="conectando"] .llamada__boton { background: var(--alert); color: var(--white); }
+.llamada[data-estado="activa"] .llamada__boton:hover,
+.llamada[data-estado="conectando"] .llamada__boton:hover { box-shadow: 0 12px 34px -10px rgba(255, 90, 90, .45); }
+.llamada__nota { font-size: var(--text-micro); color: var(--ink-4); line-height: var(--lh-normal); }
+
+.llamada__lado { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.llamada__trans {
+  flex: 1;
+  min-height: 340px;
+  max-height: 460px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.llamada__vacio { margin: auto; max-width: 30ch; text-align: center; font-size: var(--text-cap); color: var(--ink-4); }
+.linea-voz { max-width: 88%; animation: aparecer 300ms var(--ease-out-expo); }
+.linea-voz__quien { display: block; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--teal); margin-bottom: 2px; }
+.linea-voz p { font-size: var(--text-cap); line-height: var(--lh-normal); color: var(--white); }
+.linea-voz--yo { align-self: flex-end; text-align: right; }
+.linea-voz--yo .linea-voz__quien { color: var(--ink-4); }
+.linea-voz__vivo { color: var(--ink-4); }
+
+.ticket {
+  background: var(--lime);
+  color: var(--ink-0);
+  border-radius: var(--r-card);
+  padding: var(--space-4) var(--space-5);
+  animation: caer 800ms var(--ease-out-expo);
+}
+.ticket__et { font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--track-wide); }
+.ticket__cuando { font-family: var(--font-display); font-weight: 800; font-size: var(--text-h3); letter-spacing: var(--track-tight); margin-top: 2px; }
+
+/* ============================================================
+   03 · REACTIVACIÓN — el campo de clientas
+   ============================================================ */
+
+.reactivar {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr);
+  gap: var(--space-5);
+}
+.reactivar__mandos {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.reactivar__mandos label { font-size: var(--text-cap); color: var(--ink-5); }
+.reactivar__boton { width: 100%; }
+.reactivar__cuenta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4) var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ink-3);
+}
+.reactivar__cuenta dt { font-size: var(--text-micro); color: var(--ink-4); line-height: 1.35; }
+.reactivar__cuenta dd { font-size: var(--text-h3); font-weight: 600; color: var(--white); margin-top: 2px; }
+.reactivar__lima { color: var(--lime) !important; }
+.reactivar__grande { grid-column: 1 / -1; }
+.reactivar__grande dd { font-size: var(--text-h2); }
+.reactivar__campo {
+  background: var(--ink-1);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.reactivar__lienzo { position: relative; flex: 1; min-height: 420px; }
+.reactivar__lienzo canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.reactivar__leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-2) 0;
+  font-size: var(--text-micro);
+  color: var(--ink-4);
+}
+.reactivar__unidad { margin-left: auto; }
+
+/* ============================================================
+   COMPROBADOR · el conector
+   ============================================================ */
+
+.conector { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); font-family: var(--font-mono); font-size: var(--text-micro); }
+.conector__nodo { border: 1px solid var(--ink-3); border-radius: var(--r-pill); padding: 6px 12px; color: var(--white); white-space: nowrap; }
+.conector__nodo--sistema { color: var(--teal); border-color: rgba(50, 217, 160, .3); }
+.conector__linea {
+  position: relative;
+  flex: 1;
+  max-width: 240px;
+  height: 2px;
+  background: var(--ink-3);
+  transform-origin: left;
+  animation: trazar 700ms var(--ease-out-expo);
+}
+@keyframes trazar { from { transform: scaleX(0); } }
+.conector__linea i {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: viaje 1.8s linear infinite;
+}
+.conector__linea i:nth-child(2) { animation-delay: .6s; }
+.conector__linea i:nth-child(3) { animation-delay: 1.2s; }
+@keyframes viaje { from { left: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } to { left: calc(100% - 6px); opacity: 0; } }
+.conector--full .conector__linea { background: var(--lime-40); color: var(--lime); }
+.conector--partial .conector__linea {
+  background: repeating-linear-gradient(90deg, var(--teal) 0 8px, transparent 8px 14px);
+  color: var(--teal);
+}
+.conector--partial .conector__linea i { animation-duration: 2.8s; }
+.conector--none .conector__linea {
+  background: linear-gradient(90deg, var(--ink-3) 0 42%, transparent 42% 58%, var(--ink-3) 58%);
+}
+.conector--none .conector__linea::after {
+  content: '×';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
+  color: var(--alert);
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ============================================================
+   LO QUE NO HACEMOS · lo que el sector promete, tachado a mano
+   ============================================================ */
+
+.promesa { margin-bottom: var(--space-3); }
+.promesa__et { display: block; margin-bottom: 2px; font-size: var(--text-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--paper-muted); }
+.tachable {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-h3);
+  letter-spacing: var(--track-tight);
+  line-height: 1.2;
+  color: var(--paper-ink);
+  transition: color 600ms ease 300ms;
+}
+.tachable svg { position: absolute; left: -6px; top: 50%; width: calc(100% + 12px); height: 22px; transform: translateY(-45%); overflow: visible; pointer-events: none; }
+.tachable path {
+  fill: none;
+  stroke: var(--alert-ink);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--largo, 400);
+  stroke-dashoffset: var(--largo, 400);
+  transition: stroke-dashoffset 750ms cubic-bezier(.65, 0, .25, 1);
+}
+.tachable.is-tachado { color: var(--paper-muted); }
+.tachable--lineas {
+  text-decoration-line: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: transparent;
+  transition: color 600ms ease 300ms, text-decoration-color 500ms ease;
+}
+.tachable--lineas.is-tachado { text-decoration-color: var(--alert-ink); }
+.tachable.is-tachado path { stroke-dashoffset: 0; }
+
+/* ============================================================
+   CÓMO VA · el hilo que une los pasos
+   ============================================================ */
+
+.como-va__grid { position: relative; }
+.como-va__hilo { position: absolute; left: 0; right: 0; top: 0; height: 2px; pointer-events: none; }
+.como-va__hilo i {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.8s var(--ease-out-expo) 200ms;
+}
+.como-va__grid.is-visible .como-va__hilo i { transform: scaleX(1); }
+.como-va__step { position: relative; }
+
+/* ============================================================
+   CIERRE · el mensaje que se escribe solo
+   ============================================================ */
+
+.cierre__escribe { min-height: 50px; margin-bottom: var(--space-5); }
+.cierre__burbuja {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 12px 16px;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--r-card);
+  border-bottom-right-radius: var(--r-chip);
+  font-size: var(--text-cap);
+  color: var(--white);
+}
+.cierre__cursor { width: 2px; height: 1.15em; margin-left: 3px; background: var(--lime); animation: parpadeo 1s steps(1) infinite; }
+
+/* ============================================================
+   NIVEL «ESCRITORIO TOCHO» · animación ligada al scroll, CSS puro
+   (Safari/Firefox sin soporte → se quedan con la aparición normal)
+   ============================================================ */
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .chapter__card {
+      animation: desplegar linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    @keyframes desplegar {
+      from { transform: scale(.93) translateY(48px); border-radius: 72px; }
+      to   { transform: none; border-radius: 32px; }
+    }
+    .como-va__hilo i {
+      transition: none;
+      animation: hilo linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 55%;
+    }
+    @keyframes hilo { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .escenario__num {
+      animation: numero linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+    @keyframes numero { from { color: var(--ink-2); } to { color: var(--lime); } }
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1080px) {
+  .atencion { grid-template-columns: 350px minmax(0, 1fr); }
+  .reactivar { grid-template-columns: 1fr; }
+  .reactivar__lienzo { min-height: 380px; }
+}
+
+@media (max-width: 900px) {
+  :root { --fila: 16px; }
+  .dia__cuerpo { grid-template-columns: 1fr; height: auto; }
+  .dia__feed { height: 330px; justify-content: flex-end; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 56px); mask-image: linear-gradient(to bottom, transparent 0, #000 56px); }
+  .dia__agenda { height: auto; }
+  .dia__cols { grid-template-columns: 30px repeat(3, minmax(0, 1fr)); }
+  .dia__col--pronto { display: none; }
+  .dia.is-viva .ev.is-atras .ev__linea { display: none; }
+  .dia:not(.is-viva) .ev:not(:last-child) .ev__linea { display: none; }
+  /* en móvil los eventos se AÑADEN (entran por abajo del feed de altura fija), no se revelan en su sitio */
+  .dia.is-viva .ev:not(.is-in) { display: none; }
+  .dia.is-viva .ev.is-in { animation: aparecer 500ms var(--ease-out-expo); }
+  .dia__nota { display: none; }
+
+  .escenario__cab, .escenario__cab--der { grid-template-columns: 1fr; gap: var(--space-4); }
+  .escenario__cab--der > div:first-child { order: 0; }
+
+  .atencion { grid-template-columns: 1fr; height: auto; }
+  .movil { height: 560px; }
+  .semana__dias { grid-auto-columns: calc(100% / 3); }
+
+  .llamada { grid-template-columns: 1fr; }
+  .llamada__trans { min-height: 240px; max-height: 340px; }
+
+  .indice { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .dia__barra { padding: var(--space-3) var(--space-4); }
+  .dia__feed { padding-inline: var(--space-4); }
+  .dia__pie { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .movil { height: 540px; border-radius: var(--r-card); }
+  .reactivar__lienzo { min-height: 320px; }
+  .reactivar__mandos, .llamada__panel { padding: var(--space-5); }
+  .conector__linea { max-width: none; }
+  .como-va__hilo { display: none; }
+}
+
+/* ============================================================
+   MOVIMIENTO REDUCIDO — todo en su estado final, quieto
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .burbuja, .escribiendo, .cita-chip, .semana__b--ofrecido, .semana__b--cita, .semana__b--cita::after,
+  .ticket, .linea-voz, .conector__linea, .conector__linea i, .ev__escribe i, .cierre__cursor,
+  .dia__cuando.is-cambia, .caso23.is-llega .caso23__hora { animation: none !important; }
+  .tachable path { transition: none; }
+  [data-letras] .l { opacity: 1; transform: none; transition: none; }
+}

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SeekIA — El asistente de IA que te llena la agenda | Centros de estética</title>
-<meta name="description" content="Pruébalo ahora mismo: el asistente que coge citas por WhatsApp mientras estáis en cabina. Mira huecos reales, ofrece hora y deja la cita puesta. Para centros de estética y belleza.">
+<title>SeekIA — Asistentes de IA que te llenan la agenda | Centros de estética</title>
+<meta name="description" content="Tres asistentes de IA para centros de estética: contestan el WhatsApp, cogen el teléfono y despiertan a las clientas que no vuelven. Pruébalos en directo, aquí mismo.">
 <link rel="canonical" href="https://seekialabs.com/">
 
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -13,8 +13,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SeekIA">
-<meta property="og:title" content="SeekIA — El asistente de IA que te llena la agenda">
-<meta property="og:description" content="Pruébalo ahora mismo: coge citas por WhatsApp mientras estáis en cabina. Mira huecos reales, ofrece hora y deja la cita puesta.">
+<meta property="og:title" content="SeekIA — Asistentes de IA que te llenan la agenda">
+<meta property="og:description" content="Contestan el WhatsApp, cogen el teléfono y despiertan a las clientas dormidas. Pruébalos en directo.">
 <meta property="og:image" content="https://seekialabs.com/assets/og.png">
 <meta property="og:url" content="https://seekialabs.com/">
 <meta property="og:locale" content="es_ES">
@@ -22,16 +22,13 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://paneln8n.seekialabs.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
 
 <link rel="stylesheet" href="css/tokens.css?v=18">
 <link rel="stylesheet" href="css/base.css?v=17">
 <link rel="stylesheet" href="css/secciones.css?v=17">
-<link rel="stylesheet" href="css/chat-theme.css?v=17">
-<link rel="stylesheet" href="css/voz.css?v=14">
+<link rel="stylesheet" href="css/v4.css?v=1">
 
 <script type="application/ld+json">
 {
@@ -40,7 +37,7 @@
   "name": "SeekIA",
   "url": "https://seekialabs.com/",
   "image": "https://seekialabs.com/assets/og.png",
-  "description": "Asistente de IA que coge citas por WhatsApp y por teléfono 24/7 para centros de estética: mira la agenda, ofrece hora y deja la cita puesta.",
+  "description": "Asistentes de IA para centros de estética: contestan WhatsApp y teléfono 24/7, dejan la cita puesta en la agenda y reactivan a las clientas que no vuelven.",
   "areaServed": "ES",
   "address": { "@type": "PostalAddress", "addressLocality": "Donostia-San Sebastián", "addressCountry": "ES" },
   "email": "julen@seekialabs.com",
@@ -60,7 +57,7 @@
 }
 </script>
 </head>
-<body>
+<body class="v4">
 <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
 <header class="site-header" id="site-header">
@@ -71,8 +68,9 @@
     </a>
     <nav class="site-nav" aria-label="Principal">
       <div class="site-nav__links">
-        <a href="#probador-seccion">Pruébalo</a>
-        <a href="#servicios">Servicios</a>
+        <a href="#atencion">WhatsApp</a>
+        <a href="#voz">Voz</a>
+        <a href="#reactivacion">Reactivación</a>
         <a href="#software">Tu software</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -85,8 +83,9 @@
 </header>
 
 <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-  <a href="#probador-seccion">Pruébalo</a>
-  <a href="#servicios">Servicios</a>
+  <a href="#atencion">WhatsApp</a>
+  <a href="#voz">Voz</a>
+  <a href="#reactivacion">Reactivación</a>
   <a href="#software">Tu software</a>
   <a href="#faq">FAQ</a>
   <a href="#cierre" class="btn btn--primary" style="margin-top:12px;">Pedir demo</a>
@@ -94,95 +93,118 @@
 
 <main id="contenido">
 
-  <!-- ============ HERO — tierra seca ============ -->
-  <section class="hero" id="inicio">
+  <!-- ============ HERO — un día en la agenda, tres formas de llenarla ============ -->
+  <section class="hero hero--v4" id="inicio">
     <div class="wrap">
       <span class="eyebrow" data-reveal>IA para centros de estética</span>
-      <h1 class="hero__title" data-reveal data-reveal-delay="1">
+      <h1 class="hero__title" data-letras>
         De la agenda seca<br><span class="text-lime">a la agenda llena.</span>
       </h1>
 
       <div class="hero__intro">
         <p class="hero__lead" data-reveal data-reveal-delay="2">
-          Coge citas por WhatsApp mientras estáis en cabina: mira los huecos reales,
-          ofrece hora y deja la cita puesta.
+          Tres asistentes que trabajan mientras estáis en cabina: contestan el WhatsApp,
+          cogen el teléfono y despiertan a las clientas que no vuelven.
+          Lo monto yo y lo revisamos juntos.
         </p>
         <div class="hero__ctas" data-reveal data-reveal-delay="3">
-          <button class="btn btn--primary" type="button" data-voice-trigger data-voice-vertical="estetica">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
-            Llámalo y habla con él
-          </button>
-          <a href="#servicios" class="btn btn--ghost">Ver los 3 servicios</a>
+          <a href="#atencion" class="btn btn--primary">Pruébalo en directo ↓</a>
+          <a href="#fundador" class="btn btn--ghost">Quién lo monta</a>
         </div>
       </div>
 
-      <div class="hero__meta" data-reveal data-reveal-delay="4">
-        <div class="barras" aria-hidden="true">
-          <span style="height:18%"></span><span style="height:12%"></span><span style="height:24%"></span>
-          <span style="height:14%"></span><span style="height:9%"></span><span style="height:20%"></span>
-          <span style="height:11%"></span><span style="height:16%"></span><span style="height:8%"></span>
-          <span style="height:13%"></span><span style="height:10%"></span><span style="height:19%"></span>
-          <span class="on" style="height:46%"></span><span style="height:12%"></span>
+      <!-- La escena: estado final en el HTML (sin JS o con movimiento reducido se ve así, quieta).
+           El JS la vacía y la anima en bucle. Es una recreación, y lo dice. -->
+      <div class="dia" id="escena-dia" data-reveal data-reveal-delay="3">
+        <div class="dia__barra">
+          <p class="dia__reloj mono">
+            <span class="dia__cuando"><b class="dia__dia">martes</b> <span class="dia__hora">14:10</span></span>
+            <span class="dia__chip" data-tono="alerta">en cabina</span>
+          </p>
+          <p class="dia__nota mono">recreación de un día normal · las demos de abajo son reales ↓</p>
         </div>
-        <p class="hero__proof mono">
-          La agenda de un centro que no contesta fuera de horario.<br>
-          <strong>DO Belleza</strong> · Donosti · en producción real desde sept. 2026
-        </p>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ EL PROBADOR — la demo se lleva su propia pantalla ============ -->
-  <section class="probador-seccion" id="probador-seccion">
-    <div class="wrap">
-      <div class="probador-seccion__head">
-        <div>
-          <span class="eyebrow" data-reveal>Pruébalo tú</span>
-          <h2 data-reveal data-reveal-delay="1">Esto no es una maqueta.</h2>
-        </div>
-        <p data-reveal data-reveal-delay="2">
-          Es el asistente real, el mismo que atiende a clientas de verdad. Escríbele como si
-          fueras una clienta, pídele cita y mira cómo aterriza en la agenda de la derecha.
-        </p>
-      </div>
-
-      <div class="probador" id="probador" data-reveal data-reveal-delay="2" data-probador-status="idle">
-          <div class="probador__chat">
-            <div class="probador__chat-head">
-              <div class="probador__who">
-                <span class="probador__avatar" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c-4.97 0-9-3.8-9-8.5S7.03 4 12 4s9 3.8 9 8.5c0 1.6-.47 3.1-1.3 4.36L21 21l-4.4-1.2A9.3 9.3 0 0112 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-                </span>
-                <div>
-                  <div class="probador__who-name">Centro Aura</div>
-                  <div class="probador__who-sub mono">demo · estética</div>
-                </div>
+        <div class="dia__cuerpo">
+          <ol class="dia__feed">
+            <li class="ev ev--wa" data-paso="1">
+              <span class="ev__icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c-4.97 0-9-3.8-9-8.5S7.03 4 12 4s9 3.8 9 8.5c0 1.6-.47 3.1-1.3 4.36L21 21l-4.4-1.2A9.3 9.3 0 0112 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="ev__txt">
+                <p class="ev__meta mono"><time>lun · 23:07</time> WhatsApp con el centro cerrado <a href="#atencion" class="ev__ir">probar ↓</a></p>
+                <p class="ev__linea">«¿Tenéis hueco el jueves por la tarde?»</p>
+                <p class="ev__escribe mono" aria-hidden="true"><i></i><i></i><i></i> contestando</p>
+                <p class="ev__res mono">→ jueves 17:30 · limpieza facial · cita puesta</p>
               </div>
-              <div class="probador-status" data-probador-status="idle">
-                <span class="probador-status__dot" aria-hidden="true"></span>
-                <span class="probador-status__label">en línea</span>
+            </li>
+            <li class="ev ev--julen" data-paso="2">
+              <span class="ev__icono ev__icono--foto" aria-hidden="true"><img src="assets/julen.jpg" alt="" width="34" height="34" loading="lazy"></span>
+              <div class="ev__txt">
+                <p class="ev__meta mono"><time>mar · 09:00</time> Julen repasa la noche <a href="#fundador" class="ev__ir">quién ↓</a></p>
+                <p class="ev__linea">Lee las conversaciones y afina una respuesta. Tú no tocas nada.</p>
+                <p class="ev__res mono">→ 1 ajuste · 0 errores</p>
               </div>
-            </div>
-            <div id="probador-chat" class="probador__chat-embed" role="group" aria-label="Chat de prueba con el asistente de Centro Aura"></div>
-            <div class="probador__suggestions">
-              <button class="suggestion-chip" type="button" data-suggested-prompt="Hola, quiero pedir cita para mañana por la tarde, ¿qué horas tenéis libres?">Pídele cita →</button>
-              <button class="suggestion-chip" type="button" data-suggested-prompt="¿Cuánto cuesta una limpieza facial?">Pregúntale el precio →</button>
-              <button class="suggestion-chip" type="button" data-suggested-prompt="Perdona que escriba tan tarde, ¿tenéis hueco este fin de semana?">Escríbele a las 23:40 →</button>
+            </li>
+            <li class="ev ev--react" data-paso="3">
+              <span class="ev__icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1014-5.3M18 3v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="ev__txt">
+                <p class="ev__meta mono"><time>mar · 11:30</time> Reactivación <a href="#reactivacion" class="ev__ir">simular ↓</a></p>
+                <p class="ev__linea">«Laura, hace 4 meses que no te vemos…» — «¡Sí! ¿El viernes a las 11?»</p>
+                <p class="ev__escribe mono" aria-hidden="true"><i></i><i></i><i></i> Laura escribe</p>
+                <p class="ev__res mono">→ viernes 11:00 · Laura vuelve</p>
+              </div>
+            </li>
+            <li class="ev ev--voz" data-paso="4">
+              <span class="ev__icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="ev__txt">
+                <p class="ev__meta mono"><time>mar · 14:10</time> Llamada mientras estáis en cabina <a href="#voz" class="ev__ir">llamar ↓</a></p>
+                <p class="ev__linea">Contesta al segundo tono, con voz natural.</p>
+                <p class="ev__escribe ev__escribe--voz mono" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i> en llamada</p>
+                <p class="ev__res mono">→ miércoles 18:00 · manicura · cita puesta</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="dia__agenda" aria-hidden="true">
+            <div class="dia__cols">
+              <div class="dia__horas">
+                <span style="grid-row:1">10</span><span style="grid-row:5">12</span><span style="grid-row:9">14</span><span style="grid-row:13">16</span><span style="grid-row:17">18</span>
+              </div>
+              <div class="dia__col dia__col--pronto"><p class="dia__d">lun</p><div class="dia__c">
+                <i class="b" style="grid-row:1/span 2"></i><i class="b" style="grid-row:5/span 3"></i><i class="b" style="grid-row:13/span 2"></i><i class="b" style="grid-row:17/span 3"></i>
+              </div></div>
+              <div class="dia__col dia__col--pronto"><p class="dia__d">mar</p><div class="dia__c">
+                <i class="b" style="grid-row:2/span 3"></i><i class="b" style="grid-row:8/span 2"></i><i class="b" style="grid-row:11/span 2"></i><i class="b" style="grid-row:18/span 2"></i>
+              </div></div>
+              <div class="dia__col"><p class="dia__d">mié</p><div class="dia__c">
+                <i class="b" style="grid-row:3/span 2"></i><i class="b" style="grid-row:7/span 2"></i><i class="b" style="grid-row:14/span 3"></i>
+                <i class="b b--cita" data-paso="4" style="grid-row:17/span 2"><span>18:00</span></i>
+              </div></div>
+              <div class="dia__col"><p class="dia__d">jue</p><div class="dia__c">
+                <i class="b" style="grid-row:1/span 3"></i><i class="b" style="grid-row:7/span 3"></i><i class="b" style="grid-row:13/span 3"></i><i class="b" style="grid-row:19/span 2"></i>
+                <i class="b b--cita" data-paso="1" style="grid-row:16/span 2"><span>17:30</span></i>
+              </div></div>
+              <div class="dia__col"><p class="dia__d">vie</p><div class="dia__c">
+                <i class="b" style="grid-row:5/span 2"></i><i class="b" style="grid-row:12/span 3"></i><i class="b" style="grid-row:17/span 2"></i>
+                <i class="b b--cita" data-paso="3" style="grid-row:3/span 2"><span>11:00</span></i>
+              </div></div>
             </div>
           </div>
+        </div>
 
-          <div class="probador__agenda">
-            <div class="agenda__head">
-              <span>Agenda · Centro Aura</span>
-              <span class="agenda__legend">● cita de esta conversación</span>
-            </div>
-            <ul class="agenda__list" id="agenda-list" aria-live="polite"></ul>
-          <div class="probador__voice">
-            <div class="probador__voice-label mono">¿prefieres oírlo?</div>
-            <button class="btn btn--ghost btn--sm" type="button" style="width:100%;" data-voice-trigger data-voice-vertical="estetica">
-              Llamar por voz
-            </button>
+        <div class="dia__pie">
+          <div class="barras dia__barras" aria-hidden="true">
+            <span class="on" style="height:58%"></span><span class="on" style="height:84%"></span><span class="on" style="height:47%"></span>
+            <span class="on" style="height:96%"></span><span class="on" style="height:69%"></span><span class="on" style="height:80%"></span>
+            <span class="on" style="height:52%"></span><span class="on" style="height:90%"></span><span class="on" style="height:64%"></span>
+            <span class="on" style="height:76%"></span><span class="on" style="height:55%"></span><span class="on" style="height:88%"></span>
+            <span class="on" style="height:71%"></span><span class="on" style="height:60%"></span>
           </div>
+          <p class="dia__total mono"><b class="dia__n">3</b> citas nuevas sin coger el móvil · 0 mensajes sin contestar</p>
         </div>
       </div>
     </div>
@@ -196,12 +218,12 @@
         <span class="registro__label mono">respuesta media de la demo</span>
       </div>
       <div class="registro__item">
-        <span class="registro__value mono">95</span>
+        <span class="registro__value mono" data-contar="95">95</span>
         <span class="registro__label mono">conversaciones reales analizadas</span>
       </div>
       <div class="registro__item">
         <span class="registro__value mono">sept. 2026</span>
-        <span class="registro__label mono">primer cliente en producción real</span>
+        <span class="registro__label mono">primeros centros poniéndolo en marcha</span>
       </div>
     </div>
   </section>
@@ -217,8 +239,12 @@
           </h2>
         </div>
 
-        <blockquote class="sequia__case" data-reveal data-reveal-delay="2">
-          <span class="sequia__case-time mono">23:07</span>
+        <blockquote class="sequia__case caso23" id="caso23" data-reveal data-reveal-delay="2">
+          <p class="caso23__reloj mono" aria-hidden="true"><span class="caso23__hora">23:07</span><span class="caso23__cerrado">cerrado desde las 20:00</span></p>
+          <div class="caso23__msg" aria-hidden="true">
+            <span class="caso23__burbuja">Hola! ¿Tenéis hueco esta semana?</span>
+            <span class="caso23__visto mono">entregado · sin respuesta</span>
+          </div>
           <p>Una clienta escribe a un centro real pidiendo cita. El centro cerró a las 20:00.
           Sin asistente, esa conversación se lee al día siguiente — si se lee.</p>
           <footer class="mono">caso real · no se nombra el centro por privacidad</footer>
@@ -260,110 +286,171 @@
     </div>
   </section>
 
-  <!-- ============ SERVICIOS (molde: center) ============ -->
-  <section class="servicios section" id="servicios">
+  <!-- ============ SERVICIOS — tres escenarios, cada uno con su prueba ============ -->
+  <section class="servicios servicios--v4 section section--tight" id="servicios">
     <div class="wrap">
       <div class="head head--center">
         <span class="eyebrow" data-reveal>Lo que hacemos</span>
         <h2 class="t-h1" data-reveal data-reveal-delay="1">Un asistente. Tres formas de llenar la agenda.</h2>
-        <p class="lead" data-reveal data-reveal-delay="2">Cada tarjeta tiene su prueba al lado. No hay que creerse nada, solo probarlo.</p>
+        <p class="lead" data-reveal data-reveal-delay="2">No hay que creerse nada: las dos primeras son demos reales y la tercera, una simulación con cuentas honestas.</p>
+      </div>
+      <nav class="indice" aria-label="Los tres servicios" data-reveal data-reveal-delay="2">
+        <a href="#atencion" class="indice__item"><span class="mono">01</span> WhatsApp <em class="mono">demo real</em></a>
+        <a href="#voz" class="indice__item"><span class="mono">02</span> Voz <em class="mono">llamada real</em></a>
+        <a href="#reactivacion" class="indice__item"><span class="mono">03</span> Reactivación <em class="mono">simulación</em></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ 01 · ATENCIÓN (WhatsApp) — demo REAL ============ -->
+  <section class="escenario section" id="atencion">
+    <div class="wrap">
+      <div class="escenario__cab">
+        <div>
+          <p class="escenario__marca" data-reveal><span class="escenario__num mono">01</span><span class="insignia insignia--lima">Disponible</span></p>
+          <h2 class="escenario__titulo" data-reveal data-reveal-delay="1">Contesta el WhatsApp mientras estáis en cabina.</h2>
+        </div>
+        <div class="escenario__txt" data-reveal data-reveal-delay="2">
+          <p>Resuelve precios y horarios, entiende texto y notas de voz, y deja la cita puesta en tu agenda. <strong>Pruébalo ahora: escríbele como si fueras una clienta</strong> y mira cómo la cita aterriza a la derecha.</p>
+          <ul class="escenario__rasgos mono">
+            <li>texto y audio</li><li>tus precios y servicios</li><li>recordatorios</li><li>tu mismo número</li><li>tú decides si confirma solo</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="servicios__grid">
-        <article class="servicio-card" data-reveal>
-          <div class="servicio-card__top">
-            <span class="servicio-card__badge">En producción real</span>
-            <svg class="servicio-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21c-4.97 0-9-3.8-9-8.5S7.03 4 12 4s9 3.8 9 8.5c0 1.6-.47 3.1-1.3 4.36L21 21l-4.4-1.2A9.3 9.3 0 0112 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8.5" cy="12.5" r="1" fill="currentColor"/><circle cx="12" cy="12.5" r="1" fill="currentColor"/><circle cx="15.5" cy="12.5" r="1" fill="currentColor"/></svg>
+      <div class="atencion" id="atencion-demo" data-reveal data-reveal-delay="2">
+        <div class="movil" role="group" aria-label="Chat de prueba con el asistente de Centro Aura">
+          <div class="movil__cab">
+            <span class="movil__avatar" aria-hidden="true">A</span>
+            <div class="movil__quien">
+              <p class="movil__nombre">Centro Aura</p>
+              <p class="movil__estado mono" id="atencion-estado" data-estado="linea">en línea</p>
+            </div>
+            <span class="movil__demo mono">demo real</span>
           </div>
-          <h3>Asistente de Atención</h3>
-          <p class="servicio-card__desc">Atiende WhatsApp 24/7: resuelve precio y horario, entiende texto y notas de voz, y deja la cita puesta. Tú decides si propone la hora o si la confirmas tú.</p>
-          <ul class="servicio-card__features">
-            <li>Entiende texto y audio</li>
-            <li>Conoce tus precios y servicios</li>
-            <li>Recordatorios automáticos</li>
-            <li>Sin cambiar tu número de WhatsApp</li>
-          </ul>
-          <a href="#probador" class="btn btn--ghost btn--sm servicio-card__cta">Pruébalo arriba ↑</a>
-        </article>
+          <div class="movil__msgs" id="atencion-msgs" role="log" aria-live="polite" aria-label="Conversación">
+            <div class="burbuja burbuja--bot">Hola! Soy Sara, del Centro Aura. ¿Quieres pedir cita o te cuento algún tratamiento?<span class="burbuja__hora mono">ahora</span></div>
+          </div>
+          <div class="movil__chips" id="atencion-chips">
+            <button type="button" class="chip" data-prompt="Hola, quiero pedir cita para mañana por la tarde, ¿qué horas tenéis libres?">Pídele cita</button>
+            <button type="button" class="chip" data-prompt="¿Cuánto cuesta una limpieza facial?">Pregúntale el precio</button>
+            <button type="button" class="chip" data-prompt="Perdona que escriba tan tarde, ¿tenéis hueco este fin de semana?">Escríbele a las 23:40</button>
+          </div>
+          <form class="movil__form" id="atencion-form" autocomplete="off">
+            <label class="sr-only" for="atencion-input">Tu mensaje</label>
+            <textarea id="atencion-input" rows="1" placeholder="Escríbele como una clienta…" maxlength="500"></textarea>
+            <button type="submit" class="movil__enviar" aria-label="Enviar mensaje">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
 
-        <article class="servicio-card servicio-card--featured" data-reveal data-reveal-delay="1">
-          <div class="servicio-card__top">
-            <span class="servicio-card__badge servicio-card__badge--lime">Disponible</span>
-            <svg class="servicio-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="2.5" width="8" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M5 12a7 7 0 0014 0M12 19v3M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Asistente de Voz</h3>
-          <p class="servicio-card__desc">Coge el teléfono en voz natural, 24/7. Nunca comunica, nunca está de mal humor, y deja la cita puesta en la agenda aunque sean las doce de la noche.</p>
-          <ul class="servicio-card__features">
-            <li>Voz natural en español</li>
-            <li>Deja la cita en tu agenda real</li>
-            <li>Para centros que reciben más llamadas que mensajes</li>
-            <li>Combínalo con el asistente de WhatsApp</li>
-          </ul>
-          <button class="btn btn--primary btn--sm servicio-card__cta" type="button" data-voice-trigger data-voice-vertical="estetica">Llamar al asistente ahora</button>
-        </article>
+        <div class="semana" id="atencion-agenda" role="region" aria-label="Agenda de prueba de Centro Aura">
+          <!-- la pinta agenda.js con los días reales de esta semana -->
+        </div>
+      </div>
+      <p class="escenario__nota mono">Es el asistente de demostración de Centro Aura, conectado a una agenda de prueba. Solo marca una cita cuando él la confirma: si ofrece horas, las verás latir; si la deja puesta, cae.</p>
+    </div>
+  </section>
 
-        <article class="servicio-card" data-reveal data-reveal-delay="2">
-          <div class="servicio-card__top">
-            <span class="servicio-card__badge">Prueba 14 días</span>
-            <svg class="servicio-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1014-5.3M18 3v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Reactivación de clientas</h3>
-          <p class="servicio-card__desc">Escribimos a tus clientas dormidas en tu nombre y las ponemos a reservar otra vez. No arriesgas nada: solo pagas por cita que se presenta.</p>
-          <ul class="servicio-card__features">
-            <li>0€ si no hay citas que se presenten</li>
-            <li>Panel con € recuperado en vivo</li>
-            <li>Acuerdo de tratamiento de datos firmado</li>
-            <li>Prueba de 14 días</li>
+  <!-- ============ 02 · VOZ — llamada REAL ============ -->
+  <section class="escenario escenario--voz section" id="voz">
+    <div class="wrap">
+      <div class="escenario__cab escenario__cab--der">
+        <div>
+          <p class="escenario__marca" data-reveal><span class="escenario__num mono">02</span><span class="insignia insignia--lima">Disponible</span></p>
+          <h2 class="escenario__titulo" data-reveal data-reveal-delay="1">Coge el teléfono cuando nadie puede.</h2>
+        </div>
+        <div class="escenario__txt" data-reveal data-reveal-delay="2">
+          <p>Voz natural en español, 24/7. Nunca comunica, nunca tiene un mal día y deja la cita puesta aunque sean las doce de la noche. <strong>Llámalo desde aquí:</strong> se corta solo al minuto.</p>
+          <ul class="escenario__rasgos mono">
+            <li>voz natural</li><li>deja la cita en tu agenda</li><li>para centros con más llamadas que mensajes</li>
           </ul>
-          <a href="#calculadora" class="btn btn--ghost btn--sm servicio-card__cta">Calcula lo que tienes dormido ↓</a>
-        </article>
+        </div>
+      </div>
+
+      <div class="llamada" id="llamada" data-estado="reposo" data-reveal data-reveal-delay="2">
+        <div class="llamada__panel">
+          <div class="llamada__quien">
+            <span class="movil__avatar" aria-hidden="true">S</span>
+            <div>
+              <p class="movil__nombre">Sara · Centro Aura</p>
+              <p class="movil__estado mono">asistente de voz · demo</p>
+            </div>
+          </div>
+          <div class="llamada__onda" id="llamada-onda" aria-hidden="true"></div>
+          <p class="llamada__estado mono" id="llamada-estado" aria-live="polite">lista para hablar</p>
+          <p class="llamada__tiempo mono"><span id="llamada-tiempo">00:00</span> <span class="llamada__max">/ 01:00</span></p>
+          <button class="btn btn--primary llamada__boton" id="llamada-boton" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+            <span class="llamada__boton-txt">Llamar ahora</span>
+          </button>
+          <p class="llamada__nota">Usa el micrófono del navegador. Pídele cita como si fueras una clienta.</p>
+        </div>
+        <div class="llamada__lado">
+          <div class="llamada__trans" id="llamada-trans" role="log" aria-live="polite" aria-label="Transcripción de la llamada">
+            <p class="llamada__vacio">Aquí aparece la conversación en directo, palabra a palabra.</p>
+          </div>
+          <div class="ticket" id="llamada-ticket" hidden>
+            <span class="ticket__et mono">cita puesta por teléfono</span>
+            <p class="ticket__cuando" id="llamada-ticket-cuando"></p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CUÁNTO TIENES DORMIDO — idea propia, pantalla propia ============ -->
-  <section class="calculadora-seccion section section--tight" id="calculadora-seccion">
+  <!-- ============ 03 · REACTIVACIÓN — simulación con las cuentas de siempre ============ -->
+  <section class="escenario escenario--react section" id="reactivacion">
     <div class="wrap">
-      <div class="head head--split">
-        <span class="eyebrow" data-reveal>Cuánto tienes dormido</span>
-        <h2 data-reveal data-reveal-delay="1">Muévelo y mira tu número.</h2>
+      <div class="escenario__cab">
+        <div>
+          <p class="escenario__marca" data-reveal><span class="escenario__num mono">03</span><span class="insignia">Prueba 14 días</span></p>
+          <h2 class="escenario__titulo" data-reveal data-reveal-delay="1">Despierta a las clientas que no vuelven.</h2>
+        </div>
+        <div class="escenario__txt" data-reveal data-reveal-delay="2">
+          <p>Escribimos en tu nombre a quien lleva meses sin venir y la ponemos a reservar otra vez. <strong>Solo pagas por cita que se presenta.</strong> Mueve los números de tu centro y pulsa enviar.</p>
+          <ul class="escenario__rasgos mono">
+            <li>0€ si no hay citas</li><li>panel con € recuperado</li><li>acuerdo RGPD firmado</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="calculadora" id="calculadora" data-reveal>
-        <div class="calculadora__inputs">
+      <div class="reactivar" id="reactivar" data-reveal data-reveal-delay="2">
+        <div class="reactivar__mandos">
           <div class="calculadora__field">
             <div class="calculadora__field-head">
-              <span>Clientas en tu base de datos</span>
-              <span class="mono calculadora__field-value" id="calc-pacientes-out">1.500</span>
+              <label for="r-clientas">Clientas en tu base de datos</label>
+              <span class="mono calculadora__field-value" id="r-clientas-out">1.500</span>
             </div>
-            <input type="range" id="calc-pacientes" min="300" max="6000" step="100" value="1500" aria-label="Número de clientas">
+            <input type="range" id="r-clientas" min="300" max="6000" step="100" value="1500">
           </div>
           <div class="calculadora__field">
             <div class="calculadora__field-head">
-              <span>Ticket medio por visita</span>
-              <span class="mono calculadora__field-value" id="calc-ticket-out">80€</span>
+              <label for="r-ticket">Ticket medio por visita</label>
+              <span class="mono calculadora__field-value" id="r-ticket-out">80€</span>
             </div>
-            <input type="range" id="calc-ticket" min="40" max="600" step="10" value="80" aria-label="Ticket medio">
+            <input type="range" id="r-ticket" min="40" max="600" step="10" value="80">
           </div>
+          <button class="btn btn--primary reactivar__boton" id="reactivar-boton" type="button">Enviar la reactivación</button>
+          <dl class="reactivar__cuenta">
+            <div><dt>clientas dormidas (~20%)</dt><dd class="mono" id="r-dormidas">300</dd></div>
+            <div><dt>responden y reagendan</dt><dd class="mono" id="r-responden">15</dd></div>
+            <div><dt>citas que se presentan</dt><dd class="mono reactivar__lima" id="r-citas">~10</dd></div>
+            <div class="reactivar__grande"><dt>recuperados para tu centro</dt><dd class="mono reactivar__lima" id="r-euros">800€</dd></div>
+          </dl>
         </div>
-        <div class="calculadora__output">
-          <div class="calculadora__stat">
-            <span class="mono calculadora__stat-value" id="calc-inactivos">300</span>
-            <span class="calculadora__stat-label">clientas dormidas (~20%)</span>
+        <div class="reactivar__campo">
+          <div class="reactivar__lienzo">
+            <canvas id="reactivar-canvas" role="img" aria-label="Simulación: tus clientas como puntos. Las dormidas en rojo; al enviar, algunas responden y vuelven a la agenda."></canvas>
           </div>
-          <div class="calculadora__arrow" aria-hidden="true">→</div>
-          <div class="calculadora__stat">
-            <span class="mono calculadora__stat-value calculadora__stat-value--lime" id="calc-citas">~10</span>
-            <span class="calculadora__stat-label">citas recuperadas</span>
-          </div>
-          <div class="calculadora__arrow" aria-hidden="true">→</div>
-          <div class="calculadora__stat calculadora__stat--big">
-            <span class="mono calculadora__stat-value" id="calc-revenue">800€</span>
-            <span class="calculadora__stat-label">recuperados para tu centro</span>
-          </div>
+          <p class="reactivar__leyenda mono" aria-hidden="true">
+            <span class="ley ley--activa">activa</span><span class="ley ley--dormida">dormida</span><span class="ley ley--responde">responde</span><span class="ley ley--vuelve">vuelve</span>
+            <span class="reactivar__unidad" id="r-unidad">1 punto = 1 clienta</span>
+          </p>
         </div>
-        <p class="calculadora__disclaimer">Cifras ilustrativas a partir de tasas medias del sector (≈5% reagenda, ≈70% se presenta). No son una garantía — varían según lo trabajada que esté tu lista.</p>
       </div>
+      <p class="calculadora__disclaimer">Simulación con tasas medias del sector (≈5% responde y reagenda, ≈70% de esas citas se presenta). No es una garantía: varía según lo trabajada que esté tu lista.</p>
     </div>
   </section>
 
@@ -386,8 +473,8 @@
         <div class="control__demo" data-reveal data-reveal-delay="1">
           <div class="control__transcript">
             <div class="control__bubble control__bubble--user">Hola, quiero una cita para el jueves</div>
-            <div class="control__bubble control__bubble--bot" data-mode-text="auto">¡Perfecto! Tengo hueco el jueves a las 17:30. Te la dejo puesta 👍</div>
-            <div class="control__bubble control__bubble--bot" data-mode-text="manual" hidden>¡Genial! Tengo el jueves a las 17:30 libre. Se lo paso al equipo y te lo confirman en nada.</div>
+            <div class="control__bubble control__bubble--bot" data-mode-text="auto">Tengo hueco el jueves a las 17:30. Te la dejo puesta.</div>
+            <div class="control__bubble control__bubble--bot" data-mode-text="manual" hidden>Tengo el jueves a las 17:30 libre. Se lo paso al equipo y te lo confirman en nada.</div>
           </div>
           <div class="control__internal" data-mode-text="manual" hidden>
             <span class="control__internal-dot" aria-hidden="true"></span>
@@ -414,30 +501,30 @@
     </div>
   </section>
 
-  <!-- ============ LO QUE NO HACEMOS — tarjeta de papel sobre el lienzo oscuro ============ -->
+  <!-- ============ LO QUE NO HACEMOS — lo que el sector promete, tachado ============ -->
   <section class="chapter" id="honestidad">
     <div class="chapter__card on-paper">
       <div class="wrap">
         <div class="head head--center" data-reveal>
           <span class="eyebrow">Honestidad, no relleno</span>
           <h2 class="t-h1">Lo que NO hacemos.</h2>
-          <p class="lead">El sector promete de más. Preferimos que sepas exactamente dónde está el límite antes de pagar, no después.</p>
+          <p class="lead">El sector promete de más. Tachamos lo que no es verdad antes de que pagues, no después.</p>
         </div>
         <div class="honestidad__grid">
           <div class="honestidad__item" data-reveal>
-            <span class="honestidad__mark">01 · no</span>
+            <p class="promesa"><span class="promesa__et mono">se suele prometer</span> <span class="tachable">«Sustituye a tu recepcionista»</span></p>
             <p><strong>No sustituimos a tu equipo.</strong> El asistente coge lo que se escapa fuera de horario o con las manos ocupadas — no reemplaza a quien ya atiende bien.</p>
           </div>
           <div class="honestidad__item" data-reveal data-reveal-delay="1">
-            <span class="honestidad__mark">02 · no</span>
+            <p class="promesa"><span class="promesa__et mono">se suele prometer</span> <span class="tachable">«Llamamos a toda tu base de datos»</span></p>
             <p><strong>No llamamos en frío a tus clientas.</strong> Es ilegal en España sin consentimiento previo (art. 66.1.a LGT). La reactivación siempre parte de tu base de datos y tu autorización.</p>
           </div>
           <div class="honestidad__item" data-reveal data-reveal-delay="2">
-            <span class="honestidad__mark">03 · no</span>
+            <p class="promesa"><span class="promesa__et mono">se suele prometer</span> <span class="tachable">«Se conecta con cualquier programa»</span></p>
             <p><strong>No prometemos integración con software cerrado.</strong> Si tu agenda no da API, te lo decimos antes de cobrar — no después. Compruébalo arriba.</p>
           </div>
           <div class="honestidad__item" data-reveal data-reveal-delay="3">
-            <span class="honestidad__mark">04 · no</span>
+            <p class="promesa"><span class="promesa__et mono">se suele prometer</span> <span class="tachable">«Gratis»</span></p>
             <p><strong>No decimos "gratis".</strong> En reactivación, "sin riesgo" significa que solo pagas por cita que se presenta. Nunca prometemos algo que luego cuesta.</p>
           </div>
         </div>
@@ -453,6 +540,7 @@
         <h2 data-reveal data-reveal-delay="1">Tres pasos. Plazo real, no promesas.</h2>
       </div>
       <div class="como-va__grid">
+        <div class="como-va__hilo" aria-hidden="true"><i></i></div>
         <div class="como-va__step" data-reveal>
           <span class="como-va__num mono">01</span>
           <h3>15 minutos de llamada</h3>
@@ -499,7 +587,7 @@
           </details>
           <details class="faq-item">
             <summary>¿El asistente de voz suena robótico?</summary>
-            <p>No. Usa una voz natural en español que la mayoría no distingue de una persona en los primeros segundos. Pruébala ahí arriba y lo compruebas en diez segundos.</p>
+            <p>No. Usa una voz natural en español que la mayoría no distingue de una persona en los primeros segundos. Llámalo ahí arriba y lo compruebas en diez segundos.</p>
           </details>
           <details class="faq-item">
             <summary>¿Es legal escribir a mis clientas dormidas?</summary>
@@ -538,14 +626,17 @@
     <img class="cierre__cactus" src="assets/logo-cactus.png" alt="" aria-hidden="true">
     <div class="wrap cierre__inner">
       <span class="eyebrow" data-reveal>El siguiente paso</span>
-      <h2 data-reveal data-reveal-delay="1">Tu agenda,<br><span class="text-lime">más llena mañana.</span></h2>
+      <h2 data-letras>Tu agenda,<br><span class="text-lime">más llena mañana.</span></h2>
       <p class="cierre__lead" data-reveal data-reveal-delay="2">15 minutos por teléfono: qué software usáis, qué se os escapa hoy y si esto os encaja. En esa llamada no hay que decidir nada.</p>
+      <div class="cierre__escribe" id="cierre-escribe" aria-hidden="true">
+        <span class="cierre__burbuja"><span class="cierre__texto" data-texto="Hola Julen, quiero ver cómo funcionaría en mi centro.">Hola Julen, quiero ver cómo funcionaría en mi centro.</span><span class="cierre__cursor"></span></span>
+      </div>
       <div class="cierre__ctas" data-reveal data-reveal-delay="3">
         <a href="https://wa.me/34621071382?text=Hola%2C%20quiero%20pedir%20una%20demo%20de%20SeekIA" class="btn btn--primary">Hablar por WhatsApp</a>
         <a href="mailto:julen@seekialabs.com" class="btn btn--ghost">Enviar un email</a>
       </div>
       <div class="cierre__barras" data-reveal data-reveal-delay="4">
-        <div class="barras" aria-hidden="true">
+        <div class="barras" id="cierre-barras" aria-hidden="true">
           <span class="on" style="height:62%"></span><span class="on" style="height:88%"></span><span class="on" style="height:54%"></span>
           <span class="on" style="height:100%"></span><span class="on" style="height:71%"></span><span class="on" style="height:83%"></span>
           <span class="on" style="height:48%"></span><span class="on" style="height:94%"></span><span class="on" style="height:66%"></span>
@@ -574,67 +665,7 @@
   </div>
 </footer>
 
-<!-- ============ MODAL DE VOZ ============ -->
-<div class="voz-modal" id="voz-modal" hidden data-state="connecting" role="dialog" aria-modal="true" aria-label="Llamada de voz con el asistente">
-  <div class="voz-dialog" id="voz-dialog">
-    <button class="voz-close" id="voz-close" type="button" aria-label="Cerrar llamada">✕</button>
-
-    <div class="voz-dialog__head">
-      <span class="voz-dialog__eyebrow mono">llamada de prueba · <span id="voz-vertical">Centro Aura</span></span>
-      <div class="voz-orb" id="voz-orb" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="8" y="2.5" width="8" height="13" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M5 12a7 7 0 0014 0M12 19v3M9 22h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </div>
-      <p class="voz-dialog__state" id="voz-state">conectando…</p>
-      <p class="voz-dialog__timer mono" id="voz-timer">00:00</p>
-    </div>
-
-    <div class="voz-transcript" id="voz-transcript" aria-live="polite"></div>
-
-    <div class="voz-dialog__actions">
-      <button class="btn btn--ghost voz-action voz-action--retry" id="voz-retry" type="button">Volver a llamar</button>
-      <button class="btn btn--primary voz-action voz-action--end" id="voz-end" type="button">Colgar</button>
-    </div>
-    <p class="voz-dialog__note mono">Llamada de demostración · se corta sola al minuto</p>
-  </div>
-</div>
-
-<script type="module">
-  import { initReveal } from './js/reveal.js?v=14';
-  import { initProbador } from './js/probador.js?v=19';
-  import { initCalculadora, initControlToggle } from './js/interactivos.js?v=14';
-  import { initSoftwareChecker } from './js/software.js?v=14';
-  import { initVoz } from './js/voz.js?v=15';
-
-  initReveal();
-  initCalculadora();
-  initControlToggle();
-  initSoftwareChecker();
-  initVoz();
-
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 8);
-  }, { passive: true });
-
-  const navToggle = document.getElementById('nav-toggle');
-  const mobileNav = document.getElementById('mobile-nav');
-  navToggle.addEventListener('click', () => {
-    const open = mobileNav.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(open));
-  });
-  mobileNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-    mobileNav.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  }));
-
-  initProbador({
-    rootSelector: '#probador',
-    chatTarget: '#probador-chat',
-    agendaTarget: '#agenda-list',
-    webhookUrl: 'https://paneln8n.seekialabs.com/webhook/estetica-aura-demo/chat',
-    initialMessages: ['Hola! 👋 Soy Sara, del Centro Aura. ¿Quieres pedir cita o te cuento algún tratamiento?'],
-  });
-</script>
+<script type="module" src="js/home.js?v=1"></script>
 
 </body>
 </html>

@@ -99,7 +99,13 @@ export function initSoftwareChecker() {
     });
     const meta = STATUS_META[s.status];
     result.hidden = false;
+    // el conector: continuo con pulsos si se conecta, discontinuo si es parcial, cortado si no
     result.innerHTML = `
+      <div class="conector conector--${s.status}" aria-hidden="true">
+        <span class="conector__nodo conector__nodo--sistema">Asistente</span>
+        <span class="conector__linea">${s.status === 'none' ? '' : '<i></i><i></i><i></i>'}</span>
+        <span class="conector__nodo">${s.name}</span>
+      </div>
       <span class="software-result__status software-result__status--${meta.dot}">
         <span class="software-pill__dot software-pill__dot--${meta.dot}"></span>
         ${s.statusLabel}
