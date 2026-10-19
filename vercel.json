@@ -1,0 +1,29 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "microphone=(self), camera=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://*.facebook.com; media-src 'self' blob:; connect-src 'self' https://paneln8n.seekialabs.com wss://paneln8n.seekialabs.com https://api.vapi.ai https://*.vapi.ai wss://*.vapi.ai https://*.daily.co wss://*.daily.co https://*.wss.daily.co https://cdn.jsdelivr.net https://*.facebook.com; frame-src https://*.daily.co https://*.facebook.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me; worker-src 'self' blob:; object-src 'none'"
+        }
+      ]
+    }
+  ]
+}
