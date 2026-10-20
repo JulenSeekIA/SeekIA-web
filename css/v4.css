@@ -549,7 +549,7 @@
 .movil__enviar:hover { transform: scale(1.06); }
 .movil__enviar:disabled { opacity: .35; transform: none; }
 
-/* ---------- caso real: DO Belleza ---------- */
+/* ---------- caso real: cliente real ---------- */
 
 .caso {
   margin-top: var(--space-7);

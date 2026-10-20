@@ -112,7 +112,7 @@ export function initCasos() {
     }, 0.3);
   }
 
-  // --- DO Belleza: la «o» con la conversación; los hechos se encienden de uno en uno ---
+  // --- cliente 2: la «o» con la conversación; los hechos se encienden de uno en uno ---
   const dob = document.getElementById('dob');
   if (dob) {
     const hechos = [...dob.querySelectorAll('.dob__hechos li')];

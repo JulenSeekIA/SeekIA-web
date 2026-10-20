@@ -158,7 +158,7 @@
 @keyframes t-imprime { to { opacity: 1; transform: none; } }
 @keyframes t-sello { to { opacity: 1; transform: rotate(-9deg) scale(1); } }
 
-/* --- DO Belleza + cierre de la sección --- */
+/* --- cliente 2 + cierre de la sección --- */
 .casos__fin {
   margin: var(--space-8) clamp(16px, 4vw, 56px) 0;
   padding: clamp(24px, 3vw, 40px) clamp(24px, 4vw, 56px);
@@ -274,7 +274,7 @@
 .aet__col { padding-top: 51px; }
 .aet__in .ticket-caja { align-self: center; }
 
-/* --- DO Belleza: su marca (burdeos y bronce del folleto), anima el motivo de su logo ---
+/* --- cliente 2: su marca (burdeos y bronce del folleto), anima el motivo de su logo ---
    La «o» con el lema girando alrededor y la conversación de WhatsApp dentro. Sin cifras ni fechas. */
 .aet, .dob { --cli-alto: clamp(540px, 78vh, 620px); }
 .dob {
