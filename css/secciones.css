@@ -662,7 +662,7 @@ input[type="range"] {
 .software-pill__dot--teal { background: var(--teal); }
 .software-pill__dot--alert { background: var(--alert); }
 
-.software-result { min-height: 150px; }
+.software-result { min-height: 112px; }
 .software-result__status {
   display: inline-flex;
   align-items: center;

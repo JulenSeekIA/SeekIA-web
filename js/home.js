@@ -3,9 +3,10 @@
 // no pague el peso de lo que aún no se ve.
 import { initReveal } from './reveal.js?v=14';
 import { initControlToggle } from './interactivos.js?v=15';
-import { initSoftwareChecker } from './software.js?v=15';
+import { initSoftwareChecker } from './software.js?v=17';
 import { initEscenaHero } from './escena-hero.js?v=1';
 import { letras, contadores, caso23, tachones, hilo, cierre } from './fx.js?v=1';
+import { initCasos } from './casos.js?v=5';
 
 letras();
 initReveal();
@@ -17,6 +18,7 @@ hilo();
 cierre();
 initControlToggle();
 initSoftwareChecker();
+initCasos();
 
 // ---------- escenarios bajo demanda ----------
 const ESCENARIOS = [
@@ -39,6 +41,17 @@ ESCENARIOS.forEach(([id, cargar]) => {
   }, { rootMargin: '900px 0px' });
   io.observe(el);
 });
+
+// ---------- reactivación: tarjeta que se despliega en móvil ----------
+const abrirReact = document.getElementById('reactivar-abrir');
+const secReact = document.getElementById('reactivacion');
+if (abrirReact && secReact) {
+  abrirReact.addEventListener('click', () => {
+    const abierto = secReact.classList.toggle('is-abierto');
+    if (abierto) document.getElementById('reactivar')?.classList.add('is-visible'); // si no, el fundido espera a un scroll que no llega
+    abrirReact.setAttribute('aria-expanded', String(abierto));
+  });
+}
 
 // ---------- cabecera y menú móvil ----------
 const header = document.getElementById('site-header');
