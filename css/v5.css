@@ -95,6 +95,12 @@
   color: var(--plum-1);
   max-width: 18ch;
 }
+/* la voz de la clienta, bajo el titular: serif cursiva en ciruela, con un filete fino encima */
+.aet__cita { margin: 10px 0 0; padding-top: 18px; border-top: 1px solid rgba(53, 35, 43, 0.28); max-width: 40ch; }
+.aet__cita blockquote { margin: 0; }
+.aet__cita p { margin: 0; font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: clamp(16px, 1.45vw, 20px); line-height: 1.38; letter-spacing: 0; color: var(--plum-1); text-wrap: pretty; }
+.aet__cita em { font-style: normal; }
+.aet__cita figcaption { margin-top: 10px; font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--plum-2); opacity: 0.72; }
 .aet__donde {
   margin-top: 0;
   font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--plum-2);
@@ -158,16 +164,9 @@
 @keyframes t-imprime { to { opacity: 1; transform: none; } }
 @keyframes t-sello { to { opacity: 1; transform: rotate(-9deg) scale(1); } }
 
-/* --- la frase de la clienta, antes del cierre --- */
-.casos__cita { margin: var(--space-8) clamp(16px, 4vw, 56px) 0; max-width: 1040px; }
-.casos__cita blockquote { margin: 0; }
-.casos__cita p { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: clamp(24px, 2.7vw, 40px); line-height: 1.16; letter-spacing: -0.01em; color: var(--white); text-wrap: pretty; }
-.casos__cita em { font-style: italic; }
-.casos__cita figcaption { margin-top: var(--space-4); font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-5); }
-
 /* --- cliente 2 + cierre de la sección --- */
 .casos__fin {
-  margin: var(--space-7) clamp(16px, 4vw, 56px) 0;
+  margin: var(--space-8) clamp(16px, 4vw, 56px) 0;
   padding: clamp(24px, 3vw, 40px) clamp(24px, 4vw, 56px);
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-5) var(--space-7);
   border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 28px;
