@@ -58,6 +58,7 @@ export function letras() {
 }
 
 // ---------- contadores ----------
+const miles = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 export function contadores() {
   document.querySelectorAll('[data-contar]').forEach((el) => {
     const fin = parseInt(el.dataset.contar, 10);
@@ -67,7 +68,7 @@ export function contadores() {
       const t0 = performance.now(), dur = 1400;
       const paso = (ahora) => {
         const u = Math.min(1, (ahora - t0) / dur);
-        el.textContent = String(Math.round(fin * (1 - Math.pow(1 - u, 3))));
+        el.textContent = miles(Math.round(fin * (1 - Math.pow(1 - u, 3))));
         if (u < 1) requestAnimationFrame(paso);
       };
       requestAnimationFrame(paso);

@@ -19,6 +19,11 @@
   color: var(--ink-4);
   line-height: 1.5;
 }
+.registro__fila + .registro__fila { margin-top: var(--space-7); padding-top: var(--space-7); border-top: 1px solid var(--ink-2); }
+.registro__logo { flex: none; width: 72px; display: flex; justify-content: center; align-items: center; }
+.registro__logo svg { height: 54px; width: auto; display: block; }
+.registro__value { white-space: nowrap; }
+.registro__value .eur { font-size: 0.55em; margin-left: 0.14em; letter-spacing: 0; } /* «+1.000 €» no cabía en una línea a 54 px */
 .registro__row--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .registro__row--4 .registro__value { font-size: var(--text-h2); line-height: 1; letter-spacing: -0.02em; }
 .registro__row--4 .registro__label { line-height: 1.5; max-width: 24ch; }

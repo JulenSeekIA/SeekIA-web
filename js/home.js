@@ -5,7 +5,7 @@ import { initReveal } from './reveal.js?v=14';
 import { initControlToggle } from './interactivos.js?v=15';
 import { initSoftwareChecker } from './software.js?v=17';
 import { initEscenaHero } from './escena-hero.js?v=1';
-import { letras, contadores, caso23, tachones, hilo, cierre } from './fx.js?v=1';
+import { letras, contadores, caso23, tachones, hilo, cierre } from './fx.js?v=2';
 import { initCasos } from './casos.js?v=6';
 
 letras();

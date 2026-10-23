@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="css/base.css?v=17">
 <link rel="stylesheet" href="css/secciones.css?v=18">
 <link rel="stylesheet" href="css/v4.css?v=3">
-<link rel="stylesheet" href="css/v5.css?v=31">
+<link rel="stylesheet" href="css/v5.css?v=32">
 
 <script type="application/ld+json">
 {
@@ -212,29 +212,56 @@
     </div>
   </section>
 
-  <!-- ============ FRANJA DE REGISTRO ============ -->
-  <section class="registro" aria-label="Resultados reales de una clínica cliente">
+  <!-- ============ FRANJA DE REGISTRO ============
+       Dos centros, mismo orden: citas · dinero agendado · mensajes con el centro cerrado · conversaciones. Solo cifras absolutas. -->
+  <section class="registro" aria-label="Resultados reales de dos centros clientes">
     <div class="wrap" data-reveal>
-      <div class="registro__quien">
-        <img src="assets/aeternum-logo.png" alt="Aeternum Clínica Médico-Estética" width="72" height="40">
-        <p class="mono">Clínica Aeternum, Sevilla<br>sus primeras 2 semanas con el asistente</p>
+      <div class="registro__fila">
+        <div class="registro__quien">
+          <img src="assets/aeternum-logo.png" alt="Aeternum Clínica Médico-Estética" width="72" height="40">
+          <p class="mono">Clínica Aeternum, Sevilla<br>sus primeras 2 semanas con el asistente</p>
+        </div>
+        <div class="registro__row registro__row--4">
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="30">30</span></span>
+            <span class="registro__label mono">citas puestas en la agenda</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono">+<span data-contar="900">900</span><small class="eur">€</small></span>
+            <span class="registro__label mono">en sesiones agendadas</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="206">206</span></span>
+            <span class="registro__label mono">mensajes con la clínica cerrada</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="132">132</span></span>
+            <span class="registro__label mono">conversaciones atendidas</span>
+          </div>
+        </div>
       </div>
-      <div class="registro__row registro__row--4">
-        <div class="registro__item">
-          <span class="registro__value mono"><span data-contar="132">132</span></span>
-          <span class="registro__label mono">conversaciones atendidas</span>
+      <div class="registro__fila">
+        <div class="registro__quien">
+          <span class="registro__logo"><svg viewBox="0 0 90 96" aria-hidden="true" focusable="false"><ellipse cx="45" cy="48" rx="34" ry="40" fill="#F1E7E1"/><ellipse cx="45" cy="48" rx="17" ry="35" fill="#6A2A31"/></svg></span>
+          <p class="mono">DO Belleza &amp; Bienestar, Donostia<br>sus primeras semanas con el asistente</p>
         </div>
-        <div class="registro__item">
-          <span class="registro__value mono"><span data-contar="30">30</span></span>
-          <span class="registro__label mono">citas puestas en la agenda</span>
-        </div>
-        <div class="registro__item">
-          <span class="registro__value mono">+<span data-contar="900">900</span> €</span>
-          <span class="registro__label mono">en sesiones agendadas</span>
-        </div>
-        <div class="registro__item">
-          <span class="registro__value mono"><span data-contar="26">26</span> %</span>
-          <span class="registro__label mono">de los mensajes, con la clínica cerrada</span>
+        <div class="registro__row registro__row--4">
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="11">11</span></span>
+            <span class="registro__label mono">citas puestas en la agenda</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono">+<span data-contar="1000">1.000</span><small class="eur">€</small></span>
+            <span class="registro__label mono">en sesiones agendadas</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono">+<span data-contar="50">50</span></span>
+            <span class="registro__label mono">mensajes contestados con el centro cerrado</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="69">69</span></span>
+            <span class="registro__label mono">conversaciones atendidas</span>
+          </div>
         </div>
       </div>
     </div>
@@ -756,7 +783,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/home.js?v=9"></script>
+<script type="module" src="js/home.js?v=10"></script>
 
 </body>
 </html>
