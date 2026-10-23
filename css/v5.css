@@ -327,16 +327,25 @@
 .dob__rot { transform-origin: 300px 330px; animation: dob-gira 70s linear infinite; }
 .dob__orbita { transform-origin: 300px 330px; animation: dob-gira 26s linear infinite reverse; }
 @keyframes dob-gira { to { transform: rotate(360deg); } }
-.dob__chat { position: absolute; left: 33.6%; top: 20%; width: 32.8%; height: 60%; z-index: 3; display: flex; flex-direction: column; justify-content: center; gap: 9px; font-size: clamp(10.5px, 1.02vw, 13px); line-height: 1.4; }
-.dob__chat .cb { max-width: 92%; padding: 9px 12px; border-radius: 15px; font-weight: 500; opacity: 0; }
-.dob__chat .cli { align-self: flex-start; background: var(--crema); color: #5B252C; border-bottom-left-radius: 4px; }
-.dob__chat .res { align-self: flex-end; background: var(--bronce); color: #2B1215; border-bottom-right-radius: 4px; }
-.dob__chat .esc { align-self: flex-end; padding: 11px 14px; background: rgba(255, 254, 252, 0.16); color: var(--crema); border-bottom-right-radius: 4px; }
-.dob__chat .esc i { display: inline-block; width: 5px; height: 5px; margin: 0 1.5px; border-radius: 50%; background: currentColor; animation: dob-salta 1s infinite; }
+/* la conversación vive DENTRO de la ventana de la «o»: todo se mide en cqw (el ancho de la «o»), así que tamaño, aire y bordes
+   escalan juntos y nada se sale de la elipse. Globos de un solo tono (crema = clienta, bronce = asistente), mismo relleno y radio. */
+.dob__o { container-type: inline-size; }
+.dob__chat {
+  position: absolute; left: 35.4%; top: 24%; width: 29.2%; height: 55%; z-index: 3;
+  display: flex; flex-direction: column; justify-content: center; gap: 0.62em;
+  font-size: 12px; font-size: clamp(10px, 2.65cqw, 13px); line-height: 1.32;
+}
+.dob__chat .cb { max-width: 94%; padding: 0.6em 0.8em; border-radius: 1em; font-weight: 500; letter-spacing: 0; opacity: 0; }
+.dob__chat .cli { align-self: flex-start; background: #F6EEE9; color: #4F1F25; border-bottom-left-radius: 0.3em; }
+.dob__chat .res { align-self: flex-end; background: var(--bronce); color: #2B1215; border-bottom-right-radius: 0.3em; }
+.dob__chat .slot { display: grid; }
+.dob__chat .slot > .cb { grid-area: 1 / 1; align-self: end; justify-self: end; }
+.dob__chat .esc { padding: 0.75em 0.9em; background: rgba(255, 254, 252, 0.16); color: var(--crema); border-bottom-right-radius: 0.3em; line-height: 0; }
+.dob__chat .esc i { display: inline-block; width: 0.4em; height: 0.4em; margin: 0 0.12em; border-radius: 50%; background: currentColor; animation: dob-salta 1s infinite; }
 .dob__chat .esc i:nth-child(2) { animation-delay: 0.15s; }
 .dob__chat .esc i:nth-child(3) { animation-delay: 0.3s; }
-@keyframes dob-salta { 50% { transform: translateY(-3px); opacity: 0.5; } }
-.dob__chat .cchip { align-self: center; margin-top: 4px; padding: 7px 12px; border: 1px solid var(--bronce); border-radius: 99px; color: var(--bronce-2); font-size: 0.86em; font-weight: 600; letter-spacing: 0.06em; opacity: 0; }
+@keyframes dob-salta { 50% { transform: translateY(-0.25em); opacity: 0.5; } }
+.dob__chat .cchip { align-self: center; margin-top: 0.15em; padding: 0.5em 0.95em; border: 1px solid var(--bronce); border-radius: 99px; color: var(--bronce-2); font-size: 0.84em; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; opacity: 0; }
 .dob__chat .cb1 { animation: dob-k1 14s infinite; }
 .dob__chat .cb2 { animation: dob-k2 14s infinite; }
 .dob__chat .cb3 { animation: dob-k3 14s infinite; }
@@ -365,12 +374,51 @@
   .dob__o { order: 4; width: min(100%, 420px); margin: 0 auto 18px; }
   .dob__frase { order: 5; }
   .dob__hechos { order: 6; width: 100%; }
-  .dob__chat { font-size: 10px; gap: 6px; }
-  .dob__chat .cb { padding: 6px 9px; border-radius: 11px; }
   .dob__chat .cb4 { display: none; }
+  .dob__chat .cchip { padding: 0.45em 0.7em; }
 }
+/* la voz de la clienta (DO): serif cursiva en crema; el filete es el borde inferior de la lista de hechos */
+.dob__cita { margin: 0; padding-top: 16px; max-width: 42ch; }
+.dob__cita blockquote { margin: 0; }
+.dob__cita p { margin: 0; font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: clamp(16px, 1.45vw, 20px); line-height: 1.38; color: var(--crema); text-wrap: pretty; }
+.dob__cita figcaption { margin-top: 10px; font-size: var(--text-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronce-2); opacity: 0.92; }
+.o-trazo { opacity: 0; }
+.o-brillo { display: none; }
+@media (max-width: 900px) { .dob__cita { order: 7; width: 100%; } }
+
+/* Animaciones del logo. Arrancan una sola vez cuando la «o» (o la cita) entra en pantalla (.fx-go, lo pone casos.js).
+   Solo transform/opacity y trazos SVG (clip-path animado se queda a medias en Safari). Sin JS o con «reducir movimiento»: todo quieto y visible. */
+@media (prefers-reduced-motion: no-preference) {
+  /* A · la «o» se dibuja: trazo bronce, relleno, se abre la ventana, el lema se despliega y entra la conversación */
+  .dob.is-js .o-trazo { opacity: 1; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .dob.is-js .o-fill, .dob.is-js .o-ventana, .dob.is-js .o-anillo, .dob.is-js .o-orbita-w { opacity: 0; }
+  .dob.is-js .o-ventana-borde { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .dob.is-js .dob__o:not(.fx-go) .dob__chat .cb, .dob.is-js .dob__o:not(.fx-go) .dob__chat .cchip { animation: none; }
+  .dob__o.fx-go .dob__chat .cb, .dob__o.fx-go .dob__chat .cchip { animation-delay: 3.7s; }
+  .dob__o.fx-go .o-trazo { animation: o-dibuja 2.7s cubic-bezier(0.6, 0, 0.25, 1) both; }
+  .dob__o.fx-go .o-fill { animation: o-aparece 1.2s ease 1.7s both; }
+  .dob__o.fx-go .o-ventana { transform-origin: 300px 330px; animation: o-abre 1.3s var(--ease-out-expo) 2.1s both; }
+  .dob__o.fx-go .o-ventana-borde { animation: o-borde 1.2s ease 2.4s both; }
+  .dob__o.fx-go .o-anillo { transform-origin: 300px 330px; animation: o-anillo-in 2s var(--ease-out-expo) 2.3s both; }
+  .dob__o.fx-go .o-orbita-w { animation: o-aparece 0.8s ease 3.5s both; }
+  /* B · brillo bronce: una franja de luz cruza el aro de vez en cuando */
+  .dob.is-js .o-brillo { display: inline; }
+  .dob.is-js .dob__o:not(.fx-go) .o-brillo { visibility: hidden; }
+  .dob__o.fx-go .o-brillo-mov { animation: o-brilla 9s cubic-bezier(0.45, 0, 0.25, 1) 4.4s infinite backwards; }
+  /* C · la cita se ilumina palabra a palabra */
+  .dob.is-js .q-w { opacity: 0.2; }
+  .dob__cita.fx-go .q-w { animation: q-luz 0.9s ease forwards; animation-delay: calc(var(--w) * 135ms + 0.5s); }
+}
+@keyframes o-dibuja { 0% { stroke-dashoffset: 1; opacity: 1; } 68% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes o-aparece { from { opacity: 0; } to { opacity: 1; } }
+@keyframes o-abre { from { opacity: 0; transform: scale(0.35); } to { opacity: 1; transform: none; } }
+@keyframes o-borde { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes o-anillo-in { from { opacity: 0; transform: rotate(-70deg); } to { opacity: 1; transform: none; } }
+@keyframes o-brilla { 0% { transform: translateX(-230px); } 26%, 100% { transform: translateX(700px); } }
+@keyframes q-luz { from { opacity: 0.2; } to { opacity: 1; } }
+
 @media (prefers-reduced-motion: reduce) {
   .dob__rot, .dob__orbita, .dob__vivo i { animation: none; }
   .dob__chat .cb, .dob__chat .cchip { animation: none; opacity: 1; }
-  .dob__chat .esc { display: none; }
+  .dob__chat .slot > .esc { display: none; }
 }

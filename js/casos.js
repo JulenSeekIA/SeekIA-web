@@ -1,5 +1,5 @@
-// Sección «Clientes»: bloque de DO (la «o» con la conversación), bloque rosa de Aeternum (palabras que suben, semillas de
-// diente de león al fondo) y la cuenta en papel que se imprime línea a línea.
+// Sección «Clientes»: bloque de DO (la «o» que se dibuja, con la conversación dentro, y la cita que se ilumina), bloque rosa de
+// Aeternum (palabras que suben, semillas de diente de león al fondo) y la cuenta en papel que se imprime línea a línea.
 // Sin JS o con «reducir movimiento»: todo se queda en su estado final, quieto.
 
 const reducido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -30,12 +30,12 @@ function contar(el, hasta, dur, retraso, decimales) {
   }, retraso);
 }
 
-function partirEnPalabras(el) {
+function partirEnPalabras(el, clase = 'c-w') {
   const palabras = el.textContent.trim().split(/\s+/);
   el.textContent = '';
   palabras.forEach((p, i) => {
     const s = document.createElement('span');
-    s.className = 'c-w';
+    s.className = clase;
     s.style.setProperty('--w', i);
     s.textContent = p;
     el.appendChild(s);
@@ -104,7 +104,7 @@ export function initCasos() {
   // --- bloque rosa ---
   const aet = document.getElementById('aet');
   if (aet) {
-    aet.querySelectorAll('[data-split]').forEach(partirEnPalabras);
+    aet.querySelectorAll('[data-split]').forEach((e) => partirEnPalabras(e));
     const lienzo = aet.querySelector('.aet__semillas');
     if (lienzo) semillas(aet, lienzo);
     alVer(aet, () => {
@@ -126,6 +126,13 @@ export function initCasos() {
       const paso = () => { if (i < hechos.length) { hechos[i++].classList.add('on'); setTimeout(paso, 2300); } };
       alVer(dob, () => setTimeout(paso, 900), 0.3);
     }
+    // la «o» se dibuja y la cita se enciende palabra a palabra, una sola vez, cuando cada una entra en pantalla
+    const o = dob.querySelector('.dob__o');
+    const cita = dob.querySelector('.dob__cita');
+    const palabras = dob.querySelector('[data-cita]');
+    if (palabras) partirEnPalabras(palabras, 'q-w');
+    alVer(o, () => o.classList.add('fx-go'), 0.4);
+    alVer(cita, () => cita.classList.add('fx-go'), 0.6);
   }
 
   // --- ticket ---

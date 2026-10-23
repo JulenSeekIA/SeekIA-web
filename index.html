@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="css/base.css?v=17">
 <link rel="stylesheet" href="css/secciones.css?v=18">
 <link rel="stylesheet" href="css/v4.css?v=3">
-<link rel="stylesheet" href="css/v5.css?v=30">
+<link rel="stylesheet" href="css/v5.css?v=31">
 
 <script type="application/ld+json">
 {
@@ -500,7 +500,7 @@
           <h3 class="aet__frase"><span data-split>Contesta a sus clientas a cualquier hora y deja la cita puesta en la agenda.</span></h3>
           <!-- la voz de la clienta (frase que dio para la web) -->
           <figure class="aet__cita c-fade" style="--d:0.4">
-            <blockquote><p>Julen se preocupa en todo momento y está pendiente de todos los detalles. Se interesa e involucra por solucionar cualquier inconveniente que surja. <em>Lo recomiendo 100%.</em></p></blockquote>
+            <blockquote><p>«Julen se preocupa en todo momento y está pendiente de todos los detalles. Se interesa e involucra por solucionar cualquier inconveniente que surja. <em>Lo recomiendo 100%.</em>»</p></blockquote>
             <figcaption class="mono">Mª José · Clínica Aeternum</figcaption>
           </figure>
         </div>
@@ -517,6 +517,54 @@
           </ul>
           <p class="ticket-caja__firma"><img src="assets/logo-cactus.png" alt="" width="14" height="18"> emitido por SeekIA</p>
           <div class="ticket-caja__sello" aria-hidden="true">EN PRODUCCIÓN</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Cliente 2: bloque con SU marca (burdeos y bronce del folleto). Anima el motivo de su logo:
+         la «o» que se dibuja, con el lema girando y la conversación de WhatsApp dentro, y la cita que se ilumina. Sin cifras: solo lo que hace. -->
+    <article class="dob" id="dob" aria-label="Caso: DO Belleza &amp; Bienestar, Donostia">
+      <span class="dob__vivo mono"><i aria-hidden="true"></i>en producción</span>
+      <div class="dob__txt">
+        <h3 class="dob__nombre">DO Belleza <em>&amp;</em> Bienestar</h3>
+        <p class="dob__donde mono">Donostia</p>
+        <p class="dob__frase">Contesta en su WhatsApp de siempre y deja <b>la cita en su agenda real.</b></p>
+        <ul class="dob__hechos">
+          <li><span class="n mono">01</span><span><b>Tres idiomas.</b> Castellano, euskera e inglés.</span></li>
+          <li><span class="n mono">02</span><span><b>La carta y los audios.</b> Manda la carta en PDF y entiende la voz.</span></li>
+          <li><span class="n mono">03</span><span><b>Lo delicado, a la dueña.</b> Embarazos y reacciones en la piel.</span></li>
+        </ul>
+        <figure class="dob__cita">
+          <blockquote><p data-cita>«Un aliado imprescindible en el camino de DO, que me permite estar más cerca de cada persona sin dejar de cuidar cada detalle.»</p></blockquote>
+          <figcaption class="mono">Leire · DO Belleza &amp; Bienestar</figcaption>
+        </figure>
+      </div>
+      <div class="dob__o" aria-hidden="true">
+        <svg viewBox="0 0 600 640" focusable="false">
+          <defs>
+            <linearGradient id="dobO" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFEFC"/><stop offset="1" stop-color="#E7DAD4"/></linearGradient>
+            <radialGradient id="dobCont" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#7A343C"/><stop offset="1" stop-color="#4F1F25"/></radialGradient>
+            <path id="dobAnillo" d="M300 45 a285 285 0 1 1 -0.01 0"/>
+            <filter id="dobSombra" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#2B1215" flood-opacity=".38"/></filter>
+            <clipPath id="dobAro"><path clip-rule="evenodd" d="M85 330a215 250 0 1 0 430 0a215 250 0 1 0 -430 0ZM188 330a112 236 0 1 0 224 0a112 236 0 1 0 -224 0Z"/></clipPath>
+            <linearGradient id="dobBrillo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E5BE92" stop-opacity="0"/><stop offset=".45" stop-color="#E5BE92" stop-opacity=".55"/><stop offset=".55" stop-color="#C89768" stop-opacity=".7"/><stop offset="1" stop-color="#E5BE92" stop-opacity="0"/></linearGradient>
+          </defs>
+          <ellipse class="o-fill" cx="300" cy="330" rx="215" ry="250" fill="url(#dobO)" filter="url(#dobSombra)"/>
+          <ellipse class="o-ventana" cx="300" cy="330" rx="112" ry="236" fill="url(#dobCont)"/>
+          <ellipse class="o-ventana-borde" cx="300" cy="330" rx="112" ry="236" fill="none" stroke="#C89768" stroke-opacity=".55" stroke-width="1.5" pathLength="1"/>
+          <g class="o-brillo" clip-path="url(#dobAro)"><g class="o-brillo-mov"><rect x="0" y="40" width="170" height="580" fill="url(#dobBrillo)" transform="rotate(14 85 330)"/></g></g>
+          <ellipse class="o-trazo" cx="300" cy="330" rx="215" ry="250" fill="none" stroke="#E5BE92" stroke-width="2.5" pathLength="1"/>
+          <g class="o-anillo"><g class="dob__rot">
+            <circle cx="300" cy="330" r="262" fill="none" stroke="#C89768" stroke-opacity=".28" stroke-width="1"/>
+            <text font-family="Montserrat, sans-serif" font-weight="600" font-size="21" fill="#C89768" letter-spacing="6"><textPath href="#dobAnillo" textLength="1780" lengthAdjust="spacing">EL CAMINO DE LA BELLEZA Y BIENESTAR  ·  EL CAMINO DE LA BELLEZA Y BIENESTAR  ·  </textPath></text>
+          </g></g>
+          <g class="o-orbita-w"><g class="dob__orbita"><circle cx="562" cy="330" r="6.5" fill="#E5BE92"/><circle cx="562" cy="330" r="13" fill="none" stroke="#E5BE92" stroke-opacity=".35"/></g></g>
+        </svg>
+        <div class="dob__chat">
+          <div class="cb cli cb1">¿Tenéis hueco el viernes?</div>
+          <div class="slot"><div class="cb esc cb2"><i></i><i></i><i></i></div><div class="cb res cb3">Sí, a las 17:30. ¿Te lo apunto?</div></div>
+          <div class="cb cli cb4">Sí, gracias</div>
+          <div class="cchip">✓ Cita en la agenda</div>
         </div>
       </div>
     </article>
@@ -708,7 +756,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/home.js?v=8"></script>
+<script type="module" src="js/home.js?v=9"></script>
 
 </body>
 </html>
