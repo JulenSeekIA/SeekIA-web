@@ -61,6 +61,7 @@ export function letras() {
 const miles = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 export function contadores() {
   document.querySelectorAll('[data-contar]').forEach((el) => {
+    if (el.closest('.registro')) return; // los de la franja los lleva franja()
     const fin = parseInt(el.dataset.contar, 10);
     if (reducido() || !Number.isFinite(fin)) return;
     el.textContent = '0';
@@ -72,6 +73,51 @@ export function contadores() {
         if (u < 1) requestAnimationFrame(paso);
       };
       requestAnimationFrame(paso);
+    });
+  });
+}
+
+// ---------- franja de prueba: un centro cada vez, con selector (sin JS se ven los dos, uno bajo otro) ----------
+export function franja() {
+  const sec = document.querySelector('.registro');
+  const sel = sec && sec.querySelector('.registro__sel');
+  if (!sel) return;
+  const botones = [...sel.querySelectorAll('.registro__b')];
+  const filas = botones.map((b) => sec.querySelector('#reg-' + b.dataset.k));
+  if (filas.some((f) => !f)) return;
+  const valores = (fila) => [...fila.querySelectorAll('[data-contar]')];
+  const contar = (el) => {
+    cancelAnimationFrame(el._raf);
+    const fin = parseInt(el.dataset.contar, 10), t0 = performance.now(), dur = 1400;
+    const paso = (ahora) => {
+      const u = Math.min(1, (ahora - t0) / dur);
+      el.textContent = miles(Math.round(fin * (1 - Math.pow(1 - u, 3))));
+      if (u < 1) el._raf = requestAnimationFrame(paso);
+    };
+    el._raf = requestAnimationFrame(paso);
+  };
+  const mostrar = (k, foco) => {
+    sel.dataset.k = k;
+    botones.forEach((b, i) => {
+      const on = b.dataset.k === k;
+      b.setAttribute('aria-selected', String(on));
+      b.tabIndex = on ? 0 : -1;
+      filas[i].classList.toggle('is-on', on);
+      if (on) {
+        if (foco) b.focus();
+        if (!reducido()) { valores(filas[i]).forEach((el) => { el.textContent = '0'; }); valores(filas[i]).forEach(contar); }
+      }
+    });
+  };
+  sec.classList.add('is-sel');
+  if (!reducido()) valores(filas[0]).forEach((el) => { el.textContent = '0'; });
+  alVer(filas[0], () => { if (!reducido()) valores(filas[0]).forEach(contar); });
+  botones.forEach((b, i) => {
+    b.addEventListener('click', () => { if (b.dataset.k !== sel.dataset.k) mostrar(b.dataset.k, false); });
+    b.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      mostrar(botones[(i + 1) % botones.length].dataset.k, true);
     });
   });
 }

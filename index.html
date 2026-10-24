@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="css/base.css?v=17">
 <link rel="stylesheet" href="css/secciones.css?v=18">
 <link rel="stylesheet" href="css/v4.css?v=3">
-<link rel="stylesheet" href="css/v5.css?v=32">
+<link rel="stylesheet" href="css/v5.css?v=33">
 
 <script type="application/ld+json">
 {
@@ -213,10 +213,16 @@
   </section>
 
   <!-- ============ FRANJA DE REGISTRO ============
-       Dos centros, mismo orden: citas · dinero agendado · mensajes con el centro cerrado · conversaciones. Solo cifras absolutas. -->
+       Dos centros, mismo orden: citas · dinero agendado · mensajes con el centro cerrado · conversaciones. Solo cifras absolutas.
+       Con JS se ve un centro cada vez (selector); sin JS, los dos uno bajo otro. -->
   <section class="registro" aria-label="Resultados reales de dos centros clientes">
     <div class="wrap" data-reveal>
-      <div class="registro__fila">
+      <div class="registro__sel" data-k="aet" role="tablist" aria-label="Elegir centro">
+        <span class="registro__thumb" aria-hidden="true"></span>
+        <button type="button" class="registro__b" role="tab" id="reg-tab-aet" data-k="aet" aria-selected="true" aria-controls="reg-aet">Aeternum · Sevilla</button>
+        <button type="button" class="registro__b" role="tab" id="reg-tab-dob" data-k="dob" aria-selected="false" aria-controls="reg-dob" tabindex="-1">DO Belleza · Donostia</button>
+      </div>
+      <div class="registro__fila is-on" id="reg-aet" role="tabpanel" aria-labelledby="reg-tab-aet">
         <div class="registro__quien">
           <img src="assets/aeternum-logo.png" alt="Aeternum Clínica Médico-Estética" width="72" height="40">
           <p class="mono">Clínica Aeternum, Sevilla<br>sus primeras 2 semanas con el asistente</p>
@@ -240,7 +246,7 @@
           </div>
         </div>
       </div>
-      <div class="registro__fila">
+      <div class="registro__fila" id="reg-dob" role="tabpanel" aria-labelledby="reg-tab-dob">
         <div class="registro__quien">
           <span class="registro__logo"><svg viewBox="0 0 90 96" aria-hidden="true" focusable="false"><ellipse cx="45" cy="48" rx="34" ry="40" fill="#F1E7E1"/><ellipse cx="45" cy="48" rx="17" ry="35" fill="#6A2A31"/></svg></span>
           <p class="mono">DO Belleza &amp; Bienestar, Donostia<br>sus primeras semanas con el asistente</p>
@@ -783,7 +789,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/home.js?v=10"></script>
+<script type="module" src="js/home.js?v=11"></script>
 
 </body>
 </html>

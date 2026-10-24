@@ -19,7 +19,23 @@
   color: var(--ink-4);
   line-height: 1.5;
 }
-.registro__fila + .registro__fila { margin-top: var(--space-7); padding-top: var(--space-7); border-top: 1px solid var(--ink-2); }
+.registro:not(.is-sel) .registro__fila + .registro__fila { margin-top: var(--space-7); padding-top: var(--space-7); border-top: 1px solid var(--ink-2); }
+/* selector de centro (solo con JS): un centro cada vez; el interruptor toma el color de cada marca */
+.registro__sel { display: none; }
+.registro.is-sel .registro__sel { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 5px; margin-bottom: var(--space-6); width: min(460px, 100%);
+  background: var(--ink-1); border: 1px solid var(--ink-3); border-radius: 99px; }
+.registro__thumb { position: absolute; top: 5px; left: 5px; width: calc(50% - 5px); height: calc(100% - 10px); border-radius: 99px; background: #CDB9BD; /* rosa de Aeternum */
+  transition: transform 0.7s var(--ease-out-expo), background 0.5s ease; }
+.registro__sel[data-k="dob"] .registro__thumb { transform: translateX(100%); background: #6A2A31; /* burdeos de DO */ }
+.registro__b { position: relative; z-index: 1; min-width: 0; padding: 12px 10px; background: none; border: 0; border-radius: 99px; cursor: pointer; white-space: nowrap;
+  font: 700 13px/1.2 var(--font-body); color: var(--ink-5); transition: color 0.5s ease; }
+.registro__sel[data-k="aet"] .registro__b[data-k="aet"] { color: #35232B; }
+.registro__sel[data-k="dob"] .registro__b[data-k="dob"] { color: #FFFEFC; }
+.registro__b:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+.registro.is-sel .registro__fila { display: none; }
+.registro.is-sel .registro__fila.is-on { display: block; animation: reg-entra 0.55s var(--ease-out-expo) both; }
+@keyframes reg-entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .registro.is-sel .registro__fila.is-on { animation: none; } .registro__thumb, .registro__b { transition: none; } }
 .registro__logo { flex: none; width: 72px; display: flex; justify-content: center; align-items: center; }
 .registro__logo svg { height: 54px; width: auto; display: block; }
 .registro__value { white-space: nowrap; }
