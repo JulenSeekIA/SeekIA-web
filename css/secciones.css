@@ -783,6 +783,10 @@ input[type="range"] {
   color: var(--ink-3);
 }
 .fundador__copy p { font-size: var(--text-lead); color: var(--ink-5); line-height: var(--lh-normal); margin-bottom: var(--space-6); max-width: 42ch; }
+/* Enlace al Instagram: texto bajo el botón, sin competir con él */
+.fundador__copy .fundador__ig { font-family: var(--font-mono); font-size: var(--text-cap); color: var(--ink-4); letter-spacing: var(--track-normal); margin: var(--space-5) 0 0; max-width: 46ch; }
+.fundador__ig a { color: var(--ink-5); border-bottom: 1px solid var(--ink-3); white-space: nowrap; transition: color .2s, border-color .2s; }
+.fundador__ig a:hover { color: var(--lime); border-color: var(--lime); }
 
 /* ============ CIERRE — la agenda llena ============
    Aquí termina el arco: las barras vuelven encendidas y el cactus
@@ -836,7 +840,7 @@ input[type="range"] {
 }
 .site-footer .brand { font-size: var(--text-cap); }
 .site-footer .brand img { height: 22px; }
-.site-footer__links { display: flex; gap: var(--space-5); font-size: var(--text-micro); color: var(--ink-4); }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); font-size: var(--text-micro); color: var(--ink-4); }
 .site-footer__links a:hover { color: var(--lime); }
 .site-footer__copy { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--ink-4); }
 
