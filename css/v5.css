@@ -395,8 +395,11 @@
   .dob__o { order: 4; width: min(100%, 420px); margin: 0 auto 18px; }
   .dob__frase { order: 5; }
   .dob__hechos { order: 6; width: 100%; }
-  .dob__chat .cb4 { display: none; }
-  .dob__chat .cchip { padding: 0.45em 0.7em; }
+  /* la «o» es más estrecha que en escritorio: texto proporcional a ella (sin el suelo de 10 px) para que quepa la conversación entera,
+     incluido el «Sí, gracias» de la clienta, y el chip final dentro de la ventana */
+  .dob__chat { font-size: clamp(7px, 2.8cqw, 13px); gap: 0.5em; }
+  .dob__chat .cb { padding: 0.5em 0.7em; }
+  .dob__chat .cchip { padding: 0.4em 0.7em; }
 }
 /* la voz de la clienta (DO): serif cursiva en crema; el filete es el borde inferior de la lista de hechos */
 .dob__cita { margin: 0; padding-top: 16px; max-width: 42ch; }
