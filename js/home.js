@@ -26,6 +26,7 @@ const ESCENARIOS = [
   ['atencion', () => import('./atencion.js?v=2').then((m) => m.initAtencion())],
   ['voz', () => import('./voz-escena.js?v=2').then((m) => m.initVozEscena())],
   ['reactivacion', () => import('./reactivacion.js?v=1').then((m) => m.initReactivacion())],
+  ['gem', () => import('./gemma.js?v=1').then((m) => m.initGemma())],
 ];
 ESCENARIOS.forEach(([id, cargar]) => {
   const el = document.getElementById(id);

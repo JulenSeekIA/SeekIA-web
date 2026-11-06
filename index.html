@@ -23,13 +23,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://paneln8n.seekialabs.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=EB+Garamond:wght@400;700;800&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/tokens.css?v=18">
 <link rel="stylesheet" href="css/base.css?v=17">
 <link rel="stylesheet" href="css/secciones.css?v=19">
 <link rel="stylesheet" href="css/v4.css?v=3">
-<link rel="stylesheet" href="css/v5.css?v=34">
+<link rel="stylesheet" href="css/v5.css?v=35">
 
 <script type="application/ld+json">
 {
@@ -214,14 +214,15 @@
   </section>
 
   <!-- ============ FRANJA DE REGISTRO ============
-       Dos centros, mismo orden: citas · dinero agendado · mensajes con el centro cerrado · conversaciones. Solo cifras absolutas.
-       Con JS se ve un centro cada vez (selector); sin JS, los dos uno bajo otro. -->
-  <section class="registro" aria-label="Resultados reales de dos centros clientes">
+       Tres centros. Aeternum y DO: citas · dinero agendado · mensajes con el centro cerrado · conversaciones. Gemma (su asistente no agenda): mensajes con el centro cerrado · peticiones avisadas · català · sin atender. Solo cifras absolutas.
+       Con JS se ve un centro cada vez (selector); sin JS, los tres uno bajo otro. -->
+  <section class="registro" aria-label="Resultados reales de tres centros clientes">
     <div class="wrap" data-reveal>
       <div class="registro__sel" data-k="aet" role="tablist" aria-label="Elegir centro">
         <span class="registro__thumb" aria-hidden="true"></span>
-        <button type="button" class="registro__b" role="tab" id="reg-tab-aet" data-k="aet" aria-selected="true" aria-controls="reg-aet">Aeternum · Sevilla</button>
-        <button type="button" class="registro__b" role="tab" id="reg-tab-dob" data-k="dob" aria-selected="false" aria-controls="reg-dob" tabindex="-1">DO Belleza · Donostia</button>
+        <button type="button" class="registro__b" role="tab" id="reg-tab-aet" data-k="aet" aria-selected="true" aria-controls="reg-aet">Aeternum<span class="reg-ciudad"> · Sevilla</span></button>
+        <button type="button" class="registro__b" role="tab" id="reg-tab-dob" data-k="dob" aria-selected="false" aria-controls="reg-dob" tabindex="-1">DO Belleza<span class="reg-ciudad"> · Donostia</span></button>
+        <button type="button" class="registro__b" role="tab" id="reg-tab-gem" data-k="gem" aria-selected="false" aria-controls="reg-gem" tabindex="-1">Centre de Teràpies<span class="reg-ciudad"> · Sabadell</span></button>
       </div>
       <div class="registro__fila is-on" id="reg-aet" role="tabpanel" aria-labelledby="reg-tab-aet">
         <div class="registro__quien">
@@ -268,6 +269,30 @@
           <div class="registro__item">
             <span class="registro__value mono"><span data-contar="76">76</span></span>
             <span class="registro__label mono">conversaciones atendidas</span>
+          </div>
+        </div>
+      </div>
+      <div class="registro__fila" id="reg-gem" role="tabpanel" aria-labelledby="reg-tab-gem">
+        <div class="registro__quien registro__quien--gem">
+          <img src="assets/gemma-logo.svg" alt="Centre de Teràpies, Sabadell" width="177" height="34">
+          <p class="mono">Centre de Teràpies<span class="reg-ciudad">, Sabadell</span><br>sus primeros 9 días con el asistente</p>
+        </div>
+        <div class="registro__row registro__row--4">
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="20">20</span></span>
+            <span class="registro__label mono">mensajes con el centro cerrado</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="18">18</span></span>
+            <span class="registro__label mono">peticiones avisadas a Gemma</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="11">11</span><small class="eur">/17</small></span>
+            <span class="registro__label mono">conversaciones en català</span>
+          </div>
+          <div class="registro__item">
+            <span class="registro__value mono"><span data-contar="0">0</span></span>
+            <span class="registro__label mono">sin atender</span>
           </div>
         </div>
       </div>
@@ -427,6 +452,46 @@
           <div class="cb cli cb4">Sí, gracias</div>
           <div class="cchip">✓ Cita en la agenda</div>
         </div>
+      </div>
+    </article>
+
+    <!-- Cliente 3: el «17» como vasija. Naranja = conversaciones en català (11), carbón = castellano (6). El líquido sube al entrar y chapotea con el ratón (js/gemma.js).
+         El estado final está pintado a mano en el HTML: sin JS o con «reducir movimiento» se ve quieto y completo. Cifras: seekia-web/docs/cifras-gemma.json (28 oct – 6 nov 2026, 9 días). -->
+    <article class="gem" id="gem" aria-label="Caso: Centre de Teràpies, Sabadell">
+      <span class="gem__vivo mono"><i aria-hidden="true"></i>en producción</span>
+      <div class="gem__txt">
+        <img class="gem__logo" src="assets/gemma-logo.svg" alt="Centre de Teràpies" width="458" height="88">
+        <p class="gem__donde mono">Sabadell</p>
+        <h3 class="gem__h">Contesta en la lengua de <em>cada clienta.</em></h3>
+        <div class="gem__hola" aria-hidden="true"><i class="mono">CA</i><b>Bon dia</b></div>
+        <ul class="gem__datos">
+          <li><b class="mono" data-n="20">20</b><span class="mono">mensajes con el centro cerrado</span></li>
+          <li><b class="mono" data-n="18">18</b><span class="mono">peticiones avisadas a Gemma</span></li>
+          <li><b class="mono" data-n="0">0</b><span class="mono">sin atender</span></li>
+        </ul>
+        <p class="gem__base mono">17 conversaciones en 9 días, en català y castellano.</p>
+      </div>
+      <div class="gem__vaso">
+        <svg class="gem__svg" viewBox="0 0 820 560" role="img" aria-label="El número 17 lleno de dos líquidos: 11 conversaciones en català, en naranja, y 6 en castellano, en carbón" focusable="false">
+          <defs>
+            <clipPath id="gemClip"><path d="M64.6 520V439.9H149.4V278.2H64.6V217.9Q89 216.3 116.9 208Q144.7 199.7 171.2 187.2Q197.7 174.7 218 161.7H252.8V439.9H334.5V520Z"/><path d="M418.2 520Q418.2 483.1 426.5 447.2Q434.8 411.3 450.2 377.3Q465.5 343.2 486.1 311.7Q506.6 280.3 531 251.7H359.4V162.2H661V209.6Q641.3 234 622.6 259.7Q603.8 285.5 587.7 312.8Q571.6 340.1 559.4 368.7Q547.2 397.3 540.4 427.4Q533.6 457.6 533.6 489.3V520Z"/></clipPath>
+            <linearGradient id="gemLg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F68625"/><stop offset="1" stop-color="#E06E10"/></linearGradient>
+          </defs>
+          <g fill="#ECE1CF" opacity=".75"><path d="M64.6 520V439.9H149.4V278.2H64.6V217.9Q89 216.3 116.9 208Q144.7 199.7 171.2 187.2Q197.7 174.7 218 161.7H252.8V439.9H334.5V520Z"/><path d="M418.2 520Q418.2 483.1 426.5 447.2Q434.8 411.3 450.2 377.3Q465.5 343.2 486.1 311.7Q506.6 280.3 531 251.7H359.4V162.2H661V209.6Q641.3 234 622.6 259.7Q603.8 285.5 587.7 312.8Q571.6 340.1 559.4 368.7Q547.2 397.3 540.4 427.4Q533.6 457.6 533.6 489.3V520Z"/></g>
+          <g clip-path="url(#gemClip)">
+            <path data-w="0" fill="#32373C" d="M -40 69.0 L -40 66.5 L -26 67.6 L -12 69.0 L 2 70.6 L 16 72.3 L 30 73.8 L 44 75.1 L 58 75.9 L 72 76.2 L 86 75.9 L 100 75.2 L 114 74.1 L 128 72.8 L 142 71.5 L 156 70.3 L 170 69.3 L 184 68.6 L 198 68.1 L 212 67.8 L 226 67.5 L 240 67.1 L 254 66.6 L 268 65.9 L 282 65.0 L 296 64.2 L 310 63.3 L 324 62.8 L 338 62.5 L 352 62.8 L 366 63.5 L 380 64.7 L 394 66.3 L 408 68.1 L 422 69.9 L 436 71.6 L 450 72.9 L 464 73.8 L 478 74.3 L 492 74.4 L 506 74.1 L 520 73.7 L 534 73.2 L 548 72.8 L 562 72.5 L 576 72.4 L 590 72.3 L 604 72.1 L 618 71.9 L 632 71.4 L 646 70.6 L 660 69.4 L 674 68.0 L 688 66.4 L 702 64.8 L 716 63.4 L 730 62.4 L 744 61.8 L 758 61.8 L 772 62.3 L 786 63.3 L 800 64.6 L 814 66.0 L 828 67.4 L 842 68.6 L 856 69.6 L 860 700 L -40 700 Z"/>
+            <path data-w="1" fill="#4A5057" opacity=".8" d="M -40 60.0 L -40 67.2 L -26 66.5 L -12 65.6 L 2 64.6 L 16 63.6 L 30 62.7 L 44 62.0 L 58 61.3 L 72 60.8 L 86 60.4 L 100 60.1 L 114 59.8 L 128 59.5 L 142 59.0 L 156 58.4 L 170 57.7 L 184 56.8 L 198 55.8 L 212 54.8 L 226 53.9 L 240 53.1 L 254 52.5 L 268 52.2 L 282 52.3 L 296 52.7 L 310 53.5 L 324 54.7 L 338 56.0 L 352 57.5 L 366 59.1 L 380 60.6 L 394 62.0 L 408 63.2 L 422 64.1 L 436 64.7 L 450 65.0 L 464 65.1 L 478 65.1 L 492 64.9 L 506 64.7 L 520 64.5 L 534 64.4 L 548 64.4 L 562 64.4 L 576 64.5 L 590 64.6 L 604 64.7 L 618 64.5 L 632 64.3 L 646 63.7 L 660 62.9 L 674 61.9 L 688 60.6 L 702 59.1 L 716 57.6 L 730 56.1 L 744 54.7 L 758 53.6 L 772 52.7 L 786 52.2 L 800 52.1 L 814 52.3 L 828 52.8 L 842 53.6 L 856 54.6 L 860 700 L -40 700 Z"/>
+            <path data-w="2" fill="#CA8446" opacity=".95" d="M -40 246.1 L -40 248.3 L -26 248.9 L -12 249.7 L 2 250.7 L 16 251.8 L 30 253.0 L 44 254.1 L 58 255.0 L 72 255.4 L 86 255.2 L 100 254.5 L 114 253.1 L 128 251.2 L 142 248.9 L 156 246.4 L 170 244.1 L 184 242.0 L 198 240.3 L 212 239.1 L 226 238.5 L 240 238.4 L 254 238.7 L 268 239.2 L 282 239.8 L 296 240.4 L 310 240.8 L 324 241.1 L 338 241.2 L 352 241.3 L 366 241.5 L 380 241.9 L 394 242.7 L 408 243.8 L 422 245.4 L 436 247.3 L 450 249.4 L 464 251.6 L 478 253.5 L 492 255.1 L 506 256.1 L 520 256.5 L 534 256.2 L 548 255.2 L 562 253.8 L 576 252.0 L 590 250.1 L 604 248.3 L 618 246.7 L 632 245.4 L 646 244.5 L 660 243.8 L 674 243.4 L 688 243.1 L 702 242.7 L 716 242.1 L 730 241.4 L 744 240.5 L 758 239.5 L 772 238.5 L 786 237.7 L 800 237.2 L 814 237.3 L 828 237.9 L 842 239.1 L 856 240.8 L 860 700 L -40 700 Z"/>
+            <path data-w="3" fill="url(#gemLg)" d="M -40 252.1 L -40 245.8 L -26 247.5 L -12 249.8 L 2 252.4 L 16 255.0 L 30 257.2 L 44 258.7 L 58 259.4 L 72 259.4 L 86 258.9 L 100 258.0 L 114 257.0 L 128 256.2 L 142 255.6 L 156 255.2 L 170 254.9 L 184 254.4 L 198 253.6 L 212 252.4 L 226 250.7 L 240 248.7 L 254 246.6 L 268 244.8 L 282 243.5 L 296 243.0 L 310 243.3 L 324 244.6 L 338 246.4 L 352 248.6 L 366 250.8 L 380 252.7 L 394 254.2 L 408 255.1 L 422 255.6 L 436 255.8 L 450 256.0 L 464 256.4 L 478 256.9 L 492 257.6 L 506 258.4 L 520 258.9 L 534 259.0 L 548 258.4 L 562 257.0 L 576 255.0 L 590 252.5 L 604 249.9 L 618 247.5 L 632 245.6 L 646 244.5 L 660 244.1 L 674 244.5 L 688 245.4 L 702 246.6 L 716 247.8 L 730 248.7 L 744 249.4 L 758 249.9 L 772 250.3 L 786 250.9 L 800 251.7 L 814 253.1 L 828 254.8 L 842 256.7 L 856 258.6 L 860 700 L -40 700 Z"/>
+            <g class="gem__bub"></g>
+          </g>
+          <g fill="none" stroke="#32373C" stroke-width="3" stroke-linejoin="round"><path d="M64.6 520V439.9H149.4V278.2H64.6V217.9Q89 216.3 116.9 208Q144.7 199.7 171.2 187.2Q197.7 174.7 218 161.7H252.8V439.9H334.5V520Z"/><path d="M418.2 520Q418.2 483.1 426.5 447.2Q434.8 411.3 450.2 377.3Q465.5 343.2 486.1 311.7Q506.6 280.3 531 251.7H359.4V162.2H661V209.6Q641.3 234 622.6 259.7Q603.8 285.5 587.7 312.8Q571.6 340.1 559.4 368.7Q547.2 397.3 540.4 427.4Q533.6 457.6 533.6 489.3V520Z"/></g>
+          <g class="gem__guia" aria-hidden="true">
+            <g data-g="cat"><line x1="630" x2="700" y1="252.1" y2="252.1"/><circle cx="700" cy="252.1" r="5"/><text class="gem__gn" x="716" y="248.1">11</text><text class="gem__gl" x="716" y="270.1">en català</text></g>
+            <g data-g="cas"><line x1="630" x2="700" y1="175.5" y2="175.5"/><text class="gem__gn" x="716" y="183.5">6</text><text class="gem__gl" x="716" y="205.5">en castellano</text></g>
+          </g>
+        </svg>
+        <p class="gem__ley mono" aria-hidden="true"><span><i class="cat"></i>11 en català</span><span><i class="cas"></i>6 en castellano</span></p>
       </div>
     </article>
 
@@ -792,7 +857,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/home.js?v=11"></script>
+<script type="module" src="js/home.js?v=12"></script>
 
 </body>
 </html>
