@@ -6,6 +6,11 @@
       "permanent": false
     },
     {
+      "source": "/demo/:lead/",
+      "destination": "https://paneln8n.seekialabs.com/webhook/demo/estetica/:lead",
+      "permanent": false
+    },
+    {
       "source": "/demo",
       "destination": "https://paneln8n.seekialabs.com/webhook/demo/estetica/sin-nombre",
       "permanent": false
