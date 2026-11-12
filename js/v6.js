@@ -71,6 +71,7 @@ function escena(caja, cfg) {
   if (!caja) return { pon() {} };
   const lienzo = caja.querySelector('canvas');
   let gl = null, U = {}, listo = false, p = 1, pintado = -1, creada = false, texturas = null;
+  let perdidas = 0, rendido = false, tSano = 0, tVer = 0;                // pérdidas de contexto seguidas; rendido = se queda la foto para siempre
   const pinta = (forzar) => { if (!listo || (!forzar && Math.abs(p - pintado) < 0.0008)) return; pintado = p; gl.uniform1f(U.uP, p); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); };
   const medir = () => {
     if (!listo) return;
@@ -87,6 +88,7 @@ function escena(caja, cfg) {
     pinta(true);
   };
   const montar = () => {
+    if (gl.isContextLost()) throw new Error('contexto perdido');
     const sombra = (tipo, src) => { const s = gl.createShader(tipo); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
     const prog = gl.createProgram();
     gl.attachShader(prog, sombra(gl.VERTEX_SHADER, VERT)); gl.attachShader(prog, sombra(gl.FRAGMENT_SHADER, FRAG));
@@ -107,7 +109,11 @@ function escena(caja, cfg) {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
     });
-    listo = true; caja.classList.add('is-gl'); pintado = -1; medir();
+    listo = true; pintado = -1; medir();
+    clearTimeout(tSano); tSano = setTimeout(() => { perdidas = 0; }, 10000);     // 10 s vivo: contexto sano, la cuenta de pérdidas vuelve a cero
+    // Tras una pérdida el lienzo no vuelve a la vista hasta aguantar un momento: si muere otra vez, que no haya llegado a verse
+    const ver = () => { if (listo && !gl.isContextLost()) { caja.classList.add('is-gl'); caja.classList.remove('sin-gl'); } };
+    clearTimeout(tVer); if (perdidas) tVer = setTimeout(ver, 600); else ver();
   };
   const crear = () => {
     if (creada) return; creada = true;
@@ -120,14 +126,24 @@ function escena(caja, cfg) {
       const suf = movil.matches ? '-m' : '';
       return Promise.all([imagen(caja.dataset.seco + suf + '.webp'), imagen(caja.dataset.flor + suf + '.webp')]).then((imgs) => {
         texturas = imgs;
-        try { montar(); caja.classList.remove('sin-gl'); } catch (e) { caja.classList.add('sin-gl'); console.warn('[v6] escena sin WebGL:', e.message); }
+        try { montar(); } catch (e) { caja.classList.add('sin-gl'); console.warn('[v6] escena sin WebGL:', e.message); }
       }).catch(() => caja.classList.add('sin-gl'));
     };
     cargar();
     setTimeout(() => { if (!listo) caja.classList.add('sin-gl'); }, 4000);   // si el lienzo tarda, que se vea la foto
     movil.addEventListener('change', cargar);                                // al girar una tableta cambian de tamaño las texturas
-    lienzo.addEventListener('webglcontextlost', (e) => { e.preventDefault(); listo = false; caja.classList.remove('is-gl'); caja.classList.add('sin-gl'); });
-    lienzo.addEventListener('webglcontextrestored', () => { try { if (texturas) { montar(); caja.classList.remove('sin-gl'); } } catch (e) { /* se queda la foto */ } });
+    // Contexto perdido: se ve la foto. Una pérdida suelta se recupera (el navegador reinicia su proceso gráfico). Dos seguidas quieren
+    // decir que el navegador no puede sostener el contexto (12 nov 2026: el proceso gráfico de Safari sin superficies libres, cada
+    // contexto moría al nacer): pedir otra restauración entra en un bucle que alterna foto y lienzo unas 15 veces por segundo, que es
+    // el parpadeo que vio Julen. Sin preventDefault el navegador no lo restaura y queda la foto, fija.
+    // Prueba: docs/v6/herramientas/prueba-contexto-perdido.js
+    lienzo.addEventListener('webglcontextlost', (e) => {
+      listo = false; clearTimeout(tSano); clearTimeout(tVer);
+      caja.classList.remove('is-gl'); caja.classList.add('sin-gl');
+      if (++perdidas > 1) { rendido = true; return; }
+      e.preventDefault();
+    });
+    lienzo.addEventListener('webglcontextrestored', () => { if (rendido) return; try { if (texturas) montar(); } catch (e) { /* se queda la foto */ } });
     addEventListener('resize', medir, { passive: true });
     if ('ResizeObserver' in window) new ResizeObserver(medir).observe(caja);
   };
@@ -139,7 +155,7 @@ function escena(caja, cfg) {
   // evita depender de que el navegador conserve el último fotograma al recomponer la capa (allí parpadeaba)
   if (/^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)) {
     let vista = false, rafS = 0;
-    const lazo = () => { rafS = 0; if (!vista) return; pinta(true); rafS = requestAnimationFrame(lazo); };
+    const lazo = () => { rafS = 0; if (!vista || rendido) return; pinta(true); rafS = requestAnimationFrame(lazo); };
     new IntersectionObserver((es) => { vista = es[0].isIntersecting; if (vista && !rafS) rafS = requestAnimationFrame(lazo); }).observe(caja);
   }
   return { pon(v) { p = v; pinta(); } };
