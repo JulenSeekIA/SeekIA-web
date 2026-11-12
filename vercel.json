@@ -14,6 +14,16 @@
       "source": "/demo",
       "destination": "https://paneln8n.seekialabs.com/webhook/demo/estetica/sin-nombre",
       "permanent": false
+    },
+    {
+      "source": "/dental.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/dental",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "headers": [
