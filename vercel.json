@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/demo/theys",
+      "destination": "https://paneln8n.seekialabs.com/webhook/theys-demo/chat",
+      "permanent": false
+    },
+    {
+      "source": "/demo/theys/",
+      "destination": "https://paneln8n.seekialabs.com/webhook/theys-demo/chat",
+      "permanent": false
+    },
+    {
       "source": "/demo/:lead",
       "destination": "https://paneln8n.seekialabs.com/webhook/demo/estetica/:lead",
       "permanent": false
